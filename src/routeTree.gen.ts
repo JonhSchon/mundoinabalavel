@@ -9,38 +9,144 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as AppRouteImport } from './routes/app'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as AppIndexRouteImport } from './routes/app.index'
+import { Route as AppTarefasRouteImport } from './routes/app.tarefas'
+import { Route as AppPedidosRouteImport } from './routes/app.pedidos'
+import { Route as AppMateriaisRouteImport } from './routes/app.materiais'
+import { Route as AppEcossistemaRouteImport } from './routes/app.ecossistema'
+import { Route as AppComunidadeRouteImport } from './routes/app.comunidade'
+import { Route as AppAulasRouteImport } from './routes/app.aulas'
 
+const AppRoute = AppRouteImport.update({
+  id: '/app',
+  path: '/app',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AppIndexRoute = AppIndexRouteImport.update({
+  id: '/',
+  path: '/',
+  getParentRoute: () => AppRoute,
+} as any)
+const AppTarefasRoute = AppTarefasRouteImport.update({
+  id: '/tarefas',
+  path: '/tarefas',
+  getParentRoute: () => AppRoute,
+} as any)
+const AppPedidosRoute = AppPedidosRouteImport.update({
+  id: '/pedidos',
+  path: '/pedidos',
+  getParentRoute: () => AppRoute,
+} as any)
+const AppMateriaisRoute = AppMateriaisRouteImport.update({
+  id: '/materiais',
+  path: '/materiais',
+  getParentRoute: () => AppRoute,
+} as any)
+const AppEcossistemaRoute = AppEcossistemaRouteImport.update({
+  id: '/ecossistema',
+  path: '/ecossistema',
+  getParentRoute: () => AppRoute,
+} as any)
+const AppComunidadeRoute = AppComunidadeRouteImport.update({
+  id: '/comunidade',
+  path: '/comunidade',
+  getParentRoute: () => AppRoute,
+} as any)
+const AppAulasRoute = AppAulasRouteImport.update({
+  id: '/aulas',
+  path: '/aulas',
+  getParentRoute: () => AppRoute,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/app': typeof AppRouteWithChildren
+  '/app/aulas': typeof AppAulasRoute
+  '/app/comunidade': typeof AppComunidadeRoute
+  '/app/ecossistema': typeof AppEcossistemaRoute
+  '/app/materiais': typeof AppMateriaisRoute
+  '/app/pedidos': typeof AppPedidosRoute
+  '/app/tarefas': typeof AppTarefasRoute
+  '/app/': typeof AppIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/app/aulas': typeof AppAulasRoute
+  '/app/comunidade': typeof AppComunidadeRoute
+  '/app/ecossistema': typeof AppEcossistemaRoute
+  '/app/materiais': typeof AppMateriaisRoute
+  '/app/pedidos': typeof AppPedidosRoute
+  '/app/tarefas': typeof AppTarefasRoute
+  '/app': typeof AppIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/app': typeof AppRouteWithChildren
+  '/app/aulas': typeof AppAulasRoute
+  '/app/comunidade': typeof AppComunidadeRoute
+  '/app/ecossistema': typeof AppEcossistemaRoute
+  '/app/materiais': typeof AppMateriaisRoute
+  '/app/pedidos': typeof AppPedidosRoute
+  '/app/tarefas': typeof AppTarefasRoute
+  '/app/': typeof AppIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths:
+    | '/'
+    | '/app'
+    | '/app/aulas'
+    | '/app/comunidade'
+    | '/app/ecossistema'
+    | '/app/materiais'
+    | '/app/pedidos'
+    | '/app/tarefas'
+    | '/app/'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to:
+    | '/'
+    | '/app/aulas'
+    | '/app/comunidade'
+    | '/app/ecossistema'
+    | '/app/materiais'
+    | '/app/pedidos'
+    | '/app/tarefas'
+    | '/app'
+  id:
+    | '__root__'
+    | '/'
+    | '/app'
+    | '/app/aulas'
+    | '/app/comunidade'
+    | '/app/ecossistema'
+    | '/app/materiais'
+    | '/app/pedidos'
+    | '/app/tarefas'
+    | '/app/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AppRoute: typeof AppRouteWithChildren
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/app': {
+      id: '/app'
+      path: '/app'
+      fullPath: '/app'
+      preLoaderRoute: typeof AppRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/': {
       id: '/'
       path: '/'
@@ -48,22 +154,84 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/app/': {
+      id: '/app/'
+      path: '/'
+      fullPath: '/app/'
+      preLoaderRoute: typeof AppIndexRouteImport
+      parentRoute: typeof AppRoute
+    }
+    '/app/tarefas': {
+      id: '/app/tarefas'
+      path: '/tarefas'
+      fullPath: '/app/tarefas'
+      preLoaderRoute: typeof AppTarefasRouteImport
+      parentRoute: typeof AppRoute
+    }
+    '/app/pedidos': {
+      id: '/app/pedidos'
+      path: '/pedidos'
+      fullPath: '/app/pedidos'
+      preLoaderRoute: typeof AppPedidosRouteImport
+      parentRoute: typeof AppRoute
+    }
+    '/app/materiais': {
+      id: '/app/materiais'
+      path: '/materiais'
+      fullPath: '/app/materiais'
+      preLoaderRoute: typeof AppMateriaisRouteImport
+      parentRoute: typeof AppRoute
+    }
+    '/app/ecossistema': {
+      id: '/app/ecossistema'
+      path: '/ecossistema'
+      fullPath: '/app/ecossistema'
+      preLoaderRoute: typeof AppEcossistemaRouteImport
+      parentRoute: typeof AppRoute
+    }
+    '/app/comunidade': {
+      id: '/app/comunidade'
+      path: '/comunidade'
+      fullPath: '/app/comunidade'
+      preLoaderRoute: typeof AppComunidadeRouteImport
+      parentRoute: typeof AppRoute
+    }
+    '/app/aulas': {
+      id: '/app/aulas'
+      path: '/aulas'
+      fullPath: '/app/aulas'
+      preLoaderRoute: typeof AppAulasRouteImport
+      parentRoute: typeof AppRoute
+    }
   }
 }
 
+interface AppRouteChildren {
+  AppAulasRoute: typeof AppAulasRoute
+  AppComunidadeRoute: typeof AppComunidadeRoute
+  AppEcossistemaRoute: typeof AppEcossistemaRoute
+  AppMateriaisRoute: typeof AppMateriaisRoute
+  AppPedidosRoute: typeof AppPedidosRoute
+  AppTarefasRoute: typeof AppTarefasRoute
+  AppIndexRoute: typeof AppIndexRoute
+}
+
+const AppRouteChildren: AppRouteChildren = {
+  AppAulasRoute: AppAulasRoute,
+  AppComunidadeRoute: AppComunidadeRoute,
+  AppEcossistemaRoute: AppEcossistemaRoute,
+  AppMateriaisRoute: AppMateriaisRoute,
+  AppPedidosRoute: AppPedidosRoute,
+  AppTarefasRoute: AppTarefasRoute,
+  AppIndexRoute: AppIndexRoute,
+}
+
+const AppRouteWithChildren = AppRoute._addFileChildren(AppRouteChildren)
+
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AppRoute: AppRouteWithChildren,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
-
-import type { getRouter } from './router.tsx'
-import type { startInstance } from './start.ts'
-declare module '@tanstack/react-start' {
-  interface Register {
-    ssr: true
-    router: Awaited<ReturnType<typeof getRouter>>
-    config: Awaited<ReturnType<typeof startInstance.getOptions>>
-  }
-}
