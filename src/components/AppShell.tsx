@@ -1,7 +1,8 @@
 import { Link, Outlet, useLocation } from "@tanstack/react-router";
 import { LayoutDashboard, PlayCircle, FolderOpen, ClipboardList, MessageSquarePlus, Users, Store, Bell, Search } from "lucide-react";
 
-const nav = [
+type NavItem = { to: string; label: string; icon: typeof LayoutDashboard; exact?: boolean };
+const nav: NavItem[] = [
   { to: "/app", label: "Visão geral", icon: LayoutDashboard, exact: true },
   { to: "/app/aulas", label: "Aulas", icon: PlayCircle },
   { to: "/app/materiais", label: "Materiais", icon: FolderOpen },
@@ -9,7 +10,7 @@ const nav = [
   { to: "/app/pedidos", label: "Pedidos", icon: MessageSquarePlus },
   { to: "/app/comunidade", label: "Comunidade", icon: Users },
   { to: "/app/ecossistema", label: "Ecossistema", icon: Store },
-] as const;
+];
 
 export function AppShell() {
   const { pathname } = useLocation();
