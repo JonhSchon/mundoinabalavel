@@ -14,8 +14,7 @@ export function SiteHeader() {
           </div>
         </Link>
         <nav className="hidden md:flex items-center gap-8 text-sm text-background/80">
-          <a href="#ecossistema" className="hover:text-gold transition-colors">Ecossistema</a>
-          <a href="#mentoria" className="hover:text-gold transition-colors">Mentoria</a>
+          <a href="#dores" className="hover:text-gold transition-colors">Isto é para você?</a>
           <a href="#metodo" className="hover:text-gold transition-colors">Método</a>
           <a href="#contato" className="hover:text-gold transition-colors">Contato</a>
         </nav>
@@ -23,7 +22,7 @@ export function SiteHeader() {
           to="/app"
           className="inline-flex items-center gap-2 rounded-sm border border-gold/40 bg-gold/10 px-5 py-2.5 text-sm text-gold hover:bg-gold hover:text-primary transition-colors"
         >
-          Área do mentorado
+          Entrar na Irmandade
         </Link>
       </div>
     </header>

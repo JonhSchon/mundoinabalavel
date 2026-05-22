@@ -7,27 +7,27 @@ export const Route = createFileRoute("/app/ecossistema")({
 
 const products = [
   {
-    icon: GraduationCap, type: "Curso",
-    t: "KAM Sênior — Farma",
-    d: "Trilha completa de 44 aulas + materiais + 4 mentorias em grupo.",
+    icon: GraduationCap, type: "Curso · Core",
+    t: "Retorno Memorável — Entrar na Farma",
+    d: "O método completo para o Candidato Invisível furar o ATS, dominar o jargão (DDD, PMB, Close-up) e travar Business Case sem suar.",
     price: "R$ 2.997", tag: "Mais vendido",
   },
   {
     icon: Users, type: "Mentoria 1:1",
     t: "Programa Executivo · 6 meses",
-    d: "Acompanhamento individual quinzenal com Schonhardt + plano sob medida.",
+    d: "Acompanhamento quinzenal com Schonhardt. Plano de recolocação sob medida, simulação de entrevista com GD e portfólio para multinacional.",
     price: "R$ 18.000", tag: "Vagas limitadas",
   },
   {
     icon: GraduationCap, type: "Curso",
-    t: "Negociação para Gerentes",
-    d: "8 aulas práticas com simulações e templates aplicáveis no dia seguinte.",
+    t: "A Chave da Indústria Farmacêutica",
+    d: "Mapa rápido do setor: estrutura comercial, Primary Care vs Oncologia, pacote padrão (carro, PLR, previdência) e plano de carreira.",
     price: "R$ 1.497",
   },
   {
     icon: Mic, type: "Palestra",
-    t: "Keynote para convenções",
-    d: "Palestra de 60–90min adaptada para sua força de vendas ou evento.",
+    t: "Keynote para Convenções de Vendas",
+    d: "Palestra de 60–90 min adaptada para força de vendas farma, distribuidores e times comerciais B2B. Brasil, LATAM e EMEA.",
     price: "Sob consulta",
   },
 ];
@@ -35,10 +35,10 @@ const products = [
 function EcossistemaPage() {
   return (
     <div className="px-6 lg:px-10 py-10 max-w-6xl">
-      <div className="text-xs uppercase tracking-[0.25em] text-royal mb-3">Para você e seu time</div>
-      <h1 className="font-display text-4xl md:text-5xl text-foreground">Ecossistema Schonhardt</h1>
+      <div className="text-xs uppercase tracking-[0.25em] text-royal mb-3">O ecossistema ISN</div>
+      <h1 className="font-display text-4xl md:text-5xl text-foreground">Você não precisa esperar a próxima vaga abrir.</h1>
       <p className="mt-3 text-muted-foreground max-w-2xl">
-        Cursos, mentorias e palestras disponíveis para contratação. Mentorados premium têm condições especiais.
+        Cursos, mentoria 1:1 e palestras corporativas. Mentorados ativos da Irmandade têm condição especial e prioridade em todas as turmas.
       </p>
 
       <div className="mt-10 grid md:grid-cols-2 gap-6">

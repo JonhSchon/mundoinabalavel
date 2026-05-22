@@ -6,19 +6,20 @@ export const Route = createFileRoute("/app/tarefas")({
 });
 
 const tasks = [
-  { t: "Entregar plano de conta — Hospital Albert", due: "Vence amanhã", status: "todo", mod: "Módulo 4" },
-  { t: "Gravar pitch de 90s para revisão", due: "Vence em 3 dias", status: "todo", mod: "Módulo 4" },
-  { t: "Ler case: Acesso oncologia SP", due: "Vence em 6 dias", status: "todo", mod: "Módulo 5" },
-  { t: "Mapa de stakeholders preenchido", due: "Concluído", status: "done", mod: "Módulo 2" },
-  { t: "Diagnóstico inicial", due: "Concluído", status: "done", mod: "Onboarding" },
+  { t: "Reescrever headline do LinkedIn no formato KAM-ready", due: "Vence amanhã", status: "todo", mod: "Módulo 02 · Algoritmo" },
+  { t: "Gravar pitch de 90s — Por que você na Farma", due: "Vence em 3 dias", status: "todo", mod: "Módulo 02 · Posicionamento" },
+  { t: "Simular Business Case — Lançamento Primary Care", due: "Vence em 5 dias", status: "todo", mod: "Módulo 03 · Blindagem" },
+  { t: "Mapear 10 GDs e Regionais no LinkedIn", due: "Vence em 7 dias", status: "todo", mod: "Módulo 02 · Networking Inverso" },
+  { t: "Ritual do Adeus — entregue", due: "Concluído", status: "done", mod: "Módulo 01 · Identidade" },
+  { t: "Auditoria de competências preenchida", due: "Concluído", status: "done", mod: "Onboarding" },
 ];
 
 function TarefasPage() {
   return (
     <div className="px-6 lg:px-10 py-10 max-w-4xl">
-      <div className="text-xs uppercase tracking-[0.25em] text-royal mb-3">Sua jornada</div>
-      <h1 className="font-display text-4xl md:text-5xl text-foreground">Tarefas</h1>
-      <p className="mt-3 text-muted-foreground">3 pendentes · 2 concluídas esta semana</p>
+      <div className="text-xs uppercase tracking-[0.25em] text-royal mb-3">Sua jornada de recolocação</div>
+      <h1 className="font-display text-4xl md:text-5xl text-foreground">Missões</h1>
+      <p className="mt-3 text-muted-foreground">4 pendentes · 2 concluídas. Cumprir destrava a próxima aula.</p>
 
       <div className="mt-10 space-y-3">
         {tasks.map((t) => (

@@ -7,36 +7,36 @@ export const Route = createFileRoute("/app/comunidade")({
 
 const posts = [
   {
-    a: "Schonhardt", role: "Mentor", tag: "Anúncio", pin: true,
-    t: "Convenção anual — datas abertas",
-    c: "Já temos data confirmada: 12 e 13 de setembro em SP. Mentorados premium têm prioridade. Em breve compartilho o link de inscrição aqui.",
-    l: 32, m: 12, time: "2h",
+    a: "Schonhardt", role: "Mentor · ISN", tag: "Vaga interna", pin: true,
+    t: "🔓 Vaga oculta — KAM Oncologia / SP capital",
+    c: "Multinacional top 5, pacote completo (carro + combustível + PLR agressiva). Não está no Gupy. Indicação direta minha. Quem topar entrevista esta semana comenta aqui que eu mando o briefing.",
+    l: 87, m: 34, time: "1h",
   },
   {
-    a: "Marina R.", role: "KAM · Oncologia", tag: "Discussão",
-    t: "Como vocês têm trabalhado o acesso em hospitais filantrópicos?",
-    c: "Estou montando um plano para 3 contas e queria trocar experiências sobre comitê de farmácia e prazos médios.",
-    l: 18, m: 9, time: "5h",
+    a: "Marina R.", role: "Em transição · ex-varejo", tag: "Dúvida",
+    t: "Travei na simulação de propaganda médica — alguém topa treinar comigo?",
+    c: "Marcaram pra quinta com o GD. Já estudei o material do módulo 03 mas quero rodar 2x antes. Procuro alguém da Irmandade pra simular por call hoje à noite.",
+    l: 24, m: 18, time: "3h",
   },
   {
-    a: "Bruno S.", role: "Gerente Distrital", tag: "Vitória",
-    t: "Promoção saindo!",
-    c: "Pessoal, depois de 9 meses na mentoria recebi a notícia hoje: vou assumir a regional sul. Obrigado a todos pela troca!",
-    l: 64, m: 24, time: "1d",
+    a: "Bruno S.", role: "Novo KAM · multinacional", tag: "Vitória",
+    t: "Assinei o crachá. 9 meses depois de entrar na Irmandade.",
+    c: "Vim de seguros, zero rede em farma, achei que era impossível. Apliquei o método do Retorno Memorável, fiz o ritual do adeus, reescrevi o LinkedIn e o recrutador me chamou. Carro chega semana que vem. Obrigado, João.",
+    l: 142, m: 56, time: "1d",
   },
 ];
 
 function ComunidadePage() {
   return (
     <div className="px-6 lg:px-10 py-10 max-w-3xl">
-      <div className="text-xs uppercase tracking-[0.25em] text-royal mb-3">Rede de mentorados</div>
-      <h1 className="font-display text-4xl md:text-5xl text-foreground">Comunidade</h1>
-      <p className="mt-3 text-muted-foreground">Troque com colegas, compartilhe vitórias e tire dúvidas com o grupo.</p>
+      <div className="text-xs uppercase tracking-[0.25em] text-royal mb-3">A Irmandade</div>
+      <h1 className="font-display text-4xl md:text-5xl text-foreground">Comunidade ISN</h1>
+      <p className="mt-3 text-muted-foreground">Vagas privilegiadas, simulações entre pares e vitórias compartilhadas. Aqui ninguém joga sozinho.</p>
 
       <div className="mt-8 bg-card border border-border rounded-lg p-4 flex gap-3">
         <div className="h-10 w-10 rounded-full bg-royal-gradient grid place-items-center text-sm text-background">AC</div>
         <input
-          placeholder="Compartilhe algo com a comunidade..."
+          placeholder="Compartilhe uma vitória, uma dúvida ou peça simulação..."
           className="flex-1 bg-transparent outline-none text-sm placeholder:text-muted-foreground"
         />
         <button className="bg-gold-gradient text-gold-foreground px-4 py-2 rounded-sm text-sm font-medium">Publicar</button>
