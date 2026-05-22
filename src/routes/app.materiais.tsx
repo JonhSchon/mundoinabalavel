@@ -6,20 +6,20 @@ export const Route = createFileRoute("/app/materiais")({
 });
 
 const docs = [
-  { icon: FileText, t: "Playbook do KAM — v3", d: "PDF · 4.2 MB", cat: "Playbook" },
-  { icon: FileSpreadsheet, t: "Planilha de plano de conta", d: "XLSX · 280 KB", cat: "Template" },
-  { icon: BookOpen, t: "E-book: Acesso ao Mercado", d: "PDF · 8.1 MB", cat: "Leitura" },
-  { icon: FileText, t: "Script de descoberta", d: "PDF · 320 KB", cat: "Script" },
-  { icon: FileSpreadsheet, t: "Calculadora de ROI", d: "XLSX · 410 KB", cat: "Template" },
-  { icon: BookOpen, t: "Cases — Hospitais públicos", d: "PDF · 6.4 MB", cat: "Cases" },
+  { icon: FileText, t: "Dicionário Farma — DDD, PMB, Close-up, Grelha", d: "PDF · 1.8 MB", cat: "Código" },
+  { icon: FileSpreadsheet, t: "Template de LinkedIn KAM-ready", d: "DOCX · 240 KB", cat: "Algoritmo" },
+  { icon: BookOpen, t: "E-book: Como o ATS te tritura (e como driblar)", d: "PDF · 6.4 MB", cat: "Algoritmo" },
+  { icon: FileText, t: "Script — Simulação de propaganda médica", d: "PDF · 420 KB", cat: "Blindagem" },
+  { icon: FileSpreadsheet, t: "Planilha — Mapa de 50 GDs e Regionais", d: "XLSX · 380 KB", cat: "Networking" },
+  { icon: BookOpen, t: "Cases — Recolocados em multinacional top 10", d: "PDF · 8.1 MB", cat: "Provas" },
 ];
 
 function MateriaisPage() {
   return (
     <div className="px-6 lg:px-10 py-10 max-w-6xl">
-      <div className="text-xs uppercase tracking-[0.25em] text-royal mb-3">Biblioteca</div>
-      <h1 className="font-display text-4xl md:text-5xl text-foreground">Materiais de apoio</h1>
-      <p className="mt-3 text-muted-foreground">Templates, playbooks, scripts e leituras complementares.</p>
+      <div className="text-xs uppercase tracking-[0.25em] text-royal mb-3">Biblioteca da Irmandade</div>
+      <h1 className="font-display text-4xl md:text-5xl text-foreground">Arsenal do mentorado</h1>
+      <p className="mt-3 text-muted-foreground">Dicionário do setor, templates prontos, scripts de simulação e cases de quem já entrou.</p>
 
       <div className="mt-10 grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
         {docs.map(({ icon: Icon, t, d, cat }) => (

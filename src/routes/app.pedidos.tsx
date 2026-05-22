@@ -7,26 +7,26 @@ export const Route = createFileRoute("/app/pedidos")({
 });
 
 const previous = [
-  { t: "Revisão do meu plano de carreira", date: "12 abr · respondido", status: "respondido" },
-  { t: "Indicação de leitura sobre acesso público", date: "5 abr · respondido", status: "respondido" },
-  { t: "Sessão extra antes da convenção", date: "2 abr · em análise", status: "pendente" },
+  { t: "Revisão do meu pitch de 90s antes da entrevista", date: "12 abr · respondido", status: "respondido" },
+  { t: "Indicação direta para vaga de KAM em oncologia", date: "5 abr · respondido", status: "respondido" },
+  { t: "Sessão extra de simulação de Business Case", date: "2 abr · em análise", status: "pendente" },
 ];
 
 function PedidosPage() {
   const [type, setType] = useState("Dúvida");
   return (
     <div className="px-6 lg:px-10 py-10 max-w-4xl">
-      <div className="text-xs uppercase tracking-[0.25em] text-royal mb-3">Acesso direto</div>
-      <h1 className="font-display text-4xl md:text-5xl text-foreground">Envie um pedido</h1>
+      <div className="text-xs uppercase tracking-[0.25em] text-royal mb-3">Linha direta com Schonhardt</div>
+      <h1 className="font-display text-4xl md:text-5xl text-foreground">Pedidos do mentorado</h1>
       <p className="mt-3 text-muted-foreground max-w-xl">
-        Tire dúvidas, peça uma sessão extra, indique um tema ou solicite revisão de material. Respondo pessoalmente.
+        Revisão de pitch, simulação de entrevista, indicação para vaga, dúvida sobre processo seletivo. Respondo pessoalmente.
       </p>
 
       <form className="mt-10 bg-card border border-border rounded-lg p-6 space-y-5">
         <div>
           <label className="text-xs uppercase tracking-wider text-royal">Tipo</label>
           <div className="mt-2 flex flex-wrap gap-2">
-            {["Dúvida", "Sessão 1:1", "Revisão", "Sugestão"].map((opt) => (
+            {["Dúvida", "Revisão de pitch", "Simulação 1:1", "Indicação de vaga"].map((opt) => (
               <button
                 key={opt}
                 type="button"
