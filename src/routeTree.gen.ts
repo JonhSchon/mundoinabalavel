@@ -18,6 +18,7 @@ import { Route as AppMateriaisRouteImport } from './routes/app.materiais'
 import { Route as AppEcossistemaRouteImport } from './routes/app.ecossistema'
 import { Route as AppComunidadeRouteImport } from './routes/app.comunidade'
 import { Route as AppAulasRouteImport } from './routes/app.aulas'
+import { Route as AppAulasCourseIdRouteImport } from './routes/app.aulas.$courseId'
 
 const AppRoute = AppRouteImport.update({
   id: '/app',
@@ -64,39 +65,47 @@ const AppAulasRoute = AppAulasRouteImport.update({
   path: '/aulas',
   getParentRoute: () => AppRoute,
 } as any)
+const AppAulasCourseIdRoute = AppAulasCourseIdRouteImport.update({
+  id: '/$courseId',
+  path: '/$courseId',
+  getParentRoute: () => AppAulasRoute,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/app': typeof AppRouteWithChildren
-  '/app/aulas': typeof AppAulasRoute
+  '/app/aulas': typeof AppAulasRouteWithChildren
   '/app/comunidade': typeof AppComunidadeRoute
   '/app/ecossistema': typeof AppEcossistemaRoute
   '/app/materiais': typeof AppMateriaisRoute
   '/app/pedidos': typeof AppPedidosRoute
   '/app/tarefas': typeof AppTarefasRoute
   '/app/': typeof AppIndexRoute
+  '/app/aulas/$courseId': typeof AppAulasCourseIdRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
-  '/app/aulas': typeof AppAulasRoute
+  '/app/aulas': typeof AppAulasRouteWithChildren
   '/app/comunidade': typeof AppComunidadeRoute
   '/app/ecossistema': typeof AppEcossistemaRoute
   '/app/materiais': typeof AppMateriaisRoute
   '/app/pedidos': typeof AppPedidosRoute
   '/app/tarefas': typeof AppTarefasRoute
   '/app': typeof AppIndexRoute
+  '/app/aulas/$courseId': typeof AppAulasCourseIdRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/app': typeof AppRouteWithChildren
-  '/app/aulas': typeof AppAulasRoute
+  '/app/aulas': typeof AppAulasRouteWithChildren
   '/app/comunidade': typeof AppComunidadeRoute
   '/app/ecossistema': typeof AppEcossistemaRoute
   '/app/materiais': typeof AppMateriaisRoute
   '/app/pedidos': typeof AppPedidosRoute
   '/app/tarefas': typeof AppTarefasRoute
   '/app/': typeof AppIndexRoute
+  '/app/aulas/$courseId': typeof AppAulasCourseIdRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -110,6 +119,7 @@ export interface FileRouteTypes {
     | '/app/pedidos'
     | '/app/tarefas'
     | '/app/'
+    | '/app/aulas/$courseId'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
@@ -120,6 +130,7 @@ export interface FileRouteTypes {
     | '/app/pedidos'
     | '/app/tarefas'
     | '/app'
+    | '/app/aulas/$courseId'
   id:
     | '__root__'
     | '/'
@@ -131,6 +142,7 @@ export interface FileRouteTypes {
     | '/app/pedidos'
     | '/app/tarefas'
     | '/app/'
+    | '/app/aulas/$courseId'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -203,11 +215,30 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AppAulasRouteImport
       parentRoute: typeof AppRoute
     }
+    '/app/aulas/$courseId': {
+      id: '/app/aulas/$courseId'
+      path: '/$courseId'
+      fullPath: '/app/aulas/$courseId'
+      preLoaderRoute: typeof AppAulasCourseIdRouteImport
+      parentRoute: typeof AppAulasRoute
+    }
   }
 }
 
+interface AppAulasRouteChildren {
+  AppAulasCourseIdRoute: typeof AppAulasCourseIdRoute
+}
+
+const AppAulasRouteChildren: AppAulasRouteChildren = {
+  AppAulasCourseIdRoute: AppAulasCourseIdRoute,
+}
+
+const AppAulasRouteWithChildren = AppAulasRoute._addFileChildren(
+  AppAulasRouteChildren,
+)
+
 interface AppRouteChildren {
-  AppAulasRoute: typeof AppAulasRoute
+  AppAulasRoute: typeof AppAulasRouteWithChildren
   AppComunidadeRoute: typeof AppComunidadeRoute
   AppEcossistemaRoute: typeof AppEcossistemaRoute
   AppMateriaisRoute: typeof AppMateriaisRoute
@@ -217,7 +248,7 @@ interface AppRouteChildren {
 }
 
 const AppRouteChildren: AppRouteChildren = {
-  AppAulasRoute: AppAulasRoute,
+  AppAulasRoute: AppAulasRouteWithChildren,
   AppComunidadeRoute: AppComunidadeRoute,
   AppEcossistemaRoute: AppEcossistemaRoute,
   AppMateriaisRoute: AppMateriaisRoute,

@@ -73,18 +73,15 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
       { title: ": A Arquitetura do Profissional  Insubstituível" },
-      { name: "description", content: "Instituto Schonhardt: O Jogo Real da Indústria Farmacêutica
-Uma imersão estratégica e individual com quem tem 27 anos de campo de batalha e alta complexidade." },
+      { name: "description", content: "Instituto Schonhardt: O Jogo Real da Indústria Farmacêutica. Uma imersão estratégica e individual com quem tem 27 anos de campo de batalha e alta complexidade." },
       { name: "author", content: "Lovable" },
       { property: "og:title", content: ": A Arquitetura do Profissional  Insubstituível" },
-      { property: "og:description", content: "Instituto Schonhardt: O Jogo Real da Indústria Farmacêutica
-Uma imersão estratégica e individual com quem tem 27 anos de campo de batalha e alta complexidade." },
+      { property: "og:description", content: "Instituto Schonhardt: O Jogo Real da Indústria Farmacêutica. Uma imersão estratégica e individual com quem tem 27 anos de campo de batalha e alta complexidade." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary" },
       { name: "twitter:site", content: "@Lovable" },
       { name: "twitter:title", content: ": A Arquitetura do Profissional  Insubstituível" },
-      { name: "twitter:description", content: "Instituto Schonhardt: O Jogo Real da Indústria Farmacêutica
-Uma imersão estratégica e individual com quem tem 27 anos de campo de batalha e alta complexidade." },
+      { name: "twitter:description", content: "Instituto Schonhardt: O Jogo Real da Indústria Farmacêutica. Uma imersão estratégica e individual com quem tem 27 anos de campo de batalha e alta complexidade." },
       { property: "og:image", content: "https://storage.googleapis.com/gpt-engineer-file-uploads/sEmN7lWUGtd6pPbGdPnFFBxCiDn2/social-images/social-1779457680089-Gemini_Generated_Image_m5jaerm5jaerm5ja.webp" },
       { name: "twitter:image", content: "https://storage.googleapis.com/gpt-engineer-file-uploads/sEmN7lWUGtd6pPbGdPnFFBxCiDn2/social-images/social-1779457680089-Gemini_Generated_Image_m5jaerm5jaerm5ja.webp" },
     ],
