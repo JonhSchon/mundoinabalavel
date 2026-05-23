@@ -8,27 +8,39 @@ export const Route = createFileRoute("/app/ecossistema")({
 const products = [
   {
     icon: GraduationCap, type: "Curso · Core",
-    t: "Retorno Memorável — Entrar na Farma",
-    d: "O método completo para o Candidato Invisível furar o ATS, dominar o jargão (DDD, PMB, Close-up) e travar Business Case sem suar.",
-    price: "R$ 2.997", tag: "Mais vendido",
+    t: "Retorno Memorável",
+    d: "3 módulos · 44 aulas. A Reprogramação + Como vender o seu peixe + Engenharia Social. O método completo para o Candidato Invisível furar o ATS e travar Business Case.",
+    price: "R$ 3.000", tag: "Mais vendido",
+  },
+  {
+    icon: GraduationCap, type: "Curso",
+    t: "A Chave da Indústria",
+    d: "3 módulos + Onboarding. Despertar da mentalidade Pharma, identidade de elite e o campo de batalha da entrevista até a contratação.",
+    price: "R$ 997",
+  },
+  {
+    icon: GraduationCap, type: "Programa",
+    t: "IMPACTA 10X",
+    d: "5 módulos · 30 aulas. DNA da carreira, império digital, influência e liderança, profissional 4.0 (vendas + IA) e multiplicação de legado.",
+    price: "R$ 499",
+  },
+  {
+    icon: GraduationCap, type: "Curso · Gratuito",
+    t: "Aqui é Onde o Jogo Real Começa",
+    d: "Aula aberta em 3 partes: o pacto secreto, o ecossistema pharma e o arsenal. A porta de entrada para conhecer o método.",
+    price: "Gratuito",
+  },
+  {
+    icon: Mic, type: "Palestra · Evento",
+    t: "Inabalável: A Ciência do Valor Inegociável",
+    d: "Palestra ao vivo de 90 min. Aberta, online e gratuita para a Irmandade — vagas limitadas por sessão.",
+    price: "Gratuito", tag: "Próxima turma",
   },
   {
     icon: Users, type: "Mentoria 1:1",
     t: "Programa Executivo · 6 meses",
     d: "Acompanhamento quinzenal com Schonhardt. Plano de recolocação sob medida, simulação de entrevista com GD e portfólio para multinacional.",
     price: "R$ 18.000", tag: "Vagas limitadas",
-  },
-  {
-    icon: GraduationCap, type: "Curso",
-    t: "A Chave da Indústria Farmacêutica",
-    d: "Mapa rápido do setor: estrutura comercial, Primary Care vs Oncologia, pacote padrão (carro, PLR, previdência) e plano de carreira.",
-    price: "R$ 1.497",
-  },
-  {
-    icon: Mic, type: "Palestra",
-    t: "Keynote para Convenções de Vendas",
-    d: "Palestra de 60–90 min adaptada para força de vendas farma, distribuidores e times comerciais B2B. Brasil, LATAM e EMEA.",
-    price: "Sob consulta",
   },
 ];
 
