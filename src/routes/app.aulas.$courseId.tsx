@@ -66,14 +66,14 @@ function CoursePage() {
       </section>
 
       <div className="max-w-7xl mx-auto px-6 lg:px-10 mt-12 space-y-14">
-        {course.modules.map((m) => (
+        {course.modules.map((m: Module) => (
           <section key={m.title}>
             <div className="flex items-baseline justify-between mb-6">
               <h2 className="font-display text-xl md:text-2xl text-sidebar-foreground">{m.title}</h2>
               <span className="text-xs uppercase tracking-[0.2em] text-gold/70">{m.lessons.length} aulas</span>
             </div>
             <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-x-4 gap-y-7">
-              {m.lessons.map((l, idx) => (
+              {m.lessons.map((l: Lesson, idx: number) => (
                 <LessonCard key={idx} lesson={l} cover={course.cover} />
               ))}
             </div>
