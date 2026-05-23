@@ -19,9 +19,9 @@ export const Route = createFileRoute("/app/aulas/$courseId")({
 });
 
 function CoursePage() {
-  const { course } = Route.useLoaderData();
-  const totalLessons = course.modules.reduce((s, m) => s + m.lessons.length, 0);
-  const done = course.modules.reduce((s, m) => s + m.lessons.filter((l) => l.s === "done").length, 0);
+  const { course } = Route.useLoaderData() as { course: Course };
+  const totalLessons = course.modules.reduce((s: number, m: Module) => s + m.lessons.length, 0);
+  const done = course.modules.reduce((s: number, m: Module) => s + m.lessons.filter((l: Lesson) => l.s === "done").length, 0);
   const progress = course.progress ?? Math.round((done / Math.max(totalLessons, 1)) * 100);
 
   return (
