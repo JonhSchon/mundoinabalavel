@@ -50,6 +50,7 @@ export const courses: Course[] = [
     modules: [
       {
         title: "Módulo 01 · A Reprogramação e o Hacking (Identidade + Algoritmo)",
+        image: moduleRm01,
         lessons: [
           { t: "Boas-vindas", d: "Comece por aqui", s: "current" },
           { t: "Aula 1.1 · A verdade nua e crua", d: "O fim do luto", s: "locked" },
