@@ -32,15 +32,17 @@ function Vitrine() {
             background: `linear-gradient(135deg, ${featured.cover.from} 0%, ${featured.cover.via ?? featured.cover.from} 50%, ${featured.cover.to} 100%)`,
           }}
         >
-          <div
-            className="absolute inset-0 opacity-[0.08]"
-            style={{
-              backgroundImage:
-                "radial-gradient(circle at 30% 40%, white 0, transparent 50%), radial-gradient(circle at 70% 60%, white 0, transparent 50%)",
-            }}
-          />
-          <div className="absolute inset-0 bg-gradient-to-t from-sidebar via-sidebar/40 to-transparent" />
-          <div className="absolute inset-0 bg-gradient-to-r from-sidebar/80 via-transparent to-transparent" />
+          {featured.cover.image && (
+            <img
+              src={featured.cover.image}
+              alt={featured.title}
+              className="absolute inset-0 w-full h-full object-cover object-center opacity-90"
+              width={1024}
+              height={1536}
+            />
+          )}
+          <div className="absolute inset-0 bg-gradient-to-t from-sidebar via-sidebar/50 to-transparent" />
+          <div className="absolute inset-0 bg-gradient-to-r from-sidebar/90 via-sidebar/30 to-transparent" />
 
           <div className="relative h-full max-w-7xl mx-auto px-6 lg:px-10 flex flex-col justify-end pb-12">
             <div className="text-[10px] uppercase tracking-[0.3em] text-gold mb-4">Curso Core · Em destaque</div>
