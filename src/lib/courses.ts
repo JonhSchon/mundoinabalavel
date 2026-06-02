@@ -1,3 +1,9 @@
+import coverRetorno from "@/assets/cover-retorno-memoravel.jpg";
+import coverChave from "@/assets/cover-chave-industria.jpg";
+import cover10x from "@/assets/cover-impacta-10x.jpg";
+import coverJogo from "@/assets/cover-jogo-real.jpg";
+import coverInabalavel from "@/assets/cover-inabalavel.jpg";
+
 export type Lesson = {
   t: string;
   d?: string;
@@ -16,7 +22,7 @@ export type Course = {
   type: "Curso" | "Palestra" | "Mentoria" | "Evento";
   price: string;
   tag?: string;
-  cover: { from: string; via?: string; to: string; label: string };
+  cover: { from: string; via?: string; to: string; label: string; image?: string };
   modules: Module[];
   progress?: number;
 };
@@ -35,7 +41,7 @@ export const courses: Course[] = [
     type: "Curso",
     price: "R$ 3.000",
     tag: "Curso Core",
-    cover: { from: navy, via: royal, to: gold, label: "RM" },
+    cover: { from: navy, via: royal, to: gold, label: "RM", image: coverRetorno },
     progress: 0,
     modules: [
       {
@@ -94,7 +100,7 @@ export const courses: Course[] = [
     type: "Curso",
     price: "R$ 997",
     tag: "Curso",
-    cover: { from: navy, via: teal, to: purple, label: "KF" },
+    cover: { from: navy, via: teal, to: purple, label: "KF", image: coverChave },
     modules: [
       {
         title: "Comece por Aqui",
@@ -143,7 +149,7 @@ export const courses: Course[] = [
     type: "Curso",
     price: "R$ 499",
     tag: "Programa",
-    cover: { from: "oklch(0.18 0.08 270)", via: royal, to: "oklch(0.22 0.1 275)", label: "10X" },
+    cover: { from: "oklch(0.18 0.08 270)", via: royal, to: "oklch(0.22 0.1 275)", label: "10X", image: cover10x },
     modules: [
       {
         title: "Módulo 01 · O DNA da Carreira Estratégica",
@@ -209,7 +215,7 @@ export const courses: Course[] = [
     type: "Curso",
     price: "Gratuito",
     tag: "Gratuito",
-    cover: { from: navy, via: purple, to: gold, label: "JR" },
+    cover: { from: navy, via: purple, to: gold, label: "JR", image: coverJogo },
     modules: [
       {
         title: "Conteúdo",
@@ -228,7 +234,7 @@ export const courses: Course[] = [
     type: "Palestra",
     price: "Gratuito",
     tag: "Ao vivo",
-    cover: { from: "oklch(0.2 0.06 268)", to: "oklch(0.4 0.12 285)", label: "VI" },
+    cover: { from: "oklch(0.2 0.06 268)", to: "oklch(0.4 0.12 285)", label: "VI", image: coverInabalavel },
     modules: [
       {
         title: "Palestra",

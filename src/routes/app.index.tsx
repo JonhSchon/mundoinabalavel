@@ -32,15 +32,17 @@ function Vitrine() {
             background: `linear-gradient(135deg, ${featured.cover.from} 0%, ${featured.cover.via ?? featured.cover.from} 50%, ${featured.cover.to} 100%)`,
           }}
         >
-          <div
-            className="absolute inset-0 opacity-[0.08]"
-            style={{
-              backgroundImage:
-                "radial-gradient(circle at 30% 40%, white 0, transparent 50%), radial-gradient(circle at 70% 60%, white 0, transparent 50%)",
-            }}
-          />
-          <div className="absolute inset-0 bg-gradient-to-t from-sidebar via-sidebar/40 to-transparent" />
-          <div className="absolute inset-0 bg-gradient-to-r from-sidebar/80 via-transparent to-transparent" />
+          {featured.cover.image && (
+            <img
+              src={featured.cover.image}
+              alt={featured.title}
+              className="absolute inset-0 w-full h-full object-cover object-center opacity-90"
+              width={1024}
+              height={1536}
+            />
+          )}
+          <div className="absolute inset-0 bg-gradient-to-t from-sidebar via-sidebar/50 to-transparent" />
+          <div className="absolute inset-0 bg-gradient-to-r from-sidebar/90 via-sidebar/30 to-transparent" />
 
           <div className="relative h-full max-w-7xl mx-auto px-6 lg:px-10 flex flex-col justify-end pb-12">
             <div className="text-[10px] uppercase tracking-[0.3em] text-gold mb-4">Curso Core · Em destaque</div>
@@ -104,11 +106,24 @@ function CourseCard({ course, progress }: { course: Course; progress?: boolean }
           background: `linear-gradient(160deg, ${course.cover.from} 0%, ${course.cover.via ?? course.cover.from} 55%, ${course.cover.to} 100%)`,
         }}
       >
-        <div className="absolute -top-1/3 -right-1/3 w-2/3 h-2/3 rounded-full opacity-20 blur-2xl" style={{ background: "var(--gold)" }} />
-        <div className="absolute inset-0 flex flex-col justify-between p-4">
-          <div className="text-[9px] uppercase tracking-[0.25em] text-background/70">ISN</div>
-          <div className="font-display text-3xl md:text-4xl text-background/95 leading-none">{course.cover.label}</div>
-        </div>
+        {course.cover.image ? (
+          <img
+            src={course.cover.image}
+            alt={course.title}
+            loading="lazy"
+            width={1024}
+            height={1536}
+            className="absolute inset-0 w-full h-full object-cover"
+          />
+        ) : (
+          <>
+            <div className="absolute -top-1/3 -right-1/3 w-2/3 h-2/3 rounded-full opacity-20 blur-2xl" style={{ background: "var(--gold)" }} />
+            <div className="absolute inset-0 flex flex-col justify-between p-4">
+              <div className="text-[9px] uppercase tracking-[0.25em] text-background/70">ISN</div>
+              <div className="font-display text-3xl md:text-4xl text-background/95 leading-none">{course.cover.label}</div>
+            </div>
+          </>
+        )}
         {course.tag && (
           <div className="absolute top-3 right-3 bg-background/15 backdrop-blur text-background text-[9px] uppercase tracking-wider px-2 py-1 rounded-sm border border-background/20">
             {course.tag}
