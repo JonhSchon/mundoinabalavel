@@ -112,26 +112,39 @@ function CourseProduct({ course }: { course: Course }) {
       <div className="grid md:grid-cols-[260px_1fr]">
         {/* Cover */}
         <div
-          className="relative min-h-[180px] md:min-h-full p-6 flex flex-col justify-between"
+          className="relative min-h-[220px] md:min-h-full overflow-hidden"
           style={{
             background: `linear-gradient(135deg, ${course.cover.from} 0%, ${course.cover.via ?? course.cover.from} 50%, ${course.cover.to} 100%)`,
           }}
         >
-          <div
-            className="absolute -top-1/3 -right-1/3 w-2/3 h-2/3 rounded-full opacity-25 blur-3xl"
-            style={{ background: "var(--gold)" }}
-          />
-          <div className="relative text-[10px] uppercase tracking-[0.3em] text-background/70">
-            ISN · {course.cover.label}
-          </div>
-          <div className="relative">
-            <div className="font-display text-2xl text-background leading-tight">
-              {course.title}
-            </div>
-            <div className="mt-2 text-xs text-background/70">
-              {course.modules.length} módulos · {totalLessons} aulas
-            </div>
-          </div>
+          {course.cover.image ? (
+            <img
+              src={course.cover.image}
+              alt={course.title}
+              loading="lazy"
+              width={1024}
+              height={1536}
+              className="absolute inset-0 w-full h-full object-cover"
+            />
+          ) : (
+            <>
+              <div
+                className="absolute -top-1/3 -right-1/3 w-2/3 h-2/3 rounded-full opacity-25 blur-3xl"
+                style={{ background: "var(--gold)" }}
+              />
+              <div className="absolute inset-x-6 top-6 text-[10px] uppercase tracking-[0.3em] text-background/70">
+                ISN · {course.cover.label}
+              </div>
+              <div className="absolute inset-x-6 bottom-6">
+                <div className="font-display text-2xl text-background leading-tight">
+                  {course.title}
+                </div>
+                <div className="mt-2 text-xs text-background/70">
+                  {course.modules.length} módulos · {totalLessons} aulas
+                </div>
+              </div>
+            </>
+          )}
         </div>
 
         {/* Body */}
