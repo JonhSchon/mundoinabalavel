@@ -1,3 +1,9 @@
+import coverRetorno from "@/assets/cover-retorno-memoravel.jpg";
+import coverChave from "@/assets/cover-chave-industria.jpg";
+import cover10x from "@/assets/cover-impacta-10x.jpg";
+import coverJogo from "@/assets/cover-jogo-real.jpg";
+import coverInabalavel from "@/assets/cover-inabalavel.jpg";
+
 export type Lesson = {
   t: string;
   d?: string;
@@ -16,7 +22,7 @@ export type Course = {
   type: "Curso" | "Palestra" | "Mentoria" | "Evento";
   price: string;
   tag?: string;
-  cover: { from: string; via?: string; to: string; label: string };
+  cover: { from: string; via?: string; to: string; label: string; image?: string };
   modules: Module[];
   progress?: number;
 };
