@@ -149,7 +149,7 @@ export const courses: Course[] = [
     type: "Curso",
     price: "R$ 499",
     tag: "Programa",
-    cover: { from: "oklch(0.18 0.08 270)", via: royal, to: "oklch(0.22 0.1 275)", label: "10X" },
+    cover: { from: "oklch(0.18 0.08 270)", via: royal, to: "oklch(0.22 0.1 275)", label: "10X", image: cover10x },
     modules: [
       {
         title: "Módulo 01 · O DNA da Carreira Estratégica",
