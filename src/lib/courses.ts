@@ -3,6 +3,9 @@ import coverChave from "@/assets/cover-chave-industria.jpg";
 import cover10x from "@/assets/cover-impacta-10x.jpg";
 import coverJogo from "@/assets/cover-jogo-real.jpg";
 import coverInabalavel from "@/assets/cover-inabalavel.jpg";
+import moduleRm01 from "@/assets/module-rm-01.jpg";
+import moduleRm02 from "@/assets/module-rm-02.jpg";
+import moduleRm03 from "@/assets/module-rm-03.jpg";
 
 export type Lesson = {
   t: string;
@@ -13,6 +16,7 @@ export type Lesson = {
 export type Module = {
   title: string;
   lessons: Lesson[];
+  image?: string;
 };
 
 export type Course = {
@@ -46,6 +50,7 @@ export const courses: Course[] = [
     modules: [
       {
         title: "Módulo 01 · A Reprogramação e o Hacking (Identidade + Algoritmo)",
+        image: moduleRm01,
         lessons: [
           { t: "Boas-vindas", d: "Comece por aqui", s: "current" },
           { t: "Aula 1.1 · A verdade nua e crua", d: "O fim do luto", s: "locked" },
@@ -61,6 +66,7 @@ export const courses: Course[] = [
       },
       {
         title: "Módulo 02 · Como Vender o Seu Peixe",
+        image: moduleRm02,
         lessons: [
           { t: 'Aula 2.1 · O fim do "QI de campo"', d: "Vencendo o inimigo invisível: Robô/ATS", s: "locked" },
           { t: "Aula 2.2 · O paradoxo do vendedor", d: "Vende produtos complexos, mas não sabe se vender", s: "locked" },
@@ -76,6 +82,7 @@ export const courses: Course[] = [
       },
       {
         title: "Módulo 03 · Engenharia Social e Oportunidades (A Caça Estratégica)",
+        image: moduleRm03,
         lessons: [
           { t: 'Aula 3.1 · A ilusão da "vaga perfeita"', d: "Intro do módulo", s: "locked" },
           { t: "Aula 3.2 · O garimpo de ouro", d: "Dominando as plataformas", s: "locked" },

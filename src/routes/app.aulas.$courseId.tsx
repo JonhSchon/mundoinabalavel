@@ -68,9 +68,30 @@ function CoursePage() {
       <div className="max-w-7xl mx-auto px-6 lg:px-10 mt-12 space-y-14">
         {course.modules.map((m: Module) => (
           <section key={m.title}>
+            {m.image && (
+              <div className="relative mb-6 overflow-hidden rounded-lg border border-sidebar-border aspect-[21/9] md:aspect-[21/7]">
+                <img
+                  src={m.image}
+                  alt={m.title}
+                  loading="lazy"
+                  className="absolute inset-0 h-full w-full object-cover"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-sidebar via-sidebar/50 to-transparent" />
+                <div className="absolute inset-0 flex flex-col justify-end p-6 md:p-8">
+                  <div className="text-[10px] uppercase tracking-[0.3em] text-gold mb-2">Módulo</div>
+                  <h2 className="font-display text-xl md:text-3xl text-background leading-tight max-w-3xl">
+                    {m.title}
+                  </h2>
+                </div>
+              </div>
+            )}
             <div className="flex items-baseline justify-between mb-6">
-              <h2 className="font-display text-xl md:text-2xl text-sidebar-foreground">{m.title}</h2>
-              <span className="text-xs uppercase tracking-[0.2em] text-gold/70">{m.lessons.length} aulas</span>
+              {!m.image && (
+                <h2 className="font-display text-xl md:text-2xl text-sidebar-foreground">{m.title}</h2>
+              )}
+              <span className={`text-xs uppercase tracking-[0.2em] text-gold/70 ${m.image ? "ml-auto" : ""}`}>
+                {m.lessons.length} aulas
+              </span>
             </div>
             <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-x-4 gap-y-7">
               {m.lessons.map((l: Lesson, idx: number) => (
