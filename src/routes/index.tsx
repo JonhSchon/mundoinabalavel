@@ -24,11 +24,11 @@ function LandingPage() {
       {/* HERO */}
       <section className="relative min-h-[100vh] bg-hero overflow-hidden">
         <div
-          className="absolute inset-0 opacity-40 mix-blend-overlay bg-cover bg-center"
+          className="absolute inset-0 opacity-30 mix-blend-overlay bg-cover bg-center"
           style={{ backgroundImage: `url(${heroImg})` }}
           aria-hidden
         />
-        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-background/95" aria-hidden />
+        <div className="absolute inset-0 bg-gradient-to-b from-primary/40 via-primary/60 to-primary" aria-hidden />
 
         <div className="relative mx-auto max-w-7xl px-6 pt-40 pb-24 grid lg:grid-cols-12 gap-12 items-center min-h-[100vh]">
           <div className="lg:col-span-8 text-background">
