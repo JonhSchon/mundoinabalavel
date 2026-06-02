@@ -3,6 +3,9 @@ import coverChave from "@/assets/cover-chave-industria.jpg";
 import cover10x from "@/assets/cover-impacta-10x.jpg";
 import coverJogo from "@/assets/cover-jogo-real.jpg";
 import coverInabalavel from "@/assets/cover-inabalavel.jpg";
+import moduleRm01 from "@/assets/module-rm-01.jpg";
+import moduleRm02 from "@/assets/module-rm-02.jpg";
+import moduleRm03 from "@/assets/module-rm-03.jpg";
 
 export type Lesson = {
   t: string;
@@ -13,6 +16,7 @@ export type Lesson = {
 export type Module = {
   title: string;
   lessons: Lesson[];
+  image?: string;
 };
 
 export type Course = {
