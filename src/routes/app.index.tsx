@@ -106,11 +106,24 @@ function CourseCard({ course, progress }: { course: Course; progress?: boolean }
           background: `linear-gradient(160deg, ${course.cover.from} 0%, ${course.cover.via ?? course.cover.from} 55%, ${course.cover.to} 100%)`,
         }}
       >
-        <div className="absolute -top-1/3 -right-1/3 w-2/3 h-2/3 rounded-full opacity-20 blur-2xl" style={{ background: "var(--gold)" }} />
-        <div className="absolute inset-0 flex flex-col justify-between p-4">
-          <div className="text-[9px] uppercase tracking-[0.25em] text-background/70">ISN</div>
-          <div className="font-display text-3xl md:text-4xl text-background/95 leading-none">{course.cover.label}</div>
-        </div>
+        {course.cover.image ? (
+          <img
+            src={course.cover.image}
+            alt={course.title}
+            loading="lazy"
+            width={1024}
+            height={1536}
+            className="absolute inset-0 w-full h-full object-cover"
+          />
+        ) : (
+          <>
+            <div className="absolute -top-1/3 -right-1/3 w-2/3 h-2/3 rounded-full opacity-20 blur-2xl" style={{ background: "var(--gold)" }} />
+            <div className="absolute inset-0 flex flex-col justify-between p-4">
+              <div className="text-[9px] uppercase tracking-[0.25em] text-background/70">ISN</div>
+              <div className="font-display text-3xl md:text-4xl text-background/95 leading-none">{course.cover.label}</div>
+            </div>
+          </>
+        )}
         {course.tag && (
           <div className="absolute top-3 right-3 bg-background/15 backdrop-blur text-background text-[9px] uppercase tracking-wider px-2 py-1 rounded-sm border border-background/20">
             {course.tag}
