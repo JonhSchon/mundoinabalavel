@@ -100,7 +100,7 @@ export const courses: Course[] = [
     type: "Curso",
     price: "R$ 997",
     tag: "Curso",
-    cover: { from: navy, via: teal, to: purple, label: "KF" },
+    cover: { from: navy, via: teal, to: purple, label: "KF", image: coverChave },
     modules: [
       {
         title: "Comece por Aqui",
