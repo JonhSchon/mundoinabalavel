@@ -66,6 +66,7 @@ export const courses: Course[] = [
       },
       {
         title: "Módulo 02 · Como Vender o Seu Peixe",
+        image: moduleRm02,
         lessons: [
           { t: 'Aula 2.1 · O fim do "QI de campo"', d: "Vencendo o inimigo invisível: Robô/ATS", s: "locked" },
           { t: "Aula 2.2 · O paradoxo do vendedor", d: "Vende produtos complexos, mas não sabe se vender", s: "locked" },
