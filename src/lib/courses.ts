@@ -234,7 +234,7 @@ export const courses: Course[] = [
     type: "Palestra",
     price: "Gratuito",
     tag: "Ao vivo",
-    cover: { from: "oklch(0.2 0.06 268)", to: "oklch(0.4 0.12 285)", label: "VI" },
+    cover: { from: "oklch(0.2 0.06 268)", to: "oklch(0.4 0.12 285)", label: "VI", image: coverInabalavel },
     modules: [
       {
         title: "Palestra",
