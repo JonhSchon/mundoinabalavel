@@ -82,6 +82,7 @@ export const courses: Course[] = [
       },
       {
         title: "Módulo 03 · Engenharia Social e Oportunidades (A Caça Estratégica)",
+        image: moduleRm03,
         lessons: [
           { t: 'Aula 3.1 · A ilusão da "vaga perfeita"', d: "Intro do módulo", s: "locked" },
           { t: "Aula 3.2 · O garimpo de ouro", d: "Dominando as plataformas", s: "locked" },
