@@ -41,7 +41,7 @@ export const courses: Course[] = [
     type: "Curso",
     price: "R$ 3.000",
     tag: "Curso Core",
-    cover: { from: navy, via: royal, to: gold, label: "RM" },
+    cover: { from: navy, via: royal, to: gold, label: "RM", image: coverRetorno },
     progress: 0,
     modules: [
       {
