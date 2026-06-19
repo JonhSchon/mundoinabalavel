@@ -9,103 +9,107 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
-import { Route as AppRouteImport } from './routes/app'
 import { Route as IndexRouteImport } from './routes/index'
-import { Route as AppIndexRouteImport } from './routes/app.index'
-import { Route as AppTarefasRouteImport } from './routes/app.tarefas'
-import { Route as AppPedidosRouteImport } from './routes/app.pedidos'
-import { Route as AppMateriaisRouteImport } from './routes/app.materiais'
-import { Route as AppEcossistemaRouteImport } from './routes/app.ecossistema'
-import { Route as AppComunidadeRouteImport } from './routes/app.comunidade'
-import { Route as AppAulasRouteImport } from './routes/app.aulas'
-import { Route as AppAulasCourseIdRouteImport } from './routes/app.aulas.$courseId'
+import { Route as AuthenticatedAppRouteImport } from './routes/_authenticated/app'
+import { Route as AuthenticatedAppIndexRouteImport } from './routes/_authenticated/app.index'
+import { Route as AuthenticatedAppTarefasRouteImport } from './routes/_authenticated/app.tarefas'
+import { Route as AuthenticatedAppPedidosRouteImport } from './routes/_authenticated/app.pedidos'
+import { Route as AuthenticatedAppMateriaisRouteImport } from './routes/_authenticated/app.materiais'
+import { Route as AuthenticatedAppEcossistemaRouteImport } from './routes/_authenticated/app.ecossistema'
+import { Route as AuthenticatedAppComunidadeRouteImport } from './routes/_authenticated/app.comunidade'
+import { Route as AuthenticatedAppAulasRouteImport } from './routes/_authenticated/app.aulas'
+import { Route as AuthenticatedAppAulasCourseIdRouteImport } from './routes/_authenticated/app.aulas.$courseId'
 
-const AppRoute = AppRouteImport.update({
-  id: '/app',
-  path: '/app',
-  getParentRoute: () => rootRouteImport,
-} as any)
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
-const AppIndexRoute = AppIndexRouteImport.update({
+const AuthenticatedAppRoute = AuthenticatedAppRouteImport.update({
+  id: '/_authenticated/app',
+  path: '/app',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AuthenticatedAppIndexRoute = AuthenticatedAppIndexRouteImport.update({
   id: '/',
   path: '/',
-  getParentRoute: () => AppRoute,
+  getParentRoute: () => AuthenticatedAppRoute,
 } as any)
-const AppTarefasRoute = AppTarefasRouteImport.update({
+const AuthenticatedAppTarefasRoute = AuthenticatedAppTarefasRouteImport.update({
   id: '/tarefas',
   path: '/tarefas',
-  getParentRoute: () => AppRoute,
+  getParentRoute: () => AuthenticatedAppRoute,
 } as any)
-const AppPedidosRoute = AppPedidosRouteImport.update({
+const AuthenticatedAppPedidosRoute = AuthenticatedAppPedidosRouteImport.update({
   id: '/pedidos',
   path: '/pedidos',
-  getParentRoute: () => AppRoute,
+  getParentRoute: () => AuthenticatedAppRoute,
 } as any)
-const AppMateriaisRoute = AppMateriaisRouteImport.update({
-  id: '/materiais',
-  path: '/materiais',
-  getParentRoute: () => AppRoute,
-} as any)
-const AppEcossistemaRoute = AppEcossistemaRouteImport.update({
-  id: '/ecossistema',
-  path: '/ecossistema',
-  getParentRoute: () => AppRoute,
-} as any)
-const AppComunidadeRoute = AppComunidadeRouteImport.update({
-  id: '/comunidade',
-  path: '/comunidade',
-  getParentRoute: () => AppRoute,
-} as any)
-const AppAulasRoute = AppAulasRouteImport.update({
+const AuthenticatedAppMateriaisRoute =
+  AuthenticatedAppMateriaisRouteImport.update({
+    id: '/materiais',
+    path: '/materiais',
+    getParentRoute: () => AuthenticatedAppRoute,
+  } as any)
+const AuthenticatedAppEcossistemaRoute =
+  AuthenticatedAppEcossistemaRouteImport.update({
+    id: '/ecossistema',
+    path: '/ecossistema',
+    getParentRoute: () => AuthenticatedAppRoute,
+  } as any)
+const AuthenticatedAppComunidadeRoute =
+  AuthenticatedAppComunidadeRouteImport.update({
+    id: '/comunidade',
+    path: '/comunidade',
+    getParentRoute: () => AuthenticatedAppRoute,
+  } as any)
+const AuthenticatedAppAulasRoute = AuthenticatedAppAulasRouteImport.update({
   id: '/aulas',
   path: '/aulas',
-  getParentRoute: () => AppRoute,
+  getParentRoute: () => AuthenticatedAppRoute,
 } as any)
-const AppAulasCourseIdRoute = AppAulasCourseIdRouteImport.update({
-  id: '/$courseId',
-  path: '/$courseId',
-  getParentRoute: () => AppAulasRoute,
-} as any)
+const AuthenticatedAppAulasCourseIdRoute =
+  AuthenticatedAppAulasCourseIdRouteImport.update({
+    id: '/$courseId',
+    path: '/$courseId',
+    getParentRoute: () => AuthenticatedAppAulasRoute,
+  } as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
-  '/app': typeof AppRouteWithChildren
-  '/app/aulas': typeof AppAulasRouteWithChildren
-  '/app/comunidade': typeof AppComunidadeRoute
-  '/app/ecossistema': typeof AppEcossistemaRoute
-  '/app/materiais': typeof AppMateriaisRoute
-  '/app/pedidos': typeof AppPedidosRoute
-  '/app/tarefas': typeof AppTarefasRoute
-  '/app/': typeof AppIndexRoute
-  '/app/aulas/$courseId': typeof AppAulasCourseIdRoute
+  '/app': typeof AuthenticatedAppRouteWithChildren
+  '/app/aulas': typeof AuthenticatedAppAulasRouteWithChildren
+  '/app/comunidade': typeof AuthenticatedAppComunidadeRoute
+  '/app/ecossistema': typeof AuthenticatedAppEcossistemaRoute
+  '/app/materiais': typeof AuthenticatedAppMateriaisRoute
+  '/app/pedidos': typeof AuthenticatedAppPedidosRoute
+  '/app/tarefas': typeof AuthenticatedAppTarefasRoute
+  '/app/': typeof AuthenticatedAppIndexRoute
+  '/app/aulas/$courseId': typeof AuthenticatedAppAulasCourseIdRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
-  '/app/aulas': typeof AppAulasRouteWithChildren
-  '/app/comunidade': typeof AppComunidadeRoute
-  '/app/ecossistema': typeof AppEcossistemaRoute
-  '/app/materiais': typeof AppMateriaisRoute
-  '/app/pedidos': typeof AppPedidosRoute
-  '/app/tarefas': typeof AppTarefasRoute
-  '/app': typeof AppIndexRoute
-  '/app/aulas/$courseId': typeof AppAulasCourseIdRoute
+  '/app/aulas': typeof AuthenticatedAppAulasRouteWithChildren
+  '/app/comunidade': typeof AuthenticatedAppComunidadeRoute
+  '/app/ecossistema': typeof AuthenticatedAppEcossistemaRoute
+  '/app/materiais': typeof AuthenticatedAppMateriaisRoute
+  '/app/pedidos': typeof AuthenticatedAppPedidosRoute
+  '/app/tarefas': typeof AuthenticatedAppTarefasRoute
+  '/app': typeof AuthenticatedAppIndexRoute
+  '/app/aulas/$courseId': typeof AuthenticatedAppAulasCourseIdRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
-  '/app': typeof AppRouteWithChildren
-  '/app/aulas': typeof AppAulasRouteWithChildren
-  '/app/comunidade': typeof AppComunidadeRoute
-  '/app/ecossistema': typeof AppEcossistemaRoute
-  '/app/materiais': typeof AppMateriaisRoute
-  '/app/pedidos': typeof AppPedidosRoute
-  '/app/tarefas': typeof AppTarefasRoute
-  '/app/': typeof AppIndexRoute
-  '/app/aulas/$courseId': typeof AppAulasCourseIdRoute
+  '/_authenticated/app': typeof AuthenticatedAppRouteWithChildren
+  '/_authenticated/app/aulas': typeof AuthenticatedAppAulasRouteWithChildren
+  '/_authenticated/app/comunidade': typeof AuthenticatedAppComunidadeRoute
+  '/_authenticated/app/ecossistema': typeof AuthenticatedAppEcossistemaRoute
+  '/_authenticated/app/materiais': typeof AuthenticatedAppMateriaisRoute
+  '/_authenticated/app/pedidos': typeof AuthenticatedAppPedidosRoute
+  '/_authenticated/app/tarefas': typeof AuthenticatedAppTarefasRoute
+  '/_authenticated/app/': typeof AuthenticatedAppIndexRoute
+  '/_authenticated/app/aulas/$courseId': typeof AuthenticatedAppAulasCourseIdRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -134,31 +138,24 @@ export interface FileRouteTypes {
   id:
     | '__root__'
     | '/'
-    | '/app'
-    | '/app/aulas'
-    | '/app/comunidade'
-    | '/app/ecossistema'
-    | '/app/materiais'
-    | '/app/pedidos'
-    | '/app/tarefas'
-    | '/app/'
-    | '/app/aulas/$courseId'
+    | '/_authenticated/app'
+    | '/_authenticated/app/aulas'
+    | '/_authenticated/app/comunidade'
+    | '/_authenticated/app/ecossistema'
+    | '/_authenticated/app/materiais'
+    | '/_authenticated/app/pedidos'
+    | '/_authenticated/app/tarefas'
+    | '/_authenticated/app/'
+    | '/_authenticated/app/aulas/$courseId'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
-  AppRoute: typeof AppRouteWithChildren
+  AuthenticatedAppRoute: typeof AuthenticatedAppRouteWithChildren
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
-    '/app': {
-      id: '/app'
-      path: '/app'
-      fullPath: '/app'
-      preLoaderRoute: typeof AppRouteImport
-      parentRoute: typeof rootRouteImport
-    }
     '/': {
       id: '/'
       path: '/'
@@ -166,102 +163,111 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/app/': {
-      id: '/app/'
+    '/_authenticated/app': {
+      id: '/_authenticated/app'
+      path: '/app'
+      fullPath: '/app'
+      preLoaderRoute: typeof AuthenticatedAppRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/_authenticated/app/': {
+      id: '/_authenticated/app/'
       path: '/'
       fullPath: '/app/'
-      preLoaderRoute: typeof AppIndexRouteImport
-      parentRoute: typeof AppRoute
+      preLoaderRoute: typeof AuthenticatedAppIndexRouteImport
+      parentRoute: typeof AuthenticatedAppRoute
     }
-    '/app/tarefas': {
-      id: '/app/tarefas'
+    '/_authenticated/app/tarefas': {
+      id: '/_authenticated/app/tarefas'
       path: '/tarefas'
       fullPath: '/app/tarefas'
-      preLoaderRoute: typeof AppTarefasRouteImport
-      parentRoute: typeof AppRoute
+      preLoaderRoute: typeof AuthenticatedAppTarefasRouteImport
+      parentRoute: typeof AuthenticatedAppRoute
     }
-    '/app/pedidos': {
-      id: '/app/pedidos'
+    '/_authenticated/app/pedidos': {
+      id: '/_authenticated/app/pedidos'
       path: '/pedidos'
       fullPath: '/app/pedidos'
-      preLoaderRoute: typeof AppPedidosRouteImport
-      parentRoute: typeof AppRoute
+      preLoaderRoute: typeof AuthenticatedAppPedidosRouteImport
+      parentRoute: typeof AuthenticatedAppRoute
     }
-    '/app/materiais': {
-      id: '/app/materiais'
+    '/_authenticated/app/materiais': {
+      id: '/_authenticated/app/materiais'
       path: '/materiais'
       fullPath: '/app/materiais'
-      preLoaderRoute: typeof AppMateriaisRouteImport
-      parentRoute: typeof AppRoute
+      preLoaderRoute: typeof AuthenticatedAppMateriaisRouteImport
+      parentRoute: typeof AuthenticatedAppRoute
     }
-    '/app/ecossistema': {
-      id: '/app/ecossistema'
+    '/_authenticated/app/ecossistema': {
+      id: '/_authenticated/app/ecossistema'
       path: '/ecossistema'
       fullPath: '/app/ecossistema'
-      preLoaderRoute: typeof AppEcossistemaRouteImport
-      parentRoute: typeof AppRoute
+      preLoaderRoute: typeof AuthenticatedAppEcossistemaRouteImport
+      parentRoute: typeof AuthenticatedAppRoute
     }
-    '/app/comunidade': {
-      id: '/app/comunidade'
+    '/_authenticated/app/comunidade': {
+      id: '/_authenticated/app/comunidade'
       path: '/comunidade'
       fullPath: '/app/comunidade'
-      preLoaderRoute: typeof AppComunidadeRouteImport
-      parentRoute: typeof AppRoute
+      preLoaderRoute: typeof AuthenticatedAppComunidadeRouteImport
+      parentRoute: typeof AuthenticatedAppRoute
     }
-    '/app/aulas': {
-      id: '/app/aulas'
+    '/_authenticated/app/aulas': {
+      id: '/_authenticated/app/aulas'
       path: '/aulas'
       fullPath: '/app/aulas'
-      preLoaderRoute: typeof AppAulasRouteImport
-      parentRoute: typeof AppRoute
+      preLoaderRoute: typeof AuthenticatedAppAulasRouteImport
+      parentRoute: typeof AuthenticatedAppRoute
     }
-    '/app/aulas/$courseId': {
-      id: '/app/aulas/$courseId'
+    '/_authenticated/app/aulas/$courseId': {
+      id: '/_authenticated/app/aulas/$courseId'
       path: '/$courseId'
       fullPath: '/app/aulas/$courseId'
-      preLoaderRoute: typeof AppAulasCourseIdRouteImport
-      parentRoute: typeof AppAulasRoute
+      preLoaderRoute: typeof AuthenticatedAppAulasCourseIdRouteImport
+      parentRoute: typeof AuthenticatedAppAulasRoute
     }
   }
 }
 
-interface AppAulasRouteChildren {
-  AppAulasCourseIdRoute: typeof AppAulasCourseIdRoute
+interface AuthenticatedAppAulasRouteChildren {
+  AuthenticatedAppAulasCourseIdRoute: typeof AuthenticatedAppAulasCourseIdRoute
 }
 
-const AppAulasRouteChildren: AppAulasRouteChildren = {
-  AppAulasCourseIdRoute: AppAulasCourseIdRoute,
+const AuthenticatedAppAulasRouteChildren: AuthenticatedAppAulasRouteChildren = {
+  AuthenticatedAppAulasCourseIdRoute: AuthenticatedAppAulasCourseIdRoute,
 }
 
-const AppAulasRouteWithChildren = AppAulasRoute._addFileChildren(
-  AppAulasRouteChildren,
-)
+const AuthenticatedAppAulasRouteWithChildren =
+  AuthenticatedAppAulasRoute._addFileChildren(
+    AuthenticatedAppAulasRouteChildren,
+  )
 
-interface AppRouteChildren {
-  AppAulasRoute: typeof AppAulasRouteWithChildren
-  AppComunidadeRoute: typeof AppComunidadeRoute
-  AppEcossistemaRoute: typeof AppEcossistemaRoute
-  AppMateriaisRoute: typeof AppMateriaisRoute
-  AppPedidosRoute: typeof AppPedidosRoute
-  AppTarefasRoute: typeof AppTarefasRoute
-  AppIndexRoute: typeof AppIndexRoute
+interface AuthenticatedAppRouteChildren {
+  AuthenticatedAppAulasRoute: typeof AuthenticatedAppAulasRouteWithChildren
+  AuthenticatedAppComunidadeRoute: typeof AuthenticatedAppComunidadeRoute
+  AuthenticatedAppEcossistemaRoute: typeof AuthenticatedAppEcossistemaRoute
+  AuthenticatedAppMateriaisRoute: typeof AuthenticatedAppMateriaisRoute
+  AuthenticatedAppPedidosRoute: typeof AuthenticatedAppPedidosRoute
+  AuthenticatedAppTarefasRoute: typeof AuthenticatedAppTarefasRoute
+  AuthenticatedAppIndexRoute: typeof AuthenticatedAppIndexRoute
 }
 
-const AppRouteChildren: AppRouteChildren = {
-  AppAulasRoute: AppAulasRouteWithChildren,
-  AppComunidadeRoute: AppComunidadeRoute,
-  AppEcossistemaRoute: AppEcossistemaRoute,
-  AppMateriaisRoute: AppMateriaisRoute,
-  AppPedidosRoute: AppPedidosRoute,
-  AppTarefasRoute: AppTarefasRoute,
-  AppIndexRoute: AppIndexRoute,
+const AuthenticatedAppRouteChildren: AuthenticatedAppRouteChildren = {
+  AuthenticatedAppAulasRoute: AuthenticatedAppAulasRouteWithChildren,
+  AuthenticatedAppComunidadeRoute: AuthenticatedAppComunidadeRoute,
+  AuthenticatedAppEcossistemaRoute: AuthenticatedAppEcossistemaRoute,
+  AuthenticatedAppMateriaisRoute: AuthenticatedAppMateriaisRoute,
+  AuthenticatedAppPedidosRoute: AuthenticatedAppPedidosRoute,
+  AuthenticatedAppTarefasRoute: AuthenticatedAppTarefasRoute,
+  AuthenticatedAppIndexRoute: AuthenticatedAppIndexRoute,
 }
 
-const AppRouteWithChildren = AppRoute._addFileChildren(AppRouteChildren)
+const AuthenticatedAppRouteWithChildren =
+  AuthenticatedAppRoute._addFileChildren(AuthenticatedAppRouteChildren)
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
-  AppRoute: AppRouteWithChildren,
+  AuthenticatedAppRoute: AuthenticatedAppRouteWithChildren,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

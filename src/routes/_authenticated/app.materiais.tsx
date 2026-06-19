@@ -1,7 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { FileText, Download, FileSpreadsheet, BookOpen } from "lucide-react";
 
-export const Route = createFileRoute("/app/materiais")({
+export const Route = createFileRoute("/_authenticated/app/materiais")({
   component: MateriaisPage,
 });
 

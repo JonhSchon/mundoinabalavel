@@ -1,7 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { Circle, CheckCircle2, Clock } from "lucide-react";
 
-export const Route = createFileRoute("/app/tarefas")({
+export const Route = createFileRoute("/_authenticated/app/tarefas")({
   component: TarefasPage,
 });
 
