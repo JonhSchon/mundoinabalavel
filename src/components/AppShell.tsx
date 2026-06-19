@@ -93,6 +93,13 @@ export function AppShell() {
                 <div className="h-10 w-10 rounded-full bg-royal-gradient grid place-items-center text-sm font-medium text-background">
                   AC
                 </div>
+                <button
+                  onClick={handleSignOut}
+                  title="Sair"
+                  className="ml-2 p-2 text-sidebar-foreground/70 hover:text-gold"
+                >
+                  <LogOut className="h-5 w-5" strokeWidth={1.7} />
+                </button>
               </div>
             </div>
           </div>
