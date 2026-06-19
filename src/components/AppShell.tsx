@@ -1,5 +1,7 @@
-import { Link, Outlet, useLocation } from "@tanstack/react-router";
-import { LayoutDashboard, PlayCircle, FolderOpen, ClipboardList, MessageSquarePlus, Users, Store, Bell, Search } from "lucide-react";
+import { Link, Outlet, useLocation, useNavigate } from "@tanstack/react-router";
+import { LayoutDashboard, PlayCircle, FolderOpen, ClipboardList, MessageSquarePlus, Users, Store, Bell, Search, LogOut } from "lucide-react";
+import { useQueryClient } from "@tanstack/react-query";
+import { supabase } from "@/integrations/supabase/client";
 
 type NavItem = { to: string; label: string; icon: typeof LayoutDashboard; exact?: boolean };
 const nav: NavItem[] = [
