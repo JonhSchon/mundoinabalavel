@@ -114,6 +114,21 @@ function RootShell({ children }: { children: React.ReactNode }) {
 
 function RootComponent() {
   const { queryClient } = Route.useRouteContext();
+  const router = useRouter();
+
+  if (typeof window !== "undefined") {
+    // single listener — registered idempotently per module load
+    (window as unknown as { __authSub?: boolean }).__authSub ??= (() => {
+      import("@/integrations/supabase/client").then(({ supabase }) => {
+        supabase.auth.onAuthStateChange((event) => {
+          if (event !== "SIGNED_IN" && event !== "SIGNED_OUT" && event !== "USER_UPDATED") return;
+          router.invalidate();
+          if (event !== "SIGNED_OUT") queryClient.invalidateQueries();
+        });
+      });
+      return true;
+    })();
+  }
 
   return (
     <QueryClientProvider client={queryClient}>
