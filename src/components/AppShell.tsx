@@ -16,6 +16,16 @@ const nav: NavItem[] = [
 
 export function AppShell() {
   const { pathname } = useLocation();
+  const navigate = useNavigate();
+  const queryClient = useQueryClient();
+
+  async function handleSignOut() {
+    await queryClient.cancelQueries();
+    queryClient.clear();
+    await supabase.auth.signOut();
+    navigate({ to: "/auth", replace: true });
+  }
+
 
   return (
     <div className="min-h-screen bg-sidebar text-sidebar-foreground flex">
