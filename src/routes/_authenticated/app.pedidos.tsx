@@ -2,7 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { useState } from "react";
 import { MessageSquarePlus, Send } from "lucide-react";
 
-export const Route = createFileRoute("/app/pedidos")({
+export const Route = createFileRoute("/_authenticated/app/pedidos")({
   component: PedidosPage,
 });
 

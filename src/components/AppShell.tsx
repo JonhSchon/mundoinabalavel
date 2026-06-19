@@ -1,5 +1,7 @@
-import { Link, Outlet, useLocation } from "@tanstack/react-router";
-import { LayoutDashboard, PlayCircle, FolderOpen, ClipboardList, MessageSquarePlus, Users, Store, Bell, Search } from "lucide-react";
+import { Link, Outlet, useLocation, useNavigate } from "@tanstack/react-router";
+import { LayoutDashboard, PlayCircle, FolderOpen, ClipboardList, MessageSquarePlus, Users, Store, Bell, Search, LogOut } from "lucide-react";
+import { useQueryClient } from "@tanstack/react-query";
+import { supabase } from "@/integrations/supabase/client";
 
 type NavItem = { to: string; label: string; icon: typeof LayoutDashboard; exact?: boolean };
 const nav: NavItem[] = [
@@ -14,6 +16,16 @@ const nav: NavItem[] = [
 
 export function AppShell() {
   const { pathname } = useLocation();
+  const navigate = useNavigate();
+  const queryClient = useQueryClient();
+
+  async function handleSignOut() {
+    await queryClient.cancelQueries();
+    queryClient.clear();
+    await supabase.auth.signOut();
+    navigate({ to: "/auth", replace: true });
+  }
+
 
   return (
     <div className="min-h-screen bg-sidebar text-sidebar-foreground flex">
@@ -81,6 +93,13 @@ export function AppShell() {
                 <div className="h-10 w-10 rounded-full bg-royal-gradient grid place-items-center text-sm font-medium text-background">
                   AC
                 </div>
+                <button
+                  onClick={handleSignOut}
+                  title="Sair"
+                  className="ml-2 p-2 text-sidebar-foreground/70 hover:text-gold"
+                >
+                  <LogOut className="h-5 w-5" strokeWidth={1.7} />
+                </button>
               </div>
             </div>
           </div>

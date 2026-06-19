@@ -8,7 +8,7 @@ import {
 } from "@/components/ui/accordion";
 import { courses, type Course } from "@/lib/courses";
 
-export const Route = createFileRoute("/app/ecossistema")({
+export const Route = createFileRoute("/_authenticated/app/ecossistema")({
   component: EcossistemaPage,
 });
 
