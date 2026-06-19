@@ -2,7 +2,7 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { Play, ChevronRight } from "lucide-react";
 import { courses, type Course } from "@/lib/courses";
 
-export const Route = createFileRoute("/app/")({
+export const Route = createFileRoute("/_authenticated/app/")({
   component: Vitrine,
 });
 
