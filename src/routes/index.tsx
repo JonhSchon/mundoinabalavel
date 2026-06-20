@@ -1,6 +1,7 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { SiteHeader } from "@/components/SiteHeader";
 import heroImg from "@/assets/hero.jpg";
+import joaoAsset from "@/assets/joao-schonhardt.png.asset.json";
 import { ArrowUpRight, ShieldCheck, KeyRound, Users2, Target, XCircle, CheckCircle2 } from "lucide-react";
 
 export const Route = createFileRoute("/")({
@@ -131,6 +132,37 @@ function LandingPage() {
                   <div className="text-xs uppercase tracking-wider text-background/60 mt-1">{s.l}</div>
                 </div>
               ))}
+            </div>
+          </div>
+
+          <div className="lg:col-span-5 relative">
+            <div className="relative mx-auto max-w-md">
+              {/* moldura dourada deslocada */}
+              <div className="absolute -inset-3 border border-gold/40 rounded-sm translate-x-4 translate-y-4" aria-hidden />
+              <div className="absolute -inset-3 bg-gold-gradient/10 rounded-sm -translate-x-3 -translate-y-3 opacity-30" aria-hidden />
+
+              <div className="relative overflow-hidden rounded-sm shadow-2xl">
+                <img
+                  src={joaoAsset.url}
+                  alt="João Schonhardt — KAM e mentor de carreira na Indústria Farmacêutica"
+                  className="w-full h-auto object-cover grayscale contrast-110"
+                  loading="lazy"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-primary/80 via-primary/10 to-transparent" aria-hidden />
+                <div className="absolute bottom-0 left-0 right-0 p-6">
+                  <div className="text-[10px] uppercase tracking-[0.25em] text-gold mb-2">Fundador</div>
+                  <div className="font-display text-2xl text-background leading-tight">João Schonhardt</div>
+                  <div className="text-xs text-background/70 mt-1">KAM Sênior · Mentor da Irmandade</div>
+                </div>
+              </div>
+
+              {/* selo dourado */}
+              <div className="absolute -top-4 -left-4 h-20 w-20 rounded-full bg-gold-gradient grid place-items-center text-primary shadow-gold rotate-[-8deg]">
+                <div className="text-center leading-tight">
+                  <div className="font-display text-xl font-bold">27</div>
+                  <div className="text-[8px] uppercase tracking-wider">anos</div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
