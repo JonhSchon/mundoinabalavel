@@ -82,8 +82,8 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { name: "twitter:site", content: "@Lovable" },
       { name: "twitter:title", content: ": A Arquitetura do Profissional  Insubstituível" },
       { name: "twitter:description", content: "Instituto Schonhardt: O Jogo Real da Indústria Farmacêutica. Uma imersão estratégica e individual com quem tem 27 anos de campo de batalha e alta complexidade." },
-      { property: "og:image", content: "https://storage.googleapis.com/gpt-engineer-file-uploads/sEmN7lWUGtd6pPbGdPnFFBxCiDn2/social-images/social-1779457680089-Gemini_Generated_Image_m5jaerm5jaerm5ja.webp" },
-      { name: "twitter:image", content: "https://storage.googleapis.com/gpt-engineer-file-uploads/sEmN7lWUGtd6pPbGdPnFFBxCiDn2/social-images/social-1779457680089-Gemini_Generated_Image_m5jaerm5jaerm5ja.webp" },
+      { property: "og:image", content: "https://storage.googleapis.com/gpt-engineer-file-uploads/sEmN7lWUGtd6pPbGdPnFFBxCiDn2/social-images/social-1781976963210-foto_3.webp" },
+      { name: "twitter:image", content: "https://storage.googleapis.com/gpt-engineer-file-uploads/sEmN7lWUGtd6pPbGdPnFFBxCiDn2/social-images/social-1781976963210-foto_3.webp" },
     ],
     links: [
       { rel: "preconnect", href: "https://fonts.googleapis.com" },
