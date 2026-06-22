@@ -239,8 +239,8 @@ export const courses: Course[] = [
     title: "Inabalável: A Ciência do Valor Inegociável",
     subtitle: "Palestra · evento online gratuito",
     type: "Palestra",
-    price: "Gratuito",
-    tag: "Ao vivo",
+    price: "Sob consulta",
+    tag: "Valor negociável",
     cover: { from: "oklch(0.2 0.06 268)", to: "oklch(0.4 0.12 285)", label: "VI", image: coverInabalavel },
     modules: [
       {

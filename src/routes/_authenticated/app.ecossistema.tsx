@@ -45,17 +45,18 @@ const extras: ExtraProduct[] = [
   {
     id: "inabalavel",
     icon: Mic,
-    type: "Palestra · Evento online",
+    type: "Palestra · Online ou presencial",
     title: "Inabalável: A Ciência do Valor Inegociável",
-    subtitle: "90 minutos · ao vivo · gratuito",
+    subtitle: "90 minutos · sob medida para sua empresa ou evento",
     description:
-      "Sessão única aberta para a Irmandade. Os bastidores do profissional inegociável — vagas limitadas por turma.",
-    price: "Gratuito",
-    tag: "Próxima turma",
+      "Palestra exclusiva para empresas, congressos e eventos corporativos. Cada convite é avaliado caso a caso — formato, agenda, público e investimento são definidos em conjunto após briefing.",
+    price: "Valor sob consulta",
+    tag: "Negociável caso a caso",
     bullets: [
-      "Transmissão ao vivo 100% online",
-      "Q&A direto com Schonhardt",
-      "Replay liberado por 72h para confirmados",
+      "Formato online, presencial ou híbrido",
+      "Conteúdo adaptado ao público (RH, comercial, liderança)",
+      "Proposta enviada após briefing rápido por e-mail",
+      "Investimento definido conforme escopo, deslocamento e audiência",
     ],
   },
 ];
@@ -257,9 +258,12 @@ function ExtraProductCard({ product }: { product: ExtraProduct }) {
         <div className="font-display text-xl text-foreground">
           {product.price}
         </div>
-        <button className="inline-flex items-center gap-2 text-sm text-royal hover:text-gold transition-colors">
-          Tenho interesse <ArrowUpRight className="h-4 w-4" />
-        </button>
+        <a
+          href={`mailto:contato@institutoschonhardt.com.br?subject=${encodeURIComponent(`Interesse · ${product.title}`)}&body=${encodeURIComponent("Olá João,\n\nTenho interesse em contratar a palestra. Segue um breve briefing:\n\n• Empresa / evento:\n• Data e local:\n• Formato (online, presencial, híbrido):\n• Público estimado e perfil:\n• Objetivo da palestra:\n\nAguardo proposta.\n\nObrigado.")}`}
+          className="inline-flex items-center gap-2 text-sm text-royal hover:text-gold transition-colors"
+        >
+          Solicitar proposta <ArrowUpRight className="h-4 w-4" />
+        </a>
       </div>
     </div>
   );
