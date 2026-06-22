@@ -45,17 +45,18 @@ const extras: ExtraProduct[] = [
   {
     id: "inabalavel",
     icon: Mic,
-    type: "Palestra · Evento online",
+    type: "Palestra · Online ou presencial",
     title: "Inabalável: A Ciência do Valor Inegociável",
-    subtitle: "90 minutos · ao vivo · gratuito",
+    subtitle: "90 minutos · sob medida para sua empresa ou evento",
     description:
-      "Sessão única aberta para a Irmandade. Os bastidores do profissional inegociável — vagas limitadas por turma.",
-    price: "Gratuito",
-    tag: "Próxima turma",
+      "Palestra exclusiva para empresas, congressos e eventos corporativos. Cada convite é avaliado caso a caso — formato, agenda, público e investimento são definidos em conjunto após briefing.",
+    price: "Valor sob consulta",
+    tag: "Negociável caso a caso",
     bullets: [
-      "Transmissão ao vivo 100% online",
-      "Q&A direto com Schonhardt",
-      "Replay liberado por 72h para confirmados",
+      "Formato online, presencial ou híbrido",
+      "Conteúdo adaptado ao público (RH, comercial, liderança)",
+      "Proposta enviada após briefing rápido por e-mail",
+      "Investimento definido conforme escopo, deslocamento e audiência",
     ],
   },
 ];
