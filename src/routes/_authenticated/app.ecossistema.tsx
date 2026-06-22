@@ -258,9 +258,12 @@ function ExtraProductCard({ product }: { product: ExtraProduct }) {
         <div className="font-display text-xl text-foreground">
           {product.price}
         </div>
-        <button className="inline-flex items-center gap-2 text-sm text-royal hover:text-gold transition-colors">
-          Tenho interesse <ArrowUpRight className="h-4 w-4" />
-        </button>
+        <a
+          href={`mailto:contato@institutoschonhardt.com.br?subject=${encodeURIComponent(`Interesse · ${product.title}`)}&body=${encodeURIComponent("Olá João,\n\nTenho interesse em contratar a palestra. Segue um breve briefing:\n\n• Empresa / evento:\n• Data e local:\n• Formato (online, presencial, híbrido):\n• Público estimado e perfil:\n• Objetivo da palestra:\n\nAguardo proposta.\n\nObrigado.")}`}
+          className="inline-flex items-center gap-2 text-sm text-royal hover:text-gold transition-colors"
+        >
+          Solicitar proposta <ArrowUpRight className="h-4 w-4" />
+        </a>
       </div>
     </div>
   );
