@@ -2,7 +2,7 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { SiteHeader } from "@/components/SiteHeader";
 import heroImg from "@/assets/hero.jpg";
 import joaoAsset from "@/assets/joao-schonhardt.png.asset.json";
-import { ArrowUpRight, ShieldCheck, KeyRound, Users2, Target, XCircle, CheckCircle2, Stethoscope, Fingerprint, Dumbbell, Compass, RefreshCw, Network, Linkedin, BadgeCheck, Rocket } from "lucide-react";
+import { ArrowUpRight, ShieldCheck, KeyRound, Users2, Target, XCircle, CheckCircle2, Stethoscope, Fingerprint, Dumbbell, Compass } from "lucide-react";
 
 export const Route = createFileRoute("/")({
   head: () => ({
