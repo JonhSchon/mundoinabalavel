@@ -1,5 +1,13 @@
 import { createFileRoute, Link, notFound } from "@tanstack/react-router";
-import { Play, Lock, CheckCircle2, ArrowLeft } from "lucide-react";
+import { Play, Lock, CheckCircle2, ArrowLeft, Clock } from "lucide-react";
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from "@/components/ui/dialog";
 import { getCourse, type Lesson, type Module, type Course } from "@/lib/courses";
 
 export const Route = createFileRoute("/_authenticated/app/aulas/$courseId")({
