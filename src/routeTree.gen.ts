@@ -19,6 +19,7 @@ import { Route as AuthenticatedAppPedidosRouteImport } from './routes/_authentic
 import { Route as AuthenticatedAppMateriaisRouteImport } from './routes/_authenticated/app.materiais'
 import { Route as AuthenticatedAppEcossistemaRouteImport } from './routes/_authenticated/app.ecossistema'
 import { Route as AuthenticatedAppComunidadeRouteImport } from './routes/_authenticated/app.comunidade'
+import { Route as AuthenticatedAppBoasVindasRouteImport } from './routes/_authenticated/app.boas-vindas'
 import { Route as AuthenticatedAppAulasRouteImport } from './routes/_authenticated/app.aulas'
 import { Route as AuthenticatedAppAulasCourseIdRouteImport } from './routes/_authenticated/app.aulas.$courseId'
 
@@ -74,6 +75,12 @@ const AuthenticatedAppComunidadeRoute =
     path: '/comunidade',
     getParentRoute: () => AuthenticatedAppRoute,
   } as any)
+const AuthenticatedAppBoasVindasRoute =
+  AuthenticatedAppBoasVindasRouteImport.update({
+    id: '/boas-vindas',
+    path: '/boas-vindas',
+    getParentRoute: () => AuthenticatedAppRoute,
+  } as any)
 const AuthenticatedAppAulasRoute = AuthenticatedAppAulasRouteImport.update({
   id: '/aulas',
   path: '/aulas',
@@ -91,6 +98,7 @@ export interface FileRoutesByFullPath {
   '/auth': typeof AuthRoute
   '/app': typeof AuthenticatedAppRouteWithChildren
   '/app/aulas': typeof AuthenticatedAppAulasRouteWithChildren
+  '/app/boas-vindas': typeof AuthenticatedAppBoasVindasRoute
   '/app/comunidade': typeof AuthenticatedAppComunidadeRoute
   '/app/ecossistema': typeof AuthenticatedAppEcossistemaRoute
   '/app/materiais': typeof AuthenticatedAppMateriaisRoute
@@ -103,6 +111,7 @@ export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/auth': typeof AuthRoute
   '/app/aulas': typeof AuthenticatedAppAulasRouteWithChildren
+  '/app/boas-vindas': typeof AuthenticatedAppBoasVindasRoute
   '/app/comunidade': typeof AuthenticatedAppComunidadeRoute
   '/app/ecossistema': typeof AuthenticatedAppEcossistemaRoute
   '/app/materiais': typeof AuthenticatedAppMateriaisRoute
@@ -118,6 +127,7 @@ export interface FileRoutesById {
   '/auth': typeof AuthRoute
   '/_authenticated/app': typeof AuthenticatedAppRouteWithChildren
   '/_authenticated/app/aulas': typeof AuthenticatedAppAulasRouteWithChildren
+  '/_authenticated/app/boas-vindas': typeof AuthenticatedAppBoasVindasRoute
   '/_authenticated/app/comunidade': typeof AuthenticatedAppComunidadeRoute
   '/_authenticated/app/ecossistema': typeof AuthenticatedAppEcossistemaRoute
   '/_authenticated/app/materiais': typeof AuthenticatedAppMateriaisRoute
@@ -133,6 +143,7 @@ export interface FileRouteTypes {
     | '/auth'
     | '/app'
     | '/app/aulas'
+    | '/app/boas-vindas'
     | '/app/comunidade'
     | '/app/ecossistema'
     | '/app/materiais'
@@ -145,6 +156,7 @@ export interface FileRouteTypes {
     | '/'
     | '/auth'
     | '/app/aulas'
+    | '/app/boas-vindas'
     | '/app/comunidade'
     | '/app/ecossistema'
     | '/app/materiais'
@@ -159,6 +171,7 @@ export interface FileRouteTypes {
     | '/auth'
     | '/_authenticated/app'
     | '/_authenticated/app/aulas'
+    | '/_authenticated/app/boas-vindas'
     | '/_authenticated/app/comunidade'
     | '/_authenticated/app/ecossistema'
     | '/_authenticated/app/materiais'
@@ -246,6 +259,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AuthenticatedAppComunidadeRouteImport
       parentRoute: typeof AuthenticatedAppRoute
     }
+    '/_authenticated/app/boas-vindas': {
+      id: '/_authenticated/app/boas-vindas'
+      path: '/boas-vindas'
+      fullPath: '/app/boas-vindas'
+      preLoaderRoute: typeof AuthenticatedAppBoasVindasRouteImport
+      parentRoute: typeof AuthenticatedAppRoute
+    }
     '/_authenticated/app/aulas': {
       id: '/_authenticated/app/aulas'
       path: '/aulas'
@@ -278,6 +298,7 @@ const AuthenticatedAppAulasRouteWithChildren =
 
 interface AuthenticatedAppRouteChildren {
   AuthenticatedAppAulasRoute: typeof AuthenticatedAppAulasRouteWithChildren
+  AuthenticatedAppBoasVindasRoute: typeof AuthenticatedAppBoasVindasRoute
   AuthenticatedAppComunidadeRoute: typeof AuthenticatedAppComunidadeRoute
   AuthenticatedAppEcossistemaRoute: typeof AuthenticatedAppEcossistemaRoute
   AuthenticatedAppMateriaisRoute: typeof AuthenticatedAppMateriaisRoute
@@ -288,6 +309,7 @@ interface AuthenticatedAppRouteChildren {
 
 const AuthenticatedAppRouteChildren: AuthenticatedAppRouteChildren = {
   AuthenticatedAppAulasRoute: AuthenticatedAppAulasRouteWithChildren,
+  AuthenticatedAppBoasVindasRoute: AuthenticatedAppBoasVindasRoute,
   AuthenticatedAppComunidadeRoute: AuthenticatedAppComunidadeRoute,
   AuthenticatedAppEcossistemaRoute: AuthenticatedAppEcossistemaRoute,
   AuthenticatedAppMateriaisRoute: AuthenticatedAppMateriaisRoute,
