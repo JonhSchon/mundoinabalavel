@@ -26,6 +26,9 @@ export type Course = {
   type: "Curso" | "Palestra" | "Mentoria" | "Evento";
   price: string;
   tag?: string;
+  duration?: string;
+  /** Clip de apresentação — abre em modal pelo botão principal */
+  clip?: { url: string; title: string; description?: string };
   cover: { from: string; via?: string; to: string; label: string; image?: string };
   modules: Module[];
   progress?: number;
