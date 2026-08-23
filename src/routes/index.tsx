@@ -8,7 +8,7 @@ export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
       { title: "Instituto Schonhardt — Entre na Indústria Farmacêutica sem depender de QI" },
-      { name: "description", content: "O método para profissionais invisíveis ao Gupy entrarem na Indústria Farmacêutica. 27 anos de mercado, cargo de KAM, comunidade de elite e o código que ninguém te conta." },
+      { name: "description", content: "O método para profissionais invisíveis ao Gupy entrarem na Indústria Farmacêutica. 28 anos de mercado, cargo de KAM, comunidade de elite e o código que ninguém te conta." },
       { property: "og:title", content: "Instituto Schonhardt de Negócios" },
       { property: "og:description", content: "Pare de ser triturado pelo ATS. Entre na Farma pela porta dos talentos prontos." },
       { property: "og:image", content: heroImg },
@@ -45,7 +45,7 @@ function LandingPage() {
               A mentira é que "na Indústria Farmacêutica só entra quem tem QI".
               A verdade é que existe um método — e quem o domina vira KAM, ganha carro,
               PLR agressiva e nome disputado pelos concorrentes. Eu sou João Schonhardt.
-              27 anos de estrada. KAM em multinacionais. E vou te entregar o código.
+              28 anos de estrada. KAM em multinacionais. E vou te entregar o código.
             </p>
             <div className="mt-10 flex flex-wrap items-center gap-4">
               <Link
@@ -65,9 +65,9 @@ function LandingPage() {
 
             <div className="mt-16 grid grid-cols-2 sm:grid-cols-4 gap-8 max-w-2xl">
               {[
-                { n: "27 anos", l: "De campo na Farma" },
+                { n: "28 anos", l: "De campo na Farma" },
                 { n: "+10 mil", l: "Conexões ativas no LinkedIn" },
-                { n: "+1.200", l: "Mentorados recolocados" },
+                { n: "+200", l: "Mentorados recolocados" },
                 { n: "92%", l: "Aprovados em 12 meses" },
               ].map((s) => (
                 <div key={s.l}>
@@ -118,7 +118,7 @@ function LandingPage() {
               Eu sou o cara que <span className="italic text-gold">assina as promoções</span> que você quer receber.
             </h2>
             <p className="mt-7 text-lg text-background/80 max-w-2xl leading-relaxed">
-              27 anos dentro da Indústria Farmacêutica. Passei por gigantes globais.
+              28 anos dentro da Indústria Farmacêutica. Passei por gigantes globais.
               Cheguei a KAM — o cargo que negocia hospital, payer e oncologia de alta complexidade.
               Eu não te ensino teoria de RH. Eu te entrego o playbook que eu uso pra contratar.
             </p>

@@ -1,5 +1,13 @@
 import { createFileRoute, Link, notFound } from "@tanstack/react-router";
-import { Play, Lock, CheckCircle2, ArrowLeft } from "lucide-react";
+import { Play, Lock, CheckCircle2, ArrowLeft, Clock } from "lucide-react";
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from "@/components/ui/dialog";
 import { getCourse, type Lesson, type Module, type Course } from "@/lib/courses";
 
 export const Route = createFileRoute("/_authenticated/app/aulas/$courseId")({
@@ -47,14 +55,23 @@ function CoursePage() {
           <div className="text-[10px] uppercase tracking-[0.3em] text-gold mb-2">ISN · {course.type}</div>
           <h1 className="font-display text-4xl md:text-6xl text-background leading-[1.05]">{course.title}</h1>
           {course.subtitle && <p className="mt-3 text-background/70 text-sm">{course.subtitle}</p>}
+          {course.duration && (
+            <div className="mt-3 inline-flex items-center gap-2 self-start rounded-full border border-gold/40 bg-primary/20 px-3 py-1 text-[11px] uppercase tracking-[0.18em] text-gold">
+              <Clock className="h-3 w-3" /> Duração · {course.duration}
+            </div>
+          )}
 
           <div className="mt-6 flex items-center gap-5 max-w-xl">
-            <button className="inline-flex items-center gap-2 bg-gold-gradient text-gold-foreground px-6 py-2.5 rounded-sm text-sm font-medium">
-              <Play className="h-4 w-4 fill-current" /> Começar
-            </button>
+            {course.clip ? (
+              <ClipDialog clip={course.clip} />
+            ) : (
+              <button className="inline-flex items-center gap-2 bg-gold-gradient text-gold-foreground px-6 py-2.5 rounded-sm text-sm font-medium">
+                <Play className="h-4 w-4 fill-current" /> Começar
+              </button>
+            )}
             <div className="flex-1">
               <div className="flex items-center justify-between text-xs text-background/70 mb-1.5">
-                <span>{totalLessons} aulas</span>
+                <span>{course.duration ? course.duration : `${totalLessons} aulas`}</span>
                 <span>{progress}%</span>
               </div>
               <div className="h-1 bg-background/15 rounded-full overflow-hidden">
@@ -102,6 +119,52 @@ function CoursePage() {
         ))}
       </div>
     </div>
+  );
+}
+
+function ClipDialog({
+  clip,
+}: {
+  clip: { url: string; title: string; description?: string };
+}) {
+  return (
+    <Dialog>
+      <DialogTrigger className="inline-flex items-center gap-2 bg-gold-gradient text-gold-foreground px-6 py-2.5 rounded-sm text-sm font-medium cursor-pointer">
+        <Play className="h-4 w-4 fill-current" /> Começar
+      </DialogTrigger>
+      <DialogContent className="max-w-3xl bg-sidebar border-sidebar-border">
+        <DialogHeader>
+          <DialogTitle className="font-display text-2xl text-sidebar-foreground">
+            {clip.title}
+          </DialogTitle>
+          {clip.description && (
+            <DialogDescription className="text-sidebar-foreground/70">
+              {clip.description}
+            </DialogDescription>
+          )}
+        </DialogHeader>
+        <div className="mt-2 aspect-video w-full overflow-hidden rounded-md border border-sidebar-border bg-primary/30">
+          {clip.url ? (
+            <iframe
+              src={clip.url}
+              title={clip.title}
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; picture-in-picture"
+              allowFullScreen
+              className="h-full w-full"
+            />
+          ) : (
+            <div className="flex h-full flex-col items-center justify-center gap-3 text-center px-6">
+              <div className="h-12 w-12 rounded-full bg-gold-gradient grid place-items-center">
+                <Play className="h-5 w-5 text-gold-foreground fill-current" />
+              </div>
+              <p className="text-sm text-sidebar-foreground/70 max-w-sm">
+                O clip de apresentação da palestra será exibido aqui em breve.
+              </p>
+            </div>
+          )}
+        </div>
+      </DialogContent>
+    </Dialog>
   );
 }
 
