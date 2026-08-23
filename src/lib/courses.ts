@@ -240,16 +240,23 @@ export const courses: Course[] = [
   {
     id: "inabalavel",
     title: "Inabalável: A Ciência do Valor Inegociável",
-    subtitle: "Palestra · evento online gratuito",
+    subtitle: "Palestra · 45 a 60 minutos · online ou presencial",
     type: "Palestra",
     price: "Sob consulta",
     tag: "Valor negociável",
+    duration: "45 a 60 min",
+    clip: {
+      url: "",
+      title: "Sobre a palestra",
+      description:
+        "Um clip curto sobre a palestra: a proposta, a transformação que ela provoca no público e como ela é adaptada para cada empresa ou evento.",
+    },
     cover: { from: "oklch(0.2 0.06 268)", to: "oklch(0.4 0.12 285)", label: "VI", image: coverInabalavel },
     modules: [
       {
         title: "Palestra",
         lessons: [
-          { t: "Sessão única · 90 minutos", d: "Online, ao vivo", s: "locked" },
+          { t: "Sessão única · 45 a 60 minutos", d: "Online ou presencial, ao vivo", s: "locked" },
         ],
       },
     ],
