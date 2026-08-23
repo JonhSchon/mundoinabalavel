@@ -122,6 +122,52 @@ function CoursePage() {
   );
 }
 
+function ClipDialog({
+  clip,
+}: {
+  clip: { url: string; title: string; description?: string };
+}) {
+  return (
+    <Dialog>
+      <DialogTrigger className="inline-flex items-center gap-2 bg-gold-gradient text-gold-foreground px-6 py-2.5 rounded-sm text-sm font-medium cursor-pointer">
+        <Play className="h-4 w-4 fill-current" /> Começar
+      </DialogTrigger>
+      <DialogContent className="max-w-3xl bg-sidebar border-sidebar-border">
+        <DialogHeader>
+          <DialogTitle className="font-display text-2xl text-sidebar-foreground">
+            {clip.title}
+          </DialogTitle>
+          {clip.description && (
+            <DialogDescription className="text-sidebar-foreground/70">
+              {clip.description}
+            </DialogDescription>
+          )}
+        </DialogHeader>
+        <div className="mt-2 aspect-video w-full overflow-hidden rounded-md border border-sidebar-border bg-primary/30">
+          {clip.url ? (
+            <iframe
+              src={clip.url}
+              title={clip.title}
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; picture-in-picture"
+              allowFullScreen
+              className="h-full w-full"
+            />
+          ) : (
+            <div className="flex h-full flex-col items-center justify-center gap-3 text-center px-6">
+              <div className="h-12 w-12 rounded-full bg-gold-gradient grid place-items-center">
+                <Play className="h-5 w-5 text-gold-foreground fill-current" />
+              </div>
+              <p className="text-sm text-sidebar-foreground/70 max-w-sm">
+                O clip de apresentação da palestra será exibido aqui em breve.
+              </p>
+            </div>
+          )}
+        </div>
+      </DialogContent>
+    </Dialog>
+  );
+}
+
 function LessonCard({ lesson, cover }: { lesson: Lesson; cover: { from: string; to: string } }) {
   const locked = lesson.s === "locked";
   return (
