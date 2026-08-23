@@ -222,7 +222,7 @@ function LandingPage() {
             </p>
             <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
               {[
-                { letter: "T", word: "Transformação", desc: "Mudar de "eu preciso de uma vaga" para "eu sou a solução da vaga"." },
+                { letter: "T", word: "Transformação", desc: 'Mudar de "eu preciso de uma vaga" para "eu sou a solução da vaga".' },
                 { letter: "R", word: "Reputação", desc: "Construir uma marca digital que recrutadores da Farma confiem e lembrem." },
                 { letter: "I", word: "Influência", desc: "Fazer parte do network certo, sem depender de QI ou indicação." },
                 { letter: "L", word: "LinkedIn", desc: "Usar a plataforma como máquina de oportunidades, não cartão de visitas." },
