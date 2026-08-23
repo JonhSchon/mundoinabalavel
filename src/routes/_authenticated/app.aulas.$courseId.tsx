@@ -55,14 +55,23 @@ function CoursePage() {
           <div className="text-[10px] uppercase tracking-[0.3em] text-gold mb-2">ISN · {course.type}</div>
           <h1 className="font-display text-4xl md:text-6xl text-background leading-[1.05]">{course.title}</h1>
           {course.subtitle && <p className="mt-3 text-background/70 text-sm">{course.subtitle}</p>}
+          {course.duration && (
+            <div className="mt-3 inline-flex items-center gap-2 self-start rounded-full border border-gold/40 bg-primary/20 px-3 py-1 text-[11px] uppercase tracking-[0.18em] text-gold">
+              <Clock className="h-3 w-3" /> Duração · {course.duration}
+            </div>
+          )}
 
           <div className="mt-6 flex items-center gap-5 max-w-xl">
-            <button className="inline-flex items-center gap-2 bg-gold-gradient text-gold-foreground px-6 py-2.5 rounded-sm text-sm font-medium">
-              <Play className="h-4 w-4 fill-current" /> Começar
-            </button>
+            {course.clip ? (
+              <ClipDialog clip={course.clip} />
+            ) : (
+              <button className="inline-flex items-center gap-2 bg-gold-gradient text-gold-foreground px-6 py-2.5 rounded-sm text-sm font-medium">
+                <Play className="h-4 w-4 fill-current" /> Começar
+              </button>
+            )}
             <div className="flex-1">
               <div className="flex items-center justify-between text-xs text-background/70 mb-1.5">
-                <span>{totalLessons} aulas</span>
+                <span>{course.duration ? course.duration : `${totalLessons} aulas`}</span>
                 <span>{progress}%</span>
               </div>
               <div className="h-1 bg-background/15 rounded-full overflow-hidden">
