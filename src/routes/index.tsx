@@ -2,7 +2,7 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { SiteHeader } from "@/components/SiteHeader";
 import heroImg from "@/assets/hero.jpg";
 import joaoAsset from "@/assets/joao-schonhardt.png.asset.json";
-import { ArrowUpRight, ShieldCheck, KeyRound, Users2, Target, XCircle, CheckCircle2 } from "lucide-react";
+import { ArrowUpRight, ShieldCheck, KeyRound, Users2, Target, XCircle, CheckCircle2, Stethoscope, Fingerprint, Dumbbell, Compass } from "lucide-react";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -174,22 +174,68 @@ function LandingPage() {
         <div className="mx-auto max-w-7xl px-6">
           <div className="text-xs uppercase tracking-[0.25em] text-royal mb-4">O método ISN</div>
           <h2 className="font-display text-4xl md:text-5xl text-foreground text-balance max-w-3xl">
-            Quatro chaves para você <span className="italic text-royal">abrir a fechadura</span> da Indústria.
+            Três etapas. Uma trilha. A mentalidade para você voltar a crescer na Indústria.
           </h2>
+          <p className="mt-6 text-lg text-muted-foreground max-w-2xl leading-relaxed">
+            Diagnóstico, Branding e Treinamento. Cada fase desbloqueia a seguinte, até você sair de candidato invisível para talento disputado.
+          </p>
 
-          <div className="mt-16 grid md:grid-cols-2 lg:grid-cols-4 gap-px bg-border rounded-lg overflow-hidden border border-border">
+          <div className="mt-16 grid md:grid-cols-3 gap-6">
             {[
-              { icon: KeyRound, t: "O Código", d: "Vocabulário, fluxos e métricas da Farma. Você para de ser estrangeiro e passa a falar como quem já é de dentro." },
-              { icon: Target, t: "O Algoritmo", d: 'Como driblar o ATS, reposicionar seu LinkedIn e fazer a vaga vir até você. Sem depender de "QI".' },
-              { icon: ShieldCheck, t: "A Blindagem", d: "Business Case, simulação de propaganda médica e entrevista com GD/Regional treinados até virarem reflexo." },
-              { icon: Users2, t: "A Irmandade", d: "Comunidade fechada de mentorados, vagas privilegiadas e um exército que avisa, indica e empurra você pra cima." },
-            ].map(({ icon: Icon, t, d }) => (
-              <div key={t} className="group bg-card p-8 hover:bg-primary hover:text-primary-foreground transition-colors duration-500">
-                <Icon className="h-7 w-7 text-royal group-hover:text-gold transition-colors" strokeWidth={1.5} />
-                <h3 className="font-display text-2xl mt-6">{t}</h3>
+              {
+                icon: Stethoscope,
+                step: "01",
+                t: "Diagnóstico",
+                d: "Mapeamos onde você trava: currículo, LinkedIn, entrevista, Business Case ou network. Nenhuma suposição — só o que o mercado realmente cobra.",
+              },
+              {
+                icon: Fingerprint,
+                step: "02",
+                t: "Branding",
+                d: "Reconstruímos sua identidade profissional para que recrutadores da Farma te encontrem, reconheçam e lembrem antes mesmo da vaga abrir.",
+              },
+              {
+                icon: Dumbbell,
+                step: "03",
+                t: "Treinamento",
+                d: "Você pratica o que importa: jargão, simulação, entrevista com GD/Regional e postura KAM. Até virar reflexo.",
+              },
+            ].map(({ icon: Icon, step, t, d }) => (
+              <div key={t} className="group bg-card border border-border rounded-lg p-8 hover:bg-primary hover:text-primary-foreground transition-colors duration-500">
+                <div className="flex items-center justify-between mb-6">
+                  <Icon className="h-7 w-7 text-royal group-hover:text-gold transition-colors" strokeWidth={1.5} />
+                  <span className="font-display text-3xl text-royal/30 group-hover:text-gold/40 transition-colors">{step}</span>
+                </div>
+                <h3 className="font-display text-2xl">{t}</h3>
                 <p className="text-sm text-muted-foreground group-hover:text-primary-foreground/80 mt-3 leading-relaxed">{d}</p>
               </div>
             ))}
+          </div>
+
+          <div className="mt-20">
+            <div className="flex items-center gap-3 mb-8">
+              <Compass className="h-5 w-5 text-gold" strokeWidth={1.5} />
+              <div className="text-xs uppercase tracking-[0.25em] text-gold">A mentalidade TRILHA</div>
+            </div>
+            <p className="text-sm text-muted-foreground max-w-2xl mb-10 leading-relaxed">
+              O acrônimo que guia cada mentorado do diagnóstico à contratação. Não é teoria — é o caminho que já recolocou centenas de profissionais na Farma.
+            </p>
+            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
+              {[
+                { letter: "T", word: "Transformação", desc: 'Mudar de "eu preciso de uma vaga" para "eu sou a solução da vaga".' },
+                { letter: "R", word: "Reputação", desc: "Construir uma marca digital que recrutadores da Farma confiem e lembrem." },
+                { letter: "I", word: "Influência", desc: "Fazer parte do network certo, sem depender de QI ou indicação." },
+                { letter: "L", word: "LinkedIn", desc: "Usar a plataforma como máquina de oportunidades, não cartão de visitas." },
+                { letter: "H", word: "Habilidades", desc: "Dominar o jargão, o Business Case e a simulação como quem já é de dentro." },
+                { letter: "A", word: "Ação", desc: "Aplicar tudo no mercado real, com direcionamento e accountability." },
+              ].map(({ letter, word, desc }) => (
+                <div key={letter} className="bg-royal/5 border border-royal/10 rounded-lg p-5 hover:bg-royal/10 transition-colors">
+                  <div className="font-display text-4xl text-royal mb-2">{letter}</div>
+                  <div className="font-display text-sm text-foreground mb-2">{word}</div>
+                  <div className="text-xs text-muted-foreground leading-relaxed">{desc}</div>
+                </div>
+              ))}
+            </div>
           </div>
         </div>
       </section>
