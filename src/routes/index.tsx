@@ -67,7 +67,7 @@ function LandingPage() {
               {[
                 { n: "27 anos", l: "De campo na Farma" },
                 { n: "+10 mil", l: "Conexões ativas no LinkedIn" },
-                { n: "+1.200", l: "Mentorados recolocados" },
+                { n: "+200", l: "Mentorados recolocados" },
                 { n: "92%", l: "Aprovados em 12 meses" },
               ].map((s) => (
                 <div key={s.l}>
