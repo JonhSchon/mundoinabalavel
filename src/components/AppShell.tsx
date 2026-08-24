@@ -1,10 +1,11 @@
 import { Link, Outlet, useLocation, useNavigate } from "@tanstack/react-router";
-import { LayoutDashboard, PlayCircle, FolderOpen, ClipboardList, MessageSquarePlus, Users, Store, Bell, Search, LogOut } from "lucide-react";
+import { LayoutDashboard, PlayCircle, FolderOpen, ClipboardList, MessageSquarePlus, Users, Store, Bell, Search, LogOut, Sparkles } from "lucide-react";
 import { useQueryClient } from "@tanstack/react-query";
 import { supabase } from "@/integrations/supabase/client";
 
 type NavItem = { to: string; label: string; icon: typeof LayoutDashboard; exact?: boolean };
 const nav: NavItem[] = [
+  { to: "/app/boas-vindas", label: "Boas-vindas", icon: Sparkles },
   { to: "/app", label: "Visão geral", icon: LayoutDashboard, exact: true },
   { to: "/app/aulas", label: "Aulas", icon: PlayCircle },
   { to: "/app/materiais", label: "Materiais", icon: FolderOpen },
@@ -13,6 +14,7 @@ const nav: NavItem[] = [
   { to: "/app/comunidade", label: "Comunidade", icon: Users },
   { to: "/app/ecossistema", label: "Ecossistema", icon: Store },
 ];
+
 
 export function AppShell() {
   const { pathname } = useLocation();
