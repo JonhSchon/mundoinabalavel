@@ -14,10 +14,12 @@ export function SiteHeader() {
           </div>
         </Link>
         <nav className="hidden md:flex items-center gap-8 text-sm text-background/80">
-          <a href="#dores" className="hover:text-gold transition-colors">Isto é para você?</a>
-          <a href="#metodo" className="hover:text-gold transition-colors">Método</a>
+          <a href="#pilares" className="hover:text-gold transition-colors">Soluções</a>
+          <a href="#sobre" className="hover:text-gold transition-colors">O Instituto</a>
+          <a href="#resultados" className="hover:text-gold transition-colors">Resultados</a>
           <a href="#contato" className="hover:text-gold transition-colors">Contato</a>
         </nav>
+
         <Link
           to="/app"
           className="inline-flex items-center gap-2 rounded-sm border border-gold/40 bg-gold/10 px-5 py-2.5 text-sm text-gold hover:bg-gold hover:text-primary transition-colors"

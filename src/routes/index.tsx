@@ -2,20 +2,144 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { SiteHeader } from "@/components/SiteHeader";
 import heroImg from "@/assets/hero.jpg";
 import joaoAsset from "@/assets/joao-schonhardt.png.asset.json";
-import { ArrowUpRight, ShieldCheck, KeyRound, Users2, Target, XCircle, CheckCircle2, Stethoscope, Fingerprint, Dumbbell, Compass } from "lucide-react";
+import {
+  ArrowUpRight,
+  Building2,
+  GraduationCap,
+  Mic,
+  TrendingUp,
+  Compass,
+  Quote,
+  Linkedin,
+  Instagram,
+  Youtube,
+  Mail,
+  MapPin,
+  ShieldCheck,
+  Stethoscope,
+  Fingerprint,
+  Dumbbell,
+} from "lucide-react";
 
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "Instituto Schonhardt — Entre na Indústria Farmacêutica sem depender de QI" },
-      { name: "description", content: "O método para profissionais invisíveis ao Gupy entrarem na Indústria Farmacêutica. 28 anos de mercado, cargo de KAM, comunidade de elite e o código que ninguém te conta." },
-      { property: "og:title", content: "Instituto Schonhardt de Negócios" },
-      { property: "og:description", content: "Pare de ser triturado pelo ATS. Entre na Farma pela porta dos talentos prontos." },
+      { title: "Instituto Schonhardt — Alta Performance na Indústria Farmacêutica" },
+      {
+        name: "description",
+        content:
+          "Portal institucional do Instituto Schonhardt: gestão de contas e Market Access, mentoria de carreira, cursos online e palestras corporativas com a metodologia T.R.I.L.H.A.",
+      },
+      { property: "og:title", content: "Instituto Schonhardt — Autoridade em Farma e Alta Performance" },
+      {
+        property: "og:description",
+        content:
+          "Soluções corporativas, mentoria executiva, cursos e a palestra magna INABALÁVEL: A Ciência do Valor Inegociável.",
+      },
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary_large_image" },
       { property: "og:image", content: heroImg },
+      { name: "twitter:image", content: heroImg },
     ],
   }),
   component: LandingPage,
 });
+
+const pillars = [
+  {
+    id: "acesso",
+    icon: Building2,
+    kicker: "Pilar 01 · Corporativo",
+    title: "Gestão de Contas e Acesso",
+    desc: "Estratégia de Market Access e execução hospitalar de alta complexidade para times que precisam abrir e sustentar contas críticas.",
+    bullets: [
+      "Market Access e precificação de acesso",
+      "APAC, CEAF e fluxos de dispensação",
+      "NAT-Jus e judicialização da saúde",
+      "Estratégias hospitalares e contas-chave (KAM)",
+    ],
+    cta: "Falar sobre projeto corporativo",
+    href: "mailto:contato@institutoschonhardt.com.br?subject=Projeto%20Corporativo%20%C2%B7%20Gest%C3%A3o%20de%20Contas%20e%20Acesso",
+  },
+  {
+    id: "mentoria",
+    icon: TrendingUp,
+    kicker: "Pilar 02 · Carreira",
+    title: "Mentoria de Carreira",
+    desc: "Para o profissional ativo que quer acelerar até Key Account Management — e para quem busca transição ou recolocação com método.",
+    bullets: [
+      "Aceleração de carreira e trilha para KAM",
+      "Recolocação acelerada com plano semanal",
+      "Branding executivo e posicionamento no LinkedIn",
+      "Simulações de entrevista, GD e Business Case",
+    ],
+    cta: "Conhecer a mentoria",
+    to: "/app/ecossistema" as const,
+  },
+  {
+    id: "cursos",
+    icon: GraduationCap,
+    kicker: "Pilar 03 · Formação",
+    title: "Cursos Online",
+    desc: "Formações práticas e capacitações estratégicas, construídas a partir da operação real da Indústria Farmacêutica.",
+    bullets: [
+      "O Retorno Pharma — formação de recolocação",
+      "A Chave da Indústria — acesso e jargão do setor",
+      "IMPACTA 10X — performance comercial",
+      "Certificados, ementas completas e acesso vitalício",
+    ],
+    cta: "Explorar cursos",
+    to: "/app/ecossistema" as const,
+  },
+  {
+    id: "palestras",
+    icon: Mic,
+    kicker: "Pilar 04 · Eventos",
+    title: "Palestras Corporativas",
+    desc: "A palestra magna INABALÁVEL: A Ciência do Valor Inegociável — 45 a 60 minutos para empresas, convenções e congressos.",
+    bullets: [
+      "Convenções de força de vendas e kick-offs",
+      "Congressos como SOBRAFO e SBOC",
+      "Formato online, presencial ou híbrido",
+      "Conteúdo adaptado a RH, comercial e liderança",
+    ],
+    cta: "Solicitar proposta",
+    href: "mailto:contato@institutoschonhardt.com.br?subject=Proposta%20%C2%B7%20Palestra%20INABAL%C3%81VEL",
+  },
+];
+
+const trilha = [
+  { letter: "T", word: "Transformação", desc: "Sair de “eu preciso de uma vaga” para “eu sou a solução do negócio”." },
+  { letter: "R", word: "Reputação", desc: "Construir autoridade visível e confiável no ecossistema da saúde." },
+  { letter: "I", word: "Influência", desc: "Circular no network que decide contratações e contratos." },
+  { letter: "L", word: "LinkedIn", desc: "Transformar a plataforma em máquina de oportunidades." },
+  { letter: "H", word: "Habilidades", desc: "Dominar jargão, Business Case e negociação de acesso." },
+  { letter: "A", word: "Ação", desc: "Executar no mercado real com direcionamento e accountability." },
+];
+
+const testimonials = [
+  {
+    quote:
+      "Fiquei 11 meses enviando currículo sem resposta. Em 14 semanas de mentoria fechei proposta como Representante de Alta Complexidade em multinacional.",
+    name: "Profissional recolocado",
+    role: "Oncologia · Sudeste",
+    tag: "Recolocação",
+  },
+  {
+    quote:
+      "A leitura de conta hospitalar mudou minha forma de negociar. Assumi a gerência regional no ciclo seguinte, com meta de acesso batida.",
+    name: "Gestor promovido",
+    role: "Market Access · LATAM",
+    tag: "Ascensão",
+  },
+  {
+    quote:
+      "Levamos a palestra INABALÁVEL para a convenção nacional. Foi o bloco mais bem avaliado do evento e reposicionou o discurso do time.",
+    name: "Diretoria comercial",
+    role: "Indústria Farmacêutica",
+    tag: "Corporativo",
+  },
+];
 
 function LandingPage() {
   return (
@@ -25,54 +149,55 @@ function LandingPage() {
       {/* HERO */}
       <section className="relative min-h-[100vh] bg-hero overflow-hidden">
         <div
-          className="absolute inset-0 opacity-30 mix-blend-overlay bg-cover bg-center"
+          className="absolute inset-0 opacity-25 mix-blend-overlay bg-cover bg-center"
           style={{ backgroundImage: `url(${heroImg})` }}
           aria-hidden
         />
-        <div className="absolute inset-0 bg-gradient-to-b from-primary/40 via-primary/60 to-primary" aria-hidden />
+        <div className="absolute inset-0 bg-gradient-to-b from-primary/50 via-primary/75 to-primary" aria-hidden />
 
-        <div className="relative mx-auto max-w-7xl px-6 pt-40 pb-24 grid lg:grid-cols-12 gap-12 items-center min-h-[100vh]">
-          <div className="lg:col-span-8 text-background">
+        <div className="relative mx-auto max-w-7xl px-6 pt-40 pb-24 min-h-[100vh] flex flex-col justify-center">
+          <div className="max-w-4xl text-background">
             <div className="inline-flex items-center gap-2 rounded-full border border-gold/30 bg-gold/5 px-4 py-1.5 text-xs uppercase tracking-[0.2em] text-gold mb-8">
-              <span className="h-1.5 w-1.5 rounded-full bg-gold" /> Para quem o Gupy ignora — e a Indústria contrata
+              <ShieldCheck className="h-3.5 w-3.5" strokeWidth={1.8} />
+              Instituto Schonhardt · Mundo Inabalável
             </div>
-            <h1 className="font-display text-5xl md:text-7xl lg:text-[5.5rem] leading-[1.02] text-balance">
-              Você não é desempregado.<br />
-              Você é um <span className="italic text-gold">talento pronto</span><br />
-              que ainda não tem <span className="italic">o código.</span>
+            <h1 className="font-display text-4xl sm:text-5xl md:text-7xl leading-[1.04] text-balance">
+              Autoridade, acesso e{" "}
+              <span className="italic text-gold">alta performance</span> na Indústria Farmacêutica.
             </h1>
-            <p className="mt-8 max-w-2xl text-lg text-background/75 leading-relaxed">
-              A mentira é que "na Indústria Farmacêutica só entra quem tem QI".
-              A verdade é que existe um método — e quem o domina vira KAM, ganha carro,
-              PLR agressiva e nome disputado pelos concorrentes. Eu sou João Schonhardt.
-              28 anos de estrada. KAM em multinacionais. E vou te entregar o código.
+            <p className="mt-8 max-w-2xl text-base md:text-lg text-background/80 leading-relaxed">
+              28 anos de operação real em multinacionais, traduzidos na metodologia{" "}
+              <span className="text-gold">T.R.I.L.H.A.</span> — para o profissional ativo que quer acelerar até
+              Key Account Management e para quem busca transição ou recolocação com método, não com sorte.
             </p>
-            <div className="mt-10 flex flex-wrap items-center gap-4">
-              <Link
-                to="/app"
-                className="group inline-flex items-center gap-3 rounded-sm bg-gold-gradient px-7 py-4 text-sm font-medium text-primary shadow-gold hover:opacity-95 transition"
-              >
-                Quero entrar na Irmandade
-                <ArrowUpRight className="h-4 w-4 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
-              </Link>
+
+            <div className="mt-10 flex flex-col sm:flex-row sm:items-center gap-4">
               <a
-                href="#dores"
-                className="inline-flex items-center gap-2 px-6 py-4 text-sm text-background/80 hover:text-gold transition-colors"
+                href="#pilares"
+                className="group inline-flex items-center justify-center gap-3 rounded-sm bg-gold-gradient px-7 py-4 text-sm font-medium text-primary shadow-gold hover:opacity-95 transition-all duration-300"
               >
-                Isto é para mim? →
+                Explorar Soluções Corporativas e Mentoria
+                <ArrowUpRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+              </a>
+              <a
+                href="#cursos"
+                className="group inline-flex items-center justify-center gap-3 rounded-sm border border-background/25 bg-background/5 px-7 py-4 text-sm text-background backdrop-blur hover:border-gold hover:text-gold transition-all duration-300"
+              >
+                Conhecer Cursos e Palestras
+                <ArrowUpRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
               </a>
             </div>
 
-            <div className="mt-16 grid grid-cols-2 sm:grid-cols-4 gap-8 max-w-2xl">
+            <div className="mt-16 grid grid-cols-2 sm:grid-cols-4 gap-8 max-w-3xl">
               {[
                 { n: "28 anos", l: "De campo na Farma" },
                 { n: "+10 mil", l: "Conexões ativas no LinkedIn" },
-                { n: "+200", l: "Mentorados recolocados" },
-                { n: "92%", l: "Aprovados em 12 meses" },
+                { n: "+200", l: "Profissionais recolocados" },
+                { n: "4 pilares", l: "Corporativo · Carreira · Cursos · Palestras" },
               ].map((s) => (
                 <div key={s.l}>
-                  <div className="font-display text-3xl text-gold">{s.n}</div>
-                  <div className="text-xs uppercase tracking-wider text-background/60 mt-1">{s.l}</div>
+                  <div className="font-display text-2xl md:text-3xl text-gold">{s.n}</div>
+                  <div className="text-xs uppercase tracking-wider text-background/60 mt-1 leading-relaxed">{s.l}</div>
                 </div>
               ))}
             </div>
@@ -80,87 +205,138 @@ function LandingPage() {
         </div>
       </section>
 
-      {/* DORES — Você se reconhece? */}
-      <section id="dores" className="bg-background py-32">
+      {/* PILARES */}
+      <section id="pilares" className="bg-background py-24 md:py-32 scroll-mt-24">
         <div className="mx-auto max-w-7xl px-6">
-          <div className="text-xs uppercase tracking-[0.25em] text-royal mb-4">Você se reconhece?</div>
-          <h2 className="font-display text-4xl md:text-5xl text-foreground text-balance max-w-3xl">
-            Se você sente isso há meses, <span className="italic text-royal">não é incompetência sua.</span> É falta de método.
+          <div className="text-xs uppercase tracking-[0.25em] text-royal mb-4">Os quatro pilares</div>
+          <h2 className="font-display text-3xl md:text-5xl text-foreground text-balance max-w-3xl">
+            Um instituto, quatro frentes de{" "}
+            <span className="italic text-royal">geração de valor</span>.
           </h2>
+          <p className="mt-6 text-base md:text-lg text-muted-foreground max-w-2xl leading-relaxed">
+            Empresas contratam estratégia de acesso e palestras. Profissionais contratam mentoria e formação.
+            Todos entram pela mesma doutrina.
+          </p>
 
-          <div className="mt-16 grid md:grid-cols-2 gap-px bg-border rounded-lg overflow-hidden border border-border">
-            {[
-              { t: "O robô do Gupy te tritura", d: "Você manda 30 currículos por semana e nenhum ser humano lê o seu nome. Você se sente invisível porque, tecnicamente, você é." },
-              { t: 'A lenda do "QI" (Quem Indique)', d: "Te disseram que só entra na Farma quem tem padrinho. É mentira. Mas enquanto você acreditar, vai continuar de fora — e revoltado." },
-              { t: "Você não fala o idioma do setor", d: "DDD, PMB, Close-up, Grelha, Visitação, Share. Quando você lê uma vaga ou conversa com alguém da área, sente que está num clube sem saber a senha." },
-              { t: "Pavor do Business Case e da simulação", d: "Se um Gerente Distrital te chama amanhã pra simular uma propaganda médica, você sabe que vai travar. E sabe que essa é a fase eliminatória." },
-              { t: "Já comprou curso genérico de LinkedIn", d: 'Mentor de RH que nunca pisou num hospital, "coach de carreira" que fala bonito. Você está cansado de história e quer quem assina as promoções.' },
-              { t: "Vê colegas medianos sendo contratados", d: "E você, melhor preparado, fica de fora. Não é injustiça do universo. É que eles aprenderam a abrir a fechadura — e você não." },
-            ].map((p) => (
-              <div key={p.t} className="bg-card p-8">
-                <XCircle className="h-6 w-6 text-destructive/80" strokeWidth={1.6} />
-                <h3 className="font-display text-xl mt-5 text-foreground">{p.t}</h3>
-                <p className="text-sm text-muted-foreground mt-3 leading-relaxed">{p.d}</p>
-              </div>
+          <div className="mt-14 grid md:grid-cols-2 gap-6">
+            {pillars.map(({ id, icon: Icon, kicker, title, desc, bullets, cta, href, to }) => (
+              <article
+                key={id}
+                id={id}
+                className="group relative flex flex-col rounded-lg border border-border bg-card p-8 transition-all duration-500 hover:-translate-y-1 hover:border-gold/60 hover:shadow-gold scroll-mt-24"
+              >
+                <div className="flex items-start justify-between gap-4">
+                  <div className="h-12 w-12 rounded-sm bg-royal/10 grid place-items-center transition-colors duration-500 group-hover:bg-gold/15">
+                    <Icon className="h-6 w-6 text-royal transition-colors duration-500 group-hover:text-gold" strokeWidth={1.5} />
+                  </div>
+                  <span className="text-[10px] uppercase tracking-[0.2em] text-muted-foreground">{kicker}</span>
+                </div>
+
+                <h3 className="font-display text-2xl text-foreground mt-6">{title}</h3>
+                <p className="text-sm text-muted-foreground mt-3 leading-relaxed">{desc}</p>
+
+                <ul className="mt-6 space-y-2.5 flex-1">
+                  {bullets.map((b) => (
+                    <li key={b} className="flex items-start gap-2.5 text-[13px] text-muted-foreground">
+                      <span className="mt-1.5 h-1 w-1 shrink-0 rounded-full bg-gold" />
+                      <span className="leading-snug">{b}</span>
+                    </li>
+                  ))}
+                </ul>
+
+                {to ? (
+                  <Link
+                    to={to}
+                    className="mt-7 inline-flex items-center gap-2 text-sm text-royal transition-colors group-hover:text-gold"
+                  >
+                    {cta} <ArrowUpRight className="h-4 w-4" />
+                  </Link>
+                ) : (
+                  <a
+                    href={href}
+                    className="mt-7 inline-flex items-center gap-2 text-sm text-royal transition-colors group-hover:text-gold"
+                  >
+                    {cta} <ArrowUpRight className="h-4 w-4" />
+                  </a>
+                )}
+              </article>
             ))}
           </div>
         </div>
       </section>
 
-      {/* AUTORIDADE */}
-      <section className="bg-primary text-background py-32 relative overflow-hidden">
+      {/* AUTORIDADE / SOBRE */}
+      <section id="sobre" className="relative overflow-hidden bg-primary text-background py-24 md:py-32 scroll-mt-24">
         <div className="absolute inset-0 opacity-20 bg-cover bg-center" style={{ backgroundImage: `url(${heroImg})` }} aria-hidden />
         <div className="absolute inset-0 bg-gradient-to-r from-primary via-primary/95 to-primary/70" aria-hidden />
-        <div className="relative mx-auto max-w-7xl px-6 grid lg:grid-cols-12 gap-12 items-center">
+        <div className="relative mx-auto max-w-7xl px-6 grid lg:grid-cols-12 gap-14 items-center">
           <div className="lg:col-span-7">
-            <div className="text-xs uppercase tracking-[0.25em] text-gold mb-5">Quem está te chamando</div>
-            <h2 className="font-display text-4xl md:text-5xl text-balance">
-              Eu sou o cara que <span className="italic text-gold">assina as promoções</span> que você quer receber.
+            <div className="text-xs uppercase tracking-[0.25em] text-gold mb-5">Quem comanda o Instituto</div>
+            <h2 className="font-display text-3xl md:text-5xl text-balance">
+              Estratégia de mercado, liderança executiva e{" "}
+              <span className="italic text-gold">desenvolvimento humano</span>.
             </h2>
-            <p className="mt-7 text-lg text-background/80 max-w-2xl leading-relaxed">
-              28 anos dentro da Indústria Farmacêutica. Passei por gigantes globais.
-              Cheguei a KAM — o cargo que negocia hospital, payer e oncologia de alta complexidade.
-              Eu não te ensino teoria de RH. Eu te entrego o playbook que eu uso pra contratar.
+            <p className="mt-7 text-base md:text-lg text-background/80 max-w-2xl leading-relaxed">
+              João Schonhardt construiu 28 anos de carreira dentro da Indústria Farmacêutica, de campo a
+              Key Account Management em multinacionais globais — negociando hospitais, payers e portfólios de
+              alta complexidade. O Instituto nasceu para transferir esse repertório: para empresas que precisam
+              de acesso e execução, e para profissionais que precisam de método e postura executiva.
             </p>
+
             <div className="mt-10 grid sm:grid-cols-3 gap-6 max-w-2xl">
               {[
-                { n: "KAM Sênior", l: "Multinacional global" },
-                { n: "B2B / IA", l: "Brasil · LATAM · EMEA" },
-                { n: "Mentor", l: "De recolocados em Farma" },
-              ].map((s) => (
-                <div key={s.l} className="border-l-2 border-gold/40 pl-4">
-                  <div className="font-display text-xl text-gold">{s.n}</div>
-                  <div className="text-xs uppercase tracking-wider text-background/60 mt-1">{s.l}</div>
+                { icon: Stethoscope, n: "Diagnóstico", l: "Onde a conta ou a carreira trava" },
+                { icon: Fingerprint, n: "Branding", l: "Autoridade e posicionamento" },
+                { icon: Dumbbell, n: "Treinamento", l: "Execução até virar reflexo" },
+              ].map(({ icon: Icon, n, l }) => (
+                <div key={n} className="border-l-2 border-gold/40 pl-4">
+                  <Icon className="h-5 w-5 text-gold mb-2" strokeWidth={1.5} />
+                  <div className="font-display text-lg text-gold">{n}</div>
+                  <div className="text-xs uppercase tracking-wider text-background/60 mt-1 leading-relaxed">{l}</div>
                 </div>
               ))}
             </div>
+
+            <div className="mt-12">
+              <div className="flex items-center gap-3 mb-6">
+                <Compass className="h-5 w-5 text-gold" strokeWidth={1.5} />
+                <div className="text-xs uppercase tracking-[0.25em] text-gold">A doutrina T.R.I.L.H.A.</div>
+              </div>
+              <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
+                {trilha.map(({ letter, word, desc }) => (
+                  <div
+                    key={letter}
+                    className="rounded-lg border border-background/10 bg-background/5 p-5 transition-colors duration-300 hover:border-gold/40"
+                  >
+                    <div className="font-display text-3xl text-gold">{letter}</div>
+                    <div className="font-display text-sm text-background mt-1">{word}</div>
+                    <div className="text-xs text-background/60 mt-2 leading-relaxed">{desc}</div>
+                  </div>
+                ))}
+              </div>
+            </div>
           </div>
 
-          <div className="lg:col-span-5 relative">
+          <div className="lg:col-span-5">
             <div className="relative mx-auto max-w-md">
-              {/* moldura dourada deslocada */}
               <div className="absolute -inset-3 border border-gold/40 rounded-sm translate-x-4 translate-y-4" aria-hidden />
-              <div className="absolute -inset-3 bg-gold-gradient/10 rounded-sm -translate-x-3 -translate-y-3 opacity-30" aria-hidden />
-
               <div className="relative overflow-hidden rounded-sm shadow-2xl">
                 <img
                   src={joaoAsset.url}
-                  alt="João Schonhardt — KAM e mentor de carreira na Indústria Farmacêutica"
+                  alt="João Schonhardt — fundador do Instituto Schonhardt e Key Account Manager na Indústria Farmacêutica"
                   className="w-full h-auto object-cover grayscale contrast-110"
                   loading="lazy"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-primary/80 via-primary/10 to-transparent" aria-hidden />
+                <div className="absolute inset-0 bg-gradient-to-t from-primary/85 via-primary/10 to-transparent" aria-hidden />
                 <div className="absolute bottom-0 left-0 right-0 p-6">
                   <div className="text-[10px] uppercase tracking-[0.25em] text-gold mb-2">Fundador</div>
                   <div className="font-display text-2xl text-background leading-tight">João Schonhardt</div>
-                  <div className="text-xs text-background/70 mt-1">KAM Sênior · Mentor da Irmandade</div>
+                  <div className="text-xs text-background/70 mt-1">KAM Sênior · Palestrante · Mentor executivo</div>
                 </div>
               </div>
-
-              {/* selo dourado */}
               <div className="absolute -top-4 -left-4 h-20 w-20 rounded-full bg-gold-gradient grid place-items-center text-primary shadow-gold rotate-[-8deg]">
                 <div className="text-center leading-tight">
-                  <div className="font-display text-xl font-bold">27</div>
+                  <div className="font-display text-xl font-bold">28</div>
                   <div className="text-[8px] uppercase tracking-wider">anos</div>
                 </div>
               </div>
@@ -169,162 +345,137 @@ function LandingPage() {
         </div>
       </section>
 
-      {/* MÉTODO */}
-      <section className="bg-background py-32">
+      {/* DEPOIMENTOS */}
+      <section id="resultados" className="bg-background py-24 md:py-32 scroll-mt-24">
         <div className="mx-auto max-w-7xl px-6">
-          <div className="text-xs uppercase tracking-[0.25em] text-royal mb-4">O método ISN</div>
-          <h2 className="font-display text-4xl md:text-5xl text-foreground text-balance max-w-3xl">
-            Três etapas. Uma trilha. A mentalidade para você voltar a crescer na Indústria.
+          <div className="text-xs uppercase tracking-[0.25em] text-royal mb-4">Prova social</div>
+          <h2 className="font-display text-3xl md:text-5xl text-foreground text-balance max-w-3xl">
+            Profissionais recolocados, gestores promovidos e{" "}
+            <span className="italic text-royal">empresas impactadas</span>.
           </h2>
-          <p className="mt-6 text-lg text-muted-foreground max-w-2xl leading-relaxed">
-            Diagnóstico, Branding e Treinamento. Cada fase desbloqueia a seguinte, até você sair de candidato invisível para talento disputado.
-          </p>
 
-          <div className="mt-16 grid md:grid-cols-3 gap-6">
-            {[
-              {
-                icon: Stethoscope,
-                step: "01",
-                t: "Diagnóstico",
-                d: "Mapeamos onde você trava: currículo, LinkedIn, entrevista, Business Case ou network. Nenhuma suposição — só o que o mercado realmente cobra.",
-              },
-              {
-                icon: Fingerprint,
-                step: "02",
-                t: "Branding",
-                d: "Reconstruímos sua identidade profissional para que recrutadores da Farma te encontrem, reconheçam e lembrem antes mesmo da vaga abrir.",
-              },
-              {
-                icon: Dumbbell,
-                step: "03",
-                t: "Treinamento",
-                d: "Você pratica o que importa: jargão, simulação, entrevista com GD/Regional e postura KAM. Até virar reflexo.",
-              },
-            ].map(({ icon: Icon, step, t, d }) => (
-              <div key={t} className="group bg-card border border-border rounded-lg p-8 hover:bg-primary hover:text-primary-foreground transition-colors duration-500">
-                <div className="flex items-center justify-between mb-6">
-                  <Icon className="h-7 w-7 text-royal group-hover:text-gold transition-colors" strokeWidth={1.5} />
-                  <span className="font-display text-3xl text-royal/30 group-hover:text-gold/40 transition-colors">{step}</span>
+          <div className="mt-14 grid md:grid-cols-3 gap-6">
+            {testimonials.map((t) => (
+              <figure
+                key={t.name}
+                className="flex flex-col rounded-lg border border-border bg-card p-8 transition-all duration-500 hover:-translate-y-1 hover:border-gold/60"
+              >
+                <div className="flex items-center justify-between">
+                  <Quote className="h-6 w-6 text-gold" strokeWidth={1.6} />
+                  <span className="text-[10px] uppercase tracking-[0.2em] text-royal">{t.tag}</span>
                 </div>
-                <h3 className="font-display text-2xl">{t}</h3>
-                <p className="text-sm text-muted-foreground group-hover:text-primary-foreground/80 mt-3 leading-relaxed">{d}</p>
-              </div>
+                <blockquote className="mt-6 flex-1 text-sm text-muted-foreground leading-relaxed">
+                  “{t.quote}”
+                </blockquote>
+                <figcaption className="mt-6 pt-5 border-t border-border">
+                  <div className="font-display text-base text-foreground">{t.name}</div>
+                  <div className="text-xs uppercase tracking-wider text-muted-foreground mt-1">{t.role}</div>
+                </figcaption>
+              </figure>
             ))}
           </div>
 
-          <div className="mt-20">
-            <div className="flex items-center gap-3 mb-8">
-              <Compass className="h-5 w-5 text-gold" strokeWidth={1.5} />
-              <div className="text-xs uppercase tracking-[0.25em] text-gold">A mentalidade TRILHA</div>
-            </div>
-            <p className="text-sm text-muted-foreground max-w-2xl mb-10 leading-relaxed">
-              O acrônimo que guia cada mentorado do diagnóstico à contratação. Não é teoria — é o caminho que já recolocou centenas de profissionais na Farma.
-            </p>
-            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
-              {[
-                { letter: "T", word: "Transformação", desc: 'Mudar de "eu preciso de uma vaga" para "eu sou a solução da vaga".' },
-                { letter: "R", word: "Reputação", desc: "Construir uma marca digital que recrutadores da Farma confiem e lembrem." },
-                { letter: "I", word: "Influência", desc: "Fazer parte do network certo, sem depender de QI ou indicação." },
-                { letter: "L", word: "LinkedIn", desc: "Usar a plataforma como máquina de oportunidades, não cartão de visitas." },
-                { letter: "H", word: "Habilidades", desc: "Dominar o jargão, o Business Case e a simulação como quem já é de dentro." },
-                { letter: "A", word: "Ação", desc: "Aplicar tudo no mercado real, com direcionamento e accountability." },
-              ].map(({ letter, word, desc }) => (
-                <div key={letter} className="bg-royal/5 border border-royal/10 rounded-lg p-5 hover:bg-royal/10 transition-colors">
-                  <div className="font-display text-4xl text-royal mb-2">{letter}</div>
-                  <div className="font-display text-sm text-foreground mb-2">{word}</div>
-                  <div className="text-xs text-muted-foreground leading-relaxed">{desc}</div>
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* TRANSFORMAÇÃO antes/depois */}
-      <section className="bg-sidebar text-sidebar-foreground py-32">
-        <div className="mx-auto max-w-7xl px-6">
-          <div className="text-xs uppercase tracking-[0.25em] text-gold mb-4">O que muda na sua vida</div>
-          <h2 className="font-display text-4xl md:text-5xl text-balance max-w-3xl">
-            De candidato invisível a <span className="italic text-gold">nome disputado</span> pelos concorrentes.
-          </h2>
-
-          <div className="mt-16 grid md:grid-cols-2 gap-10">
-            <div className="bg-background/5 border border-sidebar-border rounded-lg p-8">
-              <div className="text-xs uppercase tracking-wider text-destructive/80 mb-5">Antes</div>
-              <ul className="space-y-4 text-sm text-sidebar-foreground/80">
-                {[
-                  "Currículo eliminado pelo ATS sem ninguém ler",
-                  "Pavor de simulação de propaganda médica",
-                  "Salário, sem carro, sem PLR, sem plano top",
-                  "Família duvidando da sua escolha de carreira",
-                  "Vendo colegas mais fracos sendo contratados",
-                ].map((i) => (
-                  <li key={i} className="flex gap-3"><XCircle className="h-4 w-4 mt-0.5 text-destructive/70 shrink-0" />{i}</li>
-                ))}
-              </ul>
-            </div>
-            <div className="bg-gold/5 border border-gold/30 rounded-lg p-8">
-              <div className="text-xs uppercase tracking-wider text-gold mb-5">Depois do ISN</div>
-              <ul className="space-y-4 text-sm text-sidebar-foreground">
-                {[
-                  "Recrutador da multinacional te chamando no LinkedIn",
-                  "Business Case fechado com a postura de quem já é KAM",
-                  "Pacote Farma completo: carro, combustível, PLR, previdência",
-                  'Família contando com orgulho que você é "Representante de Alta Complexidade"',
-                  "Concorrentes te disputando — você escolhe o crachá",
-                ].map((i) => (
-                  <li key={i} className="flex gap-3"><CheckCircle2 className="h-4 w-4 mt-0.5 text-gold shrink-0" />{i}</li>
-                ))}
-              </ul>
-            </div>
-          </div>
+          <p className="mt-8 text-xs text-muted-foreground">
+            Casos reais com identidades preservadas. Depoimentos nominais e vídeos podem ser publicados nesta seção.
+          </p>
         </div>
       </section>
 
       {/* CTA FINAL */}
-      <section id="metodo" className="bg-royal-gradient text-background py-32">
+      <section id="cursos" className="bg-royal-gradient text-background py-24 md:py-32 scroll-mt-24">
         <div className="mx-auto max-w-4xl px-6 text-center">
-          <div className="text-xs uppercase tracking-[0.25em] text-gold mb-6">Última coisa</div>
-          <h2 className="font-display text-4xl md:text-6xl text-balance">
-            Você pode <span className="italic text-gold">esperar mais 6 meses</span> sendo ignorado pelo Gupy.
+          <div className="text-xs uppercase tracking-[0.25em] text-gold mb-6">Próximo passo</div>
+          <h2 className="font-display text-3xl md:text-6xl text-balance">
+            Escolha por onde você entra no{" "}
+            <span className="italic text-gold">Mundo Inabalável</span>.
           </h2>
-          <p className="mt-8 text-lg text-background/85 max-w-2xl mx-auto leading-relaxed">
-            Ou pode entrar hoje na Irmandade, pegar o código e começar a jogar com
-            quem já está dentro. A Indústria está contratando. A pergunta é se vai ser você.
+          <p className="mt-8 text-base md:text-lg text-background/85 max-w-2xl mx-auto leading-relaxed">
+            Cursos e mentoria ficam na plataforma do mentorado. Projetos corporativos, palestras e congressos
+            passam por briefing e proposta sob medida.
           </p>
-          <Link
-            to="/app"
-            className="mt-12 inline-flex items-center gap-3 rounded-sm bg-gold-gradient px-8 py-4 text-sm font-medium text-primary shadow-gold hover:opacity-95 transition"
-          >
-            Entrar na minha área agora <ArrowUpRight className="h-4 w-4" />
-          </Link>
-          <div className="mt-6 text-xs uppercase tracking-wider text-background/50">
-            Vagas limitadas por turma · acesso direto a Schonhardt
+          <div className="mt-12 flex flex-col sm:flex-row items-center justify-center gap-4">
+            <Link
+              to="/app/ecossistema"
+              className="inline-flex items-center gap-3 rounded-sm bg-gold-gradient px-8 py-4 text-sm font-medium text-primary shadow-gold hover:opacity-95 transition-all duration-300"
+            >
+              Ver cursos, mentoria e palestras <ArrowUpRight className="h-4 w-4" />
+            </Link>
+            <a
+              href="mailto:contato@institutoschonhardt.com.br?subject=Contrato%20Corporativo%20%C2%B7%20Instituto%20Schonhardt"
+              className="inline-flex items-center gap-3 rounded-sm border border-background/25 bg-background/5 px-8 py-4 text-sm text-background hover:border-gold hover:text-gold transition-all duration-300"
+            >
+              Canal corporativo <Mail className="h-4 w-4" />
+            </a>
           </div>
         </div>
       </section>
 
-      <footer id="contato" className="bg-primary text-primary-foreground py-16">
-        <div className="mx-auto max-w-7xl px-6 grid md:grid-cols-3 gap-10">
+      {/* RODAPÉ INSTITUCIONAL */}
+      <footer id="contato" className="bg-primary text-primary-foreground py-16 scroll-mt-24">
+        <div className="mx-auto max-w-7xl px-6 grid md:grid-cols-4 gap-10">
           <div>
             <div className="font-display text-2xl text-gold">Schonhardt</div>
-            <p className="text-sm text-primary-foreground/70 mt-3 max-w-xs">
-              Instituto de Negócios. O método de quem está dentro, para quem quer entrar.
+            <p className="text-sm text-primary-foreground/70 mt-3 max-w-xs leading-relaxed">
+              Instituto de Negócios. Estratégia de acesso, liderança executiva e desenvolvimento humano na
+              Indústria Farmacêutica.
             </p>
+            <div className="flex items-center gap-3 mt-6">
+              {[
+                { icon: Linkedin, href: "https://www.linkedin.com/in/joaoschonhardt", label: "LinkedIn" },
+                { icon: Instagram, href: "https://www.instagram.com/", label: "Instagram" },
+                { icon: Youtube, href: "https://www.youtube.com/", label: "YouTube" },
+              ].map(({ icon: Icon, href, label }) => (
+                <a
+                  key={label}
+                  href={href}
+                  target="_blank"
+                  rel="noreferrer"
+                  aria-label={label}
+                  className="h-9 w-9 grid place-items-center rounded-sm border border-primary-foreground/15 text-primary-foreground/70 hover:border-gold hover:text-gold transition-colors duration-300"
+                >
+                  <Icon className="h-4 w-4" strokeWidth={1.7} />
+                </a>
+              ))}
+            </div>
           </div>
+
           <div className="text-sm space-y-2 text-primary-foreground/80">
-            <div className="text-gold uppercase text-xs tracking-wider mb-3">Contato</div>
-            <div>contato@institutoschonhardt.com.br</div>
-            <div>São Paulo · Brasil</div>
+            <div className="text-gold uppercase text-xs tracking-wider mb-3">Soluções</div>
+            <a href="#acesso" className="block hover:text-gold transition-colors">Gestão de Contas e Acesso</a>
+            <a href="#mentoria" className="block hover:text-gold transition-colors">Mentoria de Carreira</a>
+            <a href="#cursos" className="block hover:text-gold transition-colors">Cursos Online</a>
+            <a href="#palestras" className="block hover:text-gold transition-colors">Palestras Corporativas</a>
           </div>
+
           <div className="text-sm space-y-2 text-primary-foreground/80">
-            <div className="text-gold uppercase text-xs tracking-wider mb-3">Plataforma</div>
-            <Link to="/app" className="block hover:text-gold">Área do mentorado</Link>
-            <a href="#dores" className="block hover:text-gold">Isto é para mim?</a>
+            <div className="text-gold uppercase text-xs tracking-wider mb-3">Institucional</div>
+            <a href="#sobre" className="block hover:text-gold transition-colors">Sobre o fundador</a>
+            <a href="#resultados" className="block hover:text-gold transition-colors">Casos de sucesso</a>
+            <Link to="/app/ecossistema" className="block hover:text-gold transition-colors">Ecossistema</Link>
+            <Link to="/app" className="block hover:text-gold transition-colors">Área do mentorado</Link>
+          </div>
+
+          <div className="text-sm space-y-3 text-primary-foreground/80">
+            <div className="text-gold uppercase text-xs tracking-wider mb-3">Contratos corporativos</div>
+            <a
+              href="mailto:contato@institutoschonhardt.com.br"
+              className="flex items-center gap-2 hover:text-gold transition-colors"
+            >
+              <Mail className="h-4 w-4" strokeWidth={1.7} /> contato@institutoschonhardt.com.br
+            </a>
+            <div className="flex items-center gap-2">
+              <MapPin className="h-4 w-4" strokeWidth={1.7} /> São Paulo · Brasil
+            </div>
+            <a
+              href="mailto:contato@institutoschonhardt.com.br?subject=Briefing%20%C2%B7%20Palestra%20ou%20Projeto%20Corporativo"
+              className="inline-flex items-center gap-2 mt-2 rounded-sm border border-gold/40 bg-gold/10 px-4 py-2.5 text-xs uppercase tracking-wider text-gold hover:bg-gold hover:text-primary transition-colors duration-300"
+            >
+              Enviar briefing <ArrowUpRight className="h-3.5 w-3.5" />
+            </a>
           </div>
         </div>
         <div className="mt-12 text-center text-xs text-primary-foreground/40">
-          © {new Date().getFullYear()} Instituto Schonhardt de Negócios
+          © {new Date().getFullYear()} Instituto Schonhardt de Negócios · Mundo Inabalável
         </div>
       </footer>
     </div>
