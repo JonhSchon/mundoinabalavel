@@ -434,17 +434,20 @@ function LandingPage() {
                 <blockquote className="mt-6 flex-1 text-sm text-muted-foreground leading-relaxed">
                   “{t.quote}”
                 </blockquote>
-                <figcaption className="mt-6 pt-5 border-t border-border">
+                <figcaption className="mt-6 pt-5 border-t border-gold/25">
                   <div className="font-display text-base text-foreground">{t.name}</div>
-                  <div className="text-xs uppercase tracking-wider text-muted-foreground mt-1">{t.role}</div>
+                  <div className="text-[11px] leading-relaxed uppercase tracking-wider text-muted-foreground mt-1">
+                    {t.role}
+                  </div>
                 </figcaption>
               </figure>
             ))}
           </div>
 
           <p className="mt-8 text-xs text-muted-foreground">
-            Casos reais com identidades preservadas. Depoimentos nominais e vídeos podem ser publicados nesta seção.
+            Recomendações públicas registradas no LinkedIn de João Schonhardt.
           </p>
+
         </div>
       </section>
 
