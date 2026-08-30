@@ -144,26 +144,69 @@ const trilha = [
 const testimonials = [
   {
     quote:
-      "Fiquei 11 meses enviando currículo sem resposta. Em 14 semanas de mentoria fechei proposta como Representante de Alta Complexidade em multinacional.",
-    name: "Profissional recolocado",
-    role: "Oncologia · Sudeste",
+      "Mesmo com 24 anos de bagagem na indústria farmacêutica, a mentoria do João Cláudio foi o divisor de águas que recalibrou o meu posicionamento de mercado. Ele tem a habilidade rara de nos tirar do nível operacional e nos elevar para a Inteligência de Ecossistema. É um mentor estratégico indispensável para quem busca o topo no mercado de alta complexidade.",
+    name: "Gleison Costa de Sousa",
+    role: "Consultor Sênior de Acesso ao Mercado | Market Access | Oncologia & Hospitalar | KAM",
+    tag: "Mentoria",
+  },
+  {
+    quote:
+      "O que diferencia o João de qualquer outro mentor no mercado é a forma como ele transforma problemas complexos em estratégias elegantes e cirúrgicas. Ele é o mentor ideal para quem quer parar de 'tirar pedidos' e passar a construir valor real.",
+    name: "Diego Marley de Oliveira",
+    role: "Propagandista Pleno Eurofarma | Onco-Hematologia & Linhas Especiais | Acesso e SFE",
+    tag: "Alta performance",
+  },
+  {
+    quote:
+      "Sua capacidade de conectar estratégia, mercado farmacêutico, inovação, tecnologia e desenvolvimento humano é algo raro. Sua mentoria revolucionou minha visão sobre posicionamento profissional, branding, relacionamento executivo e construção de carreira de alto impacto.",
+    name: "Bruno Carvalho",
+    role: "Product Manager | Product Owner | Business Analyst | B2B2C SaaS",
+    tag: "Transição",
+  },
+  {
+    quote:
+      "Fui cliente do João Schonhardt em sua empresa de mentoria e estratégia de carreira. Me ajudou a estruturar melhor o meu perfil, me fez enxergar e compreender nuances de estratégias de mercado, abrindo novos focos e targets em minha carreira.",
+    name: "Glauco Aragão",
+    role: "Gerente de Market Access | KAM Sênior | Alta Complexidade & Doenças Raras",
+    tag: "Posicionamento",
+  },
+  {
+    quote:
+      "Obrigado João, pela mentoria incrível sobre recolocação no mercado de trabalho da indústria farmacêutica! Suas dicas e insights sobre networking e atualização profissional foram fundamentais para mim e para meu retorno ao campo.",
+    name: "Alex Bezerra",
+    role: "Consultor Hospitalar | Key Account Management | Representante Farmacêutico",
     tag: "Recolocação",
   },
   {
     quote:
-      "A leitura de conta hospitalar mudou minha forma de negociar. Assumi a gerência regional no ciclo seguinte, com meta de acesso batida.",
-    name: "Gestor promovido",
-    role: "Market Access · LATAM",
-    tag: "Ascensão",
+      "Grande profissional, incansável no que faz e sempre com propósito de ajudar o paciente, os médicos e também seus pares. Buscou mostrar suas habilidades técnicas para sempre entregar seu melhor.",
+    name: "Adalberto Coutinho",
+    role: "Market Access | Oncologia, Hematologia e Doenças Raras | KAM | Pagadores Público e Privado",
+    tag: "Corporativo",
   },
   {
     quote:
-      "Levamos a palestra INABALÁVEL para a convenção nacional. Foi o bloco mais bem avaliado do evento e reposicionou o discurso do time.",
-    name: "Diretoria comercial",
-    role: "Indústria Farmacêutica",
-    tag: "Corporativo",
+      "João é um profissional dedicado, que mantém ótimo relacionamento com seus clientes e colegas de equipe. Sua capacidade de análise crítica, gestão de contas e soluções inovadoras para o negócio com certeza são suas fortalezas.",
+    name: "Fabio Toyoshima",
+    role: "Indústria Farmacêutica | Gestão de Contas",
+    tag: "Liderança",
+  },
+  {
+    quote:
+      "O João é um profissional inovador, tem ideias de fácil execução que facilita muito o trabalho em equipe. Engajado e estratégico, é um profissional muito bom em se ter por perto para contribuir com o dia a dia no campo.",
+    name: "Marcela Rezende",
+    role: "Executiva de Parcerias Estratégicas | Doenças Raras | Imunologia | Acesso ao Mercado",
+    tag: "Estratégia",
+  },
+  {
+    quote:
+      "João é um profissional do mais alto nível, competente, dedicado e com um grande espírito de equipe que transcende o próprio grupo a que ele está inserido.",
+    name: "Sandro Tolotti Monte Maior",
+    role: "Consultor de Vendas | Indústria Farmacêutica | Key Account Manager (KAM)",
+    tag: "Excelência",
   },
 ];
+
 
 function LandingPage() {
   return (
@@ -391,17 +434,20 @@ function LandingPage() {
                 <blockquote className="mt-6 flex-1 text-sm text-muted-foreground leading-relaxed">
                   “{t.quote}”
                 </blockquote>
-                <figcaption className="mt-6 pt-5 border-t border-border">
+                <figcaption className="mt-6 pt-5 border-t border-gold/25">
                   <div className="font-display text-base text-foreground">{t.name}</div>
-                  <div className="text-xs uppercase tracking-wider text-muted-foreground mt-1">{t.role}</div>
+                  <div className="text-[11px] leading-relaxed uppercase tracking-wider text-muted-foreground mt-1">
+                    {t.role}
+                  </div>
                 </figcaption>
               </figure>
             ))}
           </div>
 
           <p className="mt-8 text-xs text-muted-foreground">
-            Casos reais com identidades preservadas. Depoimentos nominais e vídeos podem ser publicados nesta seção.
+            Recomendações públicas registradas no LinkedIn de João Schonhardt.
           </p>
+
         </div>
       </section>
 
