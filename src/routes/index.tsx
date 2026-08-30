@@ -324,7 +324,7 @@ function LandingPage() {
             <div className="mt-12">
               <div className="flex items-center gap-3 mb-6">
                 <Compass className="h-5 w-5 text-gold" strokeWidth={1.5} />
-                <div className="text-xs uppercase tracking-[0.25em] text-gold">A doutrina T.R.I.L.H.A.</div>
+                <div className="text-xs uppercase tracking-[0.25em] text-gold">A Doutrina T.R.I.L.H.A.</div>
               </div>
               <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
                 {trilha.map(({ letter, word, desc }) => (
