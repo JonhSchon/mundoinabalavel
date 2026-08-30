@@ -109,12 +109,36 @@ const pillars = [
 ];
 
 const trilha = [
-  { letter: "T", word: "Transformação", desc: "Sair de “eu preciso de uma vaga” para “eu sou a solução do negócio”." },
-  { letter: "R", word: "Reputação", desc: "Construir autoridade visível e confiável no ecossistema da saúde." },
-  { letter: "I", word: "Influência", desc: "Circular no network que decide contratações e contratos." },
-  { letter: "L", word: "LinkedIn", desc: "Transformar a plataforma em máquina de oportunidades." },
-  { letter: "H", word: "Habilidades", desc: "Dominar jargão, Business Case e negociação de acesso." },
-  { letter: "A", word: "Ação", desc: "Executar no mercado real com direcionamento e accountability." },
+  {
+    letter: "T",
+    word: "Tecnologia",
+    desc: "Dominar ferramentas, automações e inteligência artificial para otimizar processos e alavancar a performance estratégica.",
+  },
+  {
+    letter: "R",
+    word: "Relevância",
+    desc: "Construir autoridade inegociável e valor percebido de alto impacto no mercado corporativo e farmacêutico.",
+  },
+  {
+    letter: "I",
+    word: "Intencionalidade",
+    desc: "Direcionar cada movimento profissional com foco cirúrgico, clareza de propósito e planejamento rigoroso.",
+  },
+  {
+    letter: "L",
+    word: "Liberdade",
+    desc: "Conquistar autonomia, flexibilidade de carreira e poder de decisão sobre o próprio futuro profissional.",
+  },
+  {
+    letter: "H",
+    word: "Habilidades",
+    desc: "Aprimorar competências técnicas e comportamentais avançadas indispensáveis para a alta gestão.",
+  },
+  {
+    letter: "A",
+    word: "Arquitetura",
+    desc: "Conhecer profundamente o ecossistema de negócios, as redes de influência e a estrutura de mercado.",
+  },
 ];
 
 const testimonials = [
