@@ -63,6 +63,21 @@ export function AppShell() {
           })}
         </nav>
 
+        <Link
+          to="/app/aulas/$courseId"
+          params={{ courseId: resume.course.id }}
+          className="mx-3 mb-1 flex items-center gap-3 rounded-md border border-gold/30 bg-sidebar-accent/40 p-4 transition-colors hover:border-gold hover:bg-sidebar-accent"
+        >
+          <span className="h-10 w-10 shrink-0 rounded-full bg-gold-gradient grid place-items-center">
+            <Play className="h-4 w-4 text-gold-foreground fill-current" />
+          </span>
+          <span className="min-w-0">
+            <span className="block text-[10px] uppercase tracking-[0.2em] text-gold">Continue de onde parou</span>
+            <span className="block truncate text-sm text-sidebar-foreground">{resume.lesson?.t ?? resume.course.title}</span>
+            <span className="block truncate text-[11px] text-sidebar-foreground/55">{resume.course.title}</span>
+          </span>
+        </Link>
+
         <div className="m-3 p-5 rounded-md bg-royal-gradient">
           <div className="text-xs uppercase tracking-wider text-gold mb-2">Próximo encontro</div>
           <div className="font-display text-lg text-background leading-tight">Mentoria ao vivo</div>
