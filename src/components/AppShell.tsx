@@ -1,13 +1,13 @@
 import { Link, Outlet, useLocation, useNavigate } from "@tanstack/react-router";
-import { LayoutDashboard, PlayCircle, FolderOpen, ClipboardList, MessageSquarePlus, Users, Store, Bell, Search, LogOut, Sparkles } from "lucide-react";
+import { LayoutDashboard, Play, FolderOpen, ClipboardList, MessageSquarePlus, Users, Store, Bell, Search, LogOut, Sparkles } from "lucide-react";
 import { useQueryClient } from "@tanstack/react-query";
 import { supabase } from "@/integrations/supabase/client";
+import { getContinueWatching } from "@/lib/courses";
 
 type NavItem = { to: string; label: string; icon: typeof LayoutDashboard; exact?: boolean };
 const nav: NavItem[] = [
   { to: "/app/boas-vindas", label: "Boas-vindas", icon: Sparkles },
   { to: "/app", label: "Visão geral", icon: LayoutDashboard, exact: true },
-  { to: "/app/aulas", label: "Aulas", icon: PlayCircle },
   { to: "/app/materiais", label: "Materiais", icon: FolderOpen },
   { to: "/app/tarefas", label: "Tarefas", icon: ClipboardList },
   { to: "/app/pedidos", label: "Pedidos", icon: MessageSquarePlus },
@@ -20,6 +20,7 @@ export function AppShell() {
   const { pathname } = useLocation();
   const navigate = useNavigate();
   const queryClient = useQueryClient();
+  const resume = getContinueWatching();
 
   async function handleSignOut() {
     await queryClient.cancelQueries();
@@ -62,6 +63,21 @@ export function AppShell() {
             );
           })}
         </nav>
+
+        <Link
+          to="/app/aulas/$courseId"
+          params={{ courseId: resume.course.id }}
+          className="mx-3 mb-1 flex items-center gap-3 rounded-md border border-gold/30 bg-sidebar-accent/40 p-4 transition-colors hover:border-gold hover:bg-sidebar-accent"
+        >
+          <span className="h-10 w-10 shrink-0 rounded-full bg-gold-gradient grid place-items-center">
+            <Play className="h-4 w-4 text-gold-foreground fill-current" />
+          </span>
+          <span className="min-w-0">
+            <span className="block text-[10px] uppercase tracking-[0.2em] text-gold">Continue de onde parou</span>
+            <span className="block truncate text-sm text-sidebar-foreground">{resume.lesson?.t ?? resume.course.title}</span>
+            <span className="block truncate text-[11px] text-sidebar-foreground/55">{resume.course.title}</span>
+          </span>
+        </Link>
 
         <div className="m-3 p-5 rounded-md bg-royal-gradient">
           <div className="text-xs uppercase tracking-wider text-gold mb-2">Próximo encontro</div>

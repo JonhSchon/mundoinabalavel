@@ -264,3 +264,15 @@ export const courses: Course[] = [
 ];
 
 export const getCourse = (id: string) => courses.find((c) => c.id === id);
+
+/** Retoma de onde parou: primeiro curso com aula em andamento (ou o Core). */
+export function getContinueWatching() {
+  for (const c of courses) {
+    for (const m of c.modules) {
+      const lesson = m.lessons.find((l) => l.s === "current");
+      if (lesson) return { course: c, module: m, lesson };
+    }
+  }
+  const course = courses[0];
+  return { course, module: course.modules[0], lesson: course.modules[0]?.lessons[0] };
+}
