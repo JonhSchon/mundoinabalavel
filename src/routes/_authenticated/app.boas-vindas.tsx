@@ -104,12 +104,12 @@ function WelcomePage() {
 
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
             {[
-              { icon: Target, t: "T — Transformação", d: "Reconstruir a identidade de quem está pronto para a Farma." },
-              { icon: Fingerprint, t: "R — Reputação", d: "Construir uma marca pessoal que o mercado reconhece." },
-              { icon: Compass, t: "I — Influência", d: "Aprender a se posicionar e ser procurado pelas empresas." },
-              { icon: UsersIcon, t: "L — LinkedIn", d: "Transformar o perfil em um ímã de oportunidades." },
-              { icon: Dumbbell, t: "H — Habilidades", d: "Dominar entrevistas, business cases e simulações." },
-              { icon: Rocket, t: "A — Ação", d: "Executar o plano de recolocação com estratégia e disciplina." },
+              { icon: Cpu, t: "T — Tecnologia", d: "Dominar ferramentas, automações e IA para otimizar processos e acelerar resultados." },
+              { icon: Target, t: "R — Relevância", d: "Construir autoridade inegociável e valor percebido de alto impacto na Farma." },
+              { icon: Compass, t: "I — Intencionalidade", d: "Direcionar cada movimento com foco cirúrgico, propósito e planejamento rigoroso." },
+              { icon: Unlock, t: "L — Liberdade", d: "Conquistar autonomia, flexibilidade e poder de decisão sobre o próprio futuro." },
+              { icon: Dumbbell, t: "H — Habilidades", d: "Aprimorar competências técnicas e comportamentais avançadas da alta gestão." },
+              { icon: Building2, t: "A — Arquitetura", d: "Conhecer o ecossistema de negócios, redes de influência e estrutura de mercado." },
             ].map((step, i) => (
               <div
                 key={step.t}
@@ -152,16 +152,5 @@ function WelcomePage() {
         </div>
       </section>
     </div>
-  );
-}
-
-function UsersIcon({ className }: { className?: string }) {
-  return (
-    <svg className={className} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-      <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" />
-      <circle cx="9" cy="7" r="4" />
-      <path d="M22 21v-2a4 4 0 0 0-3-3.87" />
-      <path d="M16 3.13a4 4 0 0 1 0 7.75" />
-    </svg>
   );
 }
