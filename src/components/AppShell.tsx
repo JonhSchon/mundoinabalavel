@@ -20,6 +20,7 @@ export function AppShell() {
   const { pathname } = useLocation();
   const navigate = useNavigate();
   const queryClient = useQueryClient();
+  const resume = getContinueWatching();
 
   async function handleSignOut() {
     await queryClient.cancelQueries();
