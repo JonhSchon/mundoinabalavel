@@ -1,5 +1,5 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { Play, ArrowRight, Sparkles, Target, Fingerprint, Dumbbell, Compass, Rocket } from "lucide-react";
+import { Play, ArrowRight, Sparkles, Cpu, Target, Compass, Unlock, Dumbbell, Building2 } from "lucide-react";
 import joaoAsset from "@/assets/joao-schonhardt.png.asset.json";
 
 export const Route = createFileRoute("/_authenticated/app/boas-vindas")({
