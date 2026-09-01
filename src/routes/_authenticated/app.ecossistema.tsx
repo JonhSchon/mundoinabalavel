@@ -13,6 +13,12 @@ import {
   ShieldCheck,
   Sparkles,
   TrendingUp,
+  Mail,
+  MessageCircle,
+  FileText,
+  BookOpen,
+  Headphones,
+  CheckCircle2,
 } from "lucide-react";
 import {
   Accordion,
@@ -20,6 +26,17 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from "@/components/ui/dialog";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
+import { Textarea } from "@/components/ui/textarea";
 import { courses, type Course } from "@/lib/courses";
 import { cn } from "@/lib/utils";
 
@@ -96,7 +113,6 @@ type ExtraProduct = {
   title: string;
   subtitle: string;
   description: string;
-  price: string;
   tag?: string;
   icon: typeof Users;
   bullets: string[];
@@ -112,7 +128,6 @@ const extras: ExtraProduct[] = [
     subtitle: "Acompanhamento direto com Schonhardt",
     description:
       "Plano de recolocação sob medida, simulação de Grupo de Discussão, revisão de Business Case e portfólio para multinacional.",
-    price: "R$ 18.000",
     tag: "Vagas limitadas",
     paths: ["transicao", "kam", "capacitacao"],
     bullets: [
@@ -130,7 +145,6 @@ const extras: ExtraProduct[] = [
     subtitle: "45 a 60 minutos · sob medida para sua empresa ou evento",
     description:
       "Palestra exclusiva para empresas, congressos e eventos corporativos. Cada convite é avaliado caso a caso — formato, agenda, público e investimento são definidos em conjunto após briefing.",
-    price: "Valor sob consulta",
     tag: "Negociável caso a caso",
     paths: ["capacitacao"],
     bullets: [
@@ -139,6 +153,64 @@ const extras: ExtraProduct[] = [
       "Proposta enviada após briefing rápido por e-mail",
       "Investimento definido conforme escopo, deslocamento e audiência",
     ],
+  },
+];
+
+const awarenessMaterials: {
+  id: string;
+  pathId: PathId;
+  icon: typeof FileText;
+  title: string;
+  description: string;
+  tag: string;
+}[] = [
+  {
+    id: "ats-tritura",
+    pathId: "transicao",
+    icon: FileText,
+    title: "Como o ATS te tritura (e como driblar)",
+    description: "E-book que revela por que 94% dos currículos morrem no filtro e como escapar do algoritmo.",
+    tag: "Algoritmo",
+  },
+  {
+    id: "linkedin-magnetico",
+    pathId: "transicao",
+    icon: BookOpen,
+    title: "LinkedIn Magnético para Profissionais 50+",
+    description: "Guia de posicionamento que transforma o perfil em ímã de oportunidades de alta complexidade.",
+    tag: "Branding",
+  },
+  {
+    id: "dicionario-farma",
+    pathId: "kam",
+    icon: FileText,
+    title: "Dicionário Farma — DDD, PMB, Close-up, Grelha",
+    description: "O código de campo que separa quem conhece o jogo de quem fica de fora das contas estratégicas.",
+    tag: "Código",
+  },
+  {
+    id: "business-case-kam",
+    pathId: "kam",
+    icon: Headphones,
+    title: "Áudio: Montando um Business Case que abre portas",
+    description: "A lógica de valor usada por KAMs de elite para negociar com hospitais, APACs e NAT-Jus.",
+    tag: "Blindagem",
+  },
+  {
+    id: "valor-inegociavel",
+    pathId: "capacitacao",
+    icon: MessageCircle,
+    title: "A Ciência do Valor Inegociável",
+    description: "Resumo executivo sobre autoridade, relevância e posicionamento de alto impacto no corporativo.",
+    tag: "Mentalidade",
+  },
+  {
+    id: "cases-recolocados",
+    pathId: "capacitacao",
+    icon: BookOpen,
+    title: "Cases — Recolocados em multinacional top 10",
+    description: "Narrativas reais de profissionais que retornaram ao mercado usando o método TRILHA.",
+    tag: "Provas",
   },
 ];
 
@@ -157,6 +229,7 @@ function EcossistemaPage() {
 
   const visibleCourses = courses.filter((c) => activePath.courseIds.includes(c.id));
   const visibleExtras = extras.filter((e) => e.paths.includes(active));
+  const visibleMaterials = awarenessMaterials.filter((m) => m.pathId === active);
 
   const totalLessons = courses.reduce(
     (s, c) => s + c.modules.reduce((n, m) => n + m.lessons.length, 0),
@@ -182,8 +255,7 @@ function EcossistemaPage() {
                 Bem-vindo ao centro de aceleração do Instituto Schonhardt.
               </h2>
               <p className="mt-2 text-sm text-sidebar-foreground/60 max-w-xl">
-                Seu painel de governança de carreira: escolha o momento, ative a
-                trilha e acompanhe o ecossistema completo em um só lugar.
+                Seu painel de governança de carreira: escolha o momento, explore o ecossistema e entre na lista de super interessados para ser chamado assim que as vagas abrirem.
               </p>
             </div>
             <div className="flex items-center gap-3 rounded-xl border border-gold/25 bg-gold/5 px-5 py-4">
@@ -308,7 +380,7 @@ function EcossistemaPage() {
           </div>
           <p className="mt-2 text-sm text-sidebar-foreground/55 max-w-2xl">
             Programas selecionados para este momento. Expanda cada um para ver a
-            grade completa de módulos e aulas.
+            grade completa de módulos e aulas, e entre na lista de interessados para ser avisado quando as vagas abrirem.
           </p>
 
           <div className="mt-8 space-y-5">
@@ -318,6 +390,57 @@ function EcossistemaPage() {
             {visibleExtras.map((p) => (
               <ExtraProductCard key={p.id} product={p} />
             ))}
+          </div>
+        </section>
+
+        {/* MATERIAIS DE AMPLIAÇÃO DE CONSCIÊNCIA */}
+        <section className="mt-16">
+          <div className="flex items-baseline justify-between flex-wrap gap-2">
+            <div>
+              <div className="text-xs uppercase tracking-[0.25em] text-royal">Aquecimento estratégico</div>
+              <h2 className="font-display text-2xl text-sidebar-foreground mt-1">
+                Materiais para ampliar seu nível de consciência
+              </h2>
+            </div>
+            <span className="text-xs uppercase tracking-[0.2em] text-sidebar-foreground/45">
+              Conteúdo gratuito · Irmandade
+            </span>
+          </div>
+          <p className="mt-2 text-sm text-sidebar-foreground/55 max-w-2xl">
+            Antes de decidir, aprofunde o entendimento sobre o que tratam os cursos, mentorias e palestras. Quanto maior a consciência, mais fácil a decisão — e mais rápido o fechamento.
+          </p>
+
+          <div className="mt-6 grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+            {visibleMaterials.map((m) => {
+              const Icon = m.icon;
+              return (
+                <div
+                  key={m.id}
+                  className="group relative rounded-2xl border border-sidebar-border bg-sidebar-accent/25 p-6 backdrop-blur-xl hover:border-gold/40 transition-all duration-300 hover:-translate-y-0.5"
+                >
+                  <div className="flex items-start justify-between">
+                    <div className="h-10 w-10 rounded-xl border border-gold/30 bg-gold/10 grid place-items-center">
+                      <Icon className="h-4 w-4 text-gold" strokeWidth={1.6} />
+                    </div>
+                    <span className="text-[10px] uppercase tracking-wider text-gold border border-gold/30 rounded-full px-2.5 py-0.5">
+                      {m.tag}
+                    </span>
+                  </div>
+                  <h3 className="font-display text-lg text-sidebar-foreground mt-5 leading-snug">
+                    {m.title}
+                  </h3>
+                  <p className="text-sm text-sidebar-foreground/55 mt-2 leading-relaxed">
+                    {m.description}
+                  </p>
+                  <Link
+                    to="/app/materiais"
+                    className="mt-5 inline-flex items-center gap-2 text-sm text-gold hover:text-gold/80 transition-colors"
+                  >
+                    Acessar material <ArrowUpRight className="h-4 w-4" />
+                  </Link>
+                </div>
+              );
+            })}
           </div>
         </section>
       </div>
@@ -439,14 +562,14 @@ function CourseProduct({ course }: { course: Course }) {
             </AccordionItem>
           </Accordion>
 
-          <div className="mt-5 flex items-center justify-between">
-            <div className="font-display text-xl text-sidebar-foreground">{course.price}</div>
+          <div className="mt-5 flex flex-wrap items-center gap-3">
+            <InterestButton productTitle={course.title} context="curso" />
             <Link
               to="/app/aulas/$courseId"
               params={{ courseId: course.id }}
-              className="inline-flex items-center gap-2 rounded-sm border border-gold/40 px-5 py-2.5 text-sm text-gold hover:bg-gold hover:text-gold-foreground transition-colors"
+              className="inline-flex items-center gap-2 rounded-sm border border-sidebar-border px-5 py-2.5 text-sm text-sidebar-foreground/80 hover:border-gold/40 hover:text-gold transition-colors"
             >
-              Abrir programa <ArrowUpRight className="h-4 w-4" />
+              Conhecer programa <ArrowUpRight className="h-4 w-4" />
             </Link>
           </div>
         </div>
@@ -479,15 +602,142 @@ function ExtraProductCard({ product }: { product: ExtraProduct }) {
           </li>
         ))}
       </ul>
-      <div className="mt-6 flex items-center justify-between">
-        <div className="font-display text-xl text-sidebar-foreground">{product.price}</div>
-        <a
-          href={`mailto:contato@institutoschonhardt.com.br?subject=${encodeURIComponent(`Interesse · ${product.title}`)}&body=${encodeURIComponent("Olá João,\n\nTenho interesse em contratar. Segue um breve briefing:\n\n• Empresa / evento:\n• Data e local:\n• Formato (online, presencial, híbrido):\n• Público estimado e perfil:\n• Objetivo:\n\nAguardo proposta.\n\nObrigado.")}`}
-          className="inline-flex items-center gap-2 rounded-sm border border-gold/40 px-5 py-2.5 text-sm text-gold hover:bg-gold hover:text-gold-foreground transition-colors"
-        >
-          Solicitar proposta <ArrowUpRight className="h-4 w-4" />
-        </a>
+      <div className="mt-6">
+        <InterestButton productTitle={product.title} context="serviço" />
       </div>
     </div>
+  );
+}
+
+/* -------------------------------- interest list ----------------------------- */
+
+function InterestButton({ productTitle, context }: { productTitle: string; context: "curso" | "serviço" }) {
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [company, setCompany] = useState("");
+  const [goal, setGoal] = useState("");
+  const [open, setOpen] = useState(false);
+
+  const subject = encodeURIComponent(`Lista de super interessados · ${productTitle}`);
+  const body = encodeURIComponent(
+    `Olá João,\n\nGostaria de entrar na lista de super interessados para o ${context}: ${productTitle}.\n\n` +
+      `Nome: ${name}\n` +
+      `E-mail: ${email}\n` +
+      (company ? `Empresa / cargo: ${company}\n` : "") +
+      (goal ? `Momento de carreira / objetivo: ${goal}\n` : "") +
+      `\nAguardo contato assim que as vagas abrirem.\n\nObrigado.`,
+  );
+  const mailto = `mailto:contato@institutoschonhardt.com.br?subject=${subject}&body=${body}`;
+
+  const handleSubmit = () => {
+    window.open(mailto, "_blank");
+    setOpen(false);
+  };
+
+  const isValid = name.trim().length > 2 && email.includes("@");
+
+  return (
+    <Dialog open={open} onOpenChange={setOpen}>
+      <DialogTrigger asChild>
+        <button className="inline-flex items-center gap-2 rounded-sm border border-gold/40 px-5 py-2.5 text-sm text-gold hover:bg-gold hover:text-gold-foreground transition-colors">
+          <CheckCircle2 className="h-4 w-4" />
+          Entrar na lista de super interessados
+        </button>
+      </DialogTrigger>
+      <DialogContent className="bg-sidebar border-sidebar-border text-sidebar-foreground sm:max-w-md">
+        <DialogHeader>
+          <DialogTitle className="font-display text-xl text-sidebar-foreground">
+            Lista de super interessados
+          </DialogTitle>
+          <DialogDescription className="text-sidebar-foreground/55">
+            Preencha seus dados para ser chamado assim que abrirmos vagas para{" "}
+            <span className="text-gold">{productTitle}</span>.
+          </DialogDescription>
+        </DialogHeader>
+
+        <div className="mt-4 space-y-4">
+          <div className="space-y-1.5">
+            <Label htmlFor="name" className="text-xs uppercase tracking-wider text-sidebar-foreground/70">
+              Nome completo
+            </Label>
+            <Input
+              id="name"
+              value={name}
+              onChange={(e) => setName(e.target.value)}
+              placeholder="Seu nome"
+              className="bg-sidebar-accent/50 border-sidebar-border text-sidebar-foreground placeholder:text-sidebar-foreground/35 focus-visible:ring-gold/40"
+            />
+          </div>
+
+          <div className="space-y-1.5">
+            <Label htmlFor="email" className="text-xs uppercase tracking-wider text-sidebar-foreground/70">
+              E-mail
+            </Label>
+            <Input
+              id="email"
+              type="email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              placeholder="voce@email.com"
+              className="bg-sidebar-accent/50 border-sidebar-border text-sidebar-foreground placeholder:text-sidebar-foreground/35 focus-visible:ring-gold/40"
+            />
+          </div>
+
+          <div className="space-y-1.5">
+            <Label htmlFor="company" className="text-xs uppercase tracking-wider text-sidebar-foreground/70">
+              Empresa / cargo atual
+            </Label>
+            <Input
+              id="company"
+              value={company}
+              onChange={(e) => setCompany(e.target.value)}
+              placeholder="Ex: Gerente de Acesso em transição"
+              className="bg-sidebar-accent/50 border-sidebar-border text-sidebar-foreground placeholder:text-sidebar-foreground/35 focus-visible:ring-gold/40"
+            />
+          </div>
+
+          <div className="space-y-1.5">
+            <Label htmlFor="goal" className="text-xs uppercase tracking-wider text-sidebar-foreground/70">
+              Seu momento de carreira / objetivo
+            </Label>
+            <Textarea
+              id="goal"
+              value={goal}
+              onChange={(e) => setGoal(e.target.value)}
+              placeholder="Conte brevemente onde você está e o que espera com esse programa..."
+              rows={3}
+              className="bg-sidebar-accent/50 border-sidebar-border text-sidebar-foreground placeholder:text-sidebar-foreground/35 focus-visible:ring-gold/40 resize-none"
+            />
+          </div>
+
+          <div className="pt-2 flex flex-col gap-2">
+            <button
+              onClick={handleSubmit}
+              disabled={!isValid}
+              className="inline-flex items-center justify-center gap-2 rounded-sm bg-gold px-5 py-2.5 text-sm font-medium text-gold-foreground hover:bg-gold/90 disabled:opacity-40 disabled:cursor-not-allowed transition-colors"
+            >
+              <Mail className="h-4 w-4" />
+              Enviar interesse por e-mail
+            </button>
+            <a
+              href={`https://wa.me/?text=${encodeURIComponent(
+                `Olá João, gostaria de entrar na lista de super interessados para ${productTitle}. Meu nome é ${name}.`,
+              )}`}
+              target="_blank"
+              rel="noreferrer"
+              className="inline-flex items-center justify-center gap-2 rounded-sm border border-sidebar-border px-5 py-2.5 text-sm text-sidebar-foreground/80 hover:border-gold/40 hover:text-gold transition-colors"
+            >
+              <MessageCircle className="h-4 w-4" />
+              Preferiu enviar pelo WhatsApp?
+            </a>
+          </div>
+
+          <p className="text-[11px] text-sidebar-foreground/40 leading-relaxed">
+            Ao enviar, seus dados serão direcionados para a equipe do Instituto Schonhardt. Você será
+            contactado assim que novas vagas forem abertas.
+          </p>
+        </div>
+      </DialogContent>
+    </Dialog>
   );
 }
