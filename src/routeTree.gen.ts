@@ -21,6 +21,7 @@ import { Route as AuthenticatedAppEcossistemaRouteImport } from './routes/_authe
 import { Route as AuthenticatedAppComunidadeRouteImport } from './routes/_authenticated/app.comunidade'
 import { Route as AuthenticatedAppBoasVindasRouteImport } from './routes/_authenticated/app.boas-vindas'
 import { Route as AuthenticatedAppAulasRouteImport } from './routes/_authenticated/app.aulas'
+import { Route as AuthenticatedAppAssessmentsRouteImport } from './routes/_authenticated/app.assessments'
 import { Route as AuthenticatedAppAulasCourseIdRouteImport } from './routes/_authenticated/app.aulas.$courseId'
 
 const AuthRoute = AuthRouteImport.update({
@@ -86,6 +87,12 @@ const AuthenticatedAppAulasRoute = AuthenticatedAppAulasRouteImport.update({
   path: '/aulas',
   getParentRoute: () => AuthenticatedAppRoute,
 } as any)
+const AuthenticatedAppAssessmentsRoute =
+  AuthenticatedAppAssessmentsRouteImport.update({
+    id: '/assessments',
+    path: '/assessments',
+    getParentRoute: () => AuthenticatedAppRoute,
+  } as any)
 const AuthenticatedAppAulasCourseIdRoute =
   AuthenticatedAppAulasCourseIdRouteImport.update({
     id: '/$courseId',
@@ -97,6 +104,7 @@ export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/auth': typeof AuthRoute
   '/app': typeof AuthenticatedAppRouteWithChildren
+  '/app/assessments': typeof AuthenticatedAppAssessmentsRoute
   '/app/aulas': typeof AuthenticatedAppAulasRouteWithChildren
   '/app/boas-vindas': typeof AuthenticatedAppBoasVindasRoute
   '/app/comunidade': typeof AuthenticatedAppComunidadeRoute
@@ -110,6 +118,7 @@ export interface FileRoutesByFullPath {
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/auth': typeof AuthRoute
+  '/app/assessments': typeof AuthenticatedAppAssessmentsRoute
   '/app/aulas': typeof AuthenticatedAppAulasRouteWithChildren
   '/app/boas-vindas': typeof AuthenticatedAppBoasVindasRoute
   '/app/comunidade': typeof AuthenticatedAppComunidadeRoute
@@ -126,6 +135,7 @@ export interface FileRoutesById {
   '/_authenticated': typeof AuthenticatedRouteRouteWithChildren
   '/auth': typeof AuthRoute
   '/_authenticated/app': typeof AuthenticatedAppRouteWithChildren
+  '/_authenticated/app/assessments': typeof AuthenticatedAppAssessmentsRoute
   '/_authenticated/app/aulas': typeof AuthenticatedAppAulasRouteWithChildren
   '/_authenticated/app/boas-vindas': typeof AuthenticatedAppBoasVindasRoute
   '/_authenticated/app/comunidade': typeof AuthenticatedAppComunidadeRoute
@@ -142,6 +152,7 @@ export interface FileRouteTypes {
     | '/'
     | '/auth'
     | '/app'
+    | '/app/assessments'
     | '/app/aulas'
     | '/app/boas-vindas'
     | '/app/comunidade'
@@ -155,6 +166,7 @@ export interface FileRouteTypes {
   to:
     | '/'
     | '/auth'
+    | '/app/assessments'
     | '/app/aulas'
     | '/app/boas-vindas'
     | '/app/comunidade'
@@ -170,6 +182,7 @@ export interface FileRouteTypes {
     | '/_authenticated'
     | '/auth'
     | '/_authenticated/app'
+    | '/_authenticated/app/assessments'
     | '/_authenticated/app/aulas'
     | '/_authenticated/app/boas-vindas'
     | '/_authenticated/app/comunidade'
@@ -273,6 +286,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AuthenticatedAppAulasRouteImport
       parentRoute: typeof AuthenticatedAppRoute
     }
+    '/_authenticated/app/assessments': {
+      id: '/_authenticated/app/assessments'
+      path: '/assessments'
+      fullPath: '/app/assessments'
+      preLoaderRoute: typeof AuthenticatedAppAssessmentsRouteImport
+      parentRoute: typeof AuthenticatedAppRoute
+    }
     '/_authenticated/app/aulas/$courseId': {
       id: '/_authenticated/app/aulas/$courseId'
       path: '/$courseId'
@@ -297,6 +317,7 @@ const AuthenticatedAppAulasRouteWithChildren =
   )
 
 interface AuthenticatedAppRouteChildren {
+  AuthenticatedAppAssessmentsRoute: typeof AuthenticatedAppAssessmentsRoute
   AuthenticatedAppAulasRoute: typeof AuthenticatedAppAulasRouteWithChildren
   AuthenticatedAppBoasVindasRoute: typeof AuthenticatedAppBoasVindasRoute
   AuthenticatedAppComunidadeRoute: typeof AuthenticatedAppComunidadeRoute
@@ -308,6 +329,7 @@ interface AuthenticatedAppRouteChildren {
 }
 
 const AuthenticatedAppRouteChildren: AuthenticatedAppRouteChildren = {
+  AuthenticatedAppAssessmentsRoute: AuthenticatedAppAssessmentsRoute,
   AuthenticatedAppAulasRoute: AuthenticatedAppAulasRouteWithChildren,
   AuthenticatedAppBoasVindasRoute: AuthenticatedAppBoasVindasRoute,
   AuthenticatedAppComunidadeRoute: AuthenticatedAppComunidadeRoute,
