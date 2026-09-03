@@ -1,5 +1,5 @@
 import { Link, Outlet, useLocation, useNavigate } from "@tanstack/react-router";
-import { LayoutDashboard, Play, FolderOpen, ClipboardList, MessageSquarePlus, Users, Store, Bell, Search, LogOut, Sparkles } from "lucide-react";
+import { LayoutDashboard, Play, FolderOpen, ClipboardList, BarChart3, MessageSquarePlus, Users, Store, Bell, Search, LogOut, Sparkles } from "lucide-react";
 import { useQueryClient } from "@tanstack/react-query";
 import { supabase } from "@/integrations/supabase/client";
 import { getContinueWatching } from "@/lib/courses";
