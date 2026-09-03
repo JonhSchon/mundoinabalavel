@@ -1,5 +1,18 @@
 import { Link, Outlet, useLocation, useNavigate } from "@tanstack/react-router";
-import { LayoutDashboard, Play, FolderOpen, ClipboardList, MessageSquarePlus, Users, Store, Bell, Search, LogOut, Sparkles } from "lucide-react";
+import {
+  LayoutDashboard,
+  Play,
+  FolderOpen,
+  ClipboardList,
+  BarChart3,
+  MessageSquarePlus,
+  Users,
+  Store,
+  Bell,
+  Search,
+  LogOut,
+  Sparkles,
+} from "lucide-react";
 import { useQueryClient } from "@tanstack/react-query";
 import { supabase } from "@/integrations/supabase/client";
 import { getContinueWatching } from "@/lib/courses";
@@ -9,12 +22,12 @@ const nav: NavItem[] = [
   { to: "/app/boas-vindas", label: "Boas-vindas", icon: Sparkles },
   { to: "/app", label: "Visão geral", icon: LayoutDashboard, exact: true },
   { to: "/app/materiais", label: "Materiais", icon: FolderOpen },
+  { to: "/app/assessments", label: "Assessments", icon: BarChart3 },
   { to: "/app/tarefas", label: "Tarefas", icon: ClipboardList },
   { to: "/app/pedidos", label: "Pedidos", icon: MessageSquarePlus },
   { to: "/app/comunidade", label: "Comunidade", icon: Users },
   { to: "/app/ecossistema", label: "Ecossistema", icon: Store },
 ];
-
 
 export function AppShell() {
   const { pathname } = useLocation();
@@ -28,7 +41,6 @@ export function AppShell() {
     await supabase.auth.signOut();
     navigate({ to: "/auth", replace: true });
   }
-
 
   return (
     <div className="min-h-screen bg-sidebar text-sidebar-foreground flex">
@@ -46,7 +58,9 @@ export function AppShell() {
 
         <nav className="flex-1 px-3 py-6 space-y-1">
           {nav.map(({ to, label, icon: Icon, exact }) => {
-            const active = exact ? pathname === to : pathname === to || pathname.startsWith(to + "/");
+            const active = exact
+              ? pathname === to
+              : pathname === to || pathname.startsWith(to + "/");
             return (
               <Link
                 key={to}
@@ -73,9 +87,15 @@ export function AppShell() {
             <Play className="h-4 w-4 text-gold-foreground fill-current" />
           </span>
           <span className="min-w-0">
-            <span className="block text-[10px] uppercase tracking-[0.2em] text-gold">Continue de onde parou</span>
-            <span className="block truncate text-sm text-sidebar-foreground">{resume.lesson?.t ?? resume.course.title}</span>
-            <span className="block truncate text-[11px] text-sidebar-foreground/55">{resume.course.title}</span>
+            <span className="block text-[10px] uppercase tracking-[0.2em] text-gold">
+              Continue de onde parou
+            </span>
+            <span className="block truncate text-sm text-sidebar-foreground">
+              {resume.lesson?.t ?? resume.course.title}
+            </span>
+            <span className="block truncate text-[11px] text-sidebar-foreground/55">
+              {resume.course.title}
+            </span>
           </span>
         </Link>
 
