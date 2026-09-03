@@ -187,10 +187,13 @@ function AssessmentsPage() {
                 Assessments Executivos ISN
               </div>
               <h1 className="font-display text-3xl md:text-5xl leading-[1.05] text-sidebar-foreground mt-5">
-                Diagnósticos de <span className="text-gold">alta performance</span> para quem governa a indústria farmacêutica.
+                Diagnósticos de <span className="text-gold">alta performance</span> para quem
+                governa a indústria farmacêutica.
               </h1>
               <p className="mt-4 text-base md:text-lg text-sidebar-foreground/65 max-w-xl leading-relaxed">
-                Ferramentas proprietárias de auditoria de competências, prontidão de mercado e certificação executiva. Não são cursos de prateleira. São raios-X que revelam onde você está, onde pode chegar e o que falta para dominar o jogo.
+                Ferramentas proprietárias de auditoria de competências, prontidão de mercado e
+                certificação executiva. Não são cursos de prateleira. São raios-X que revelam onde
+                você está, onde pode chegar e o que falta para dominar o jogo.
               </p>
             </div>
             <div className="shrink-0 flex flex-col gap-3 md:text-right">
@@ -216,7 +219,9 @@ function AssessmentsPage() {
         <section className="mt-14">
           <div className="flex items-baseline justify-between flex-wrap gap-3">
             <div>
-              <div className="text-xs uppercase tracking-[0.3em] text-royal">Catálogo de diagnósticos</div>
+              <div className="text-xs uppercase tracking-[0.3em] text-royal">
+                Catálogo de diagnósticos
+              </div>
               <h2 className="font-display text-2xl md:text-3xl text-sidebar-foreground mt-2">
                 Escolha o assessment para o seu momento
               </h2>
@@ -237,12 +242,17 @@ function AssessmentsPage() {
         <section className="mt-16 rounded-2xl border border-gold/20 bg-gradient-to-br from-gold/10 via-gold/5 to-transparent p-8 md:p-12 backdrop-blur-xl">
           <div className="grid md:grid-cols-[1fr_auto] gap-8 items-center">
             <div>
-              <div className="text-xs uppercase tracking-[0.25em] text-gold">Avaliação executiva ISN</div>
+              <div className="text-xs uppercase tracking-[0.25em] text-gold">
+                Avaliação executiva ISN
+              </div>
               <h2 className="font-display text-2xl md:text-3xl text-sidebar-foreground mt-3">
                 O mercado não premia esforço. Premia posicionamento.
               </h2>
               <p className="mt-3 text-sm md:text-base text-sidebar-foreground/65 max-w-2xl leading-relaxed">
-                Os assessments do Instituto Schonhardt foram desenvolvidos para profissionais que já entregam resultados, mas sabem que operacional não é sinônimo de indispensável. Descubra os gaps invisíveis, obtenha um relatório executivo e construa o plano para a alta gestão.
+                Os assessments do Instituto Schonhardt foram desenvolvidos para profissionais que já
+                entregam resultados, mas sabem que operacional não é sinônimo de indispensável.
+                Descubra os gaps invisíveis, obtenha um relatório executivo e construa o plano para
+                a alta gestão.
               </p>
             </div>
             <AssessmentInterestButton
@@ -282,8 +292,10 @@ function AssessmentCard({ assessment }: { assessment: Assessment }) {
           className={cn(
             "inline-flex items-center gap-1.5 rounded-full px-3 py-1 text-[10px] uppercase tracking-wider font-medium",
             assessment.sealVariant === "diagnostic" && "border border-gold/40 bg-gold/10 text-gold",
-            assessment.sealVariant === "certification" && "border border-royal/40 bg-royal/15 text-royal-foreground",
-            assessment.sealVariant === "complex" && "border border-sidebar-border bg-sidebar-accent/60 text-sidebar-foreground",
+            assessment.sealVariant === "certification" &&
+              "border border-royal/40 bg-royal/15 text-royal-foreground",
+            assessment.sealVariant === "complex" &&
+              "border border-sidebar-border bg-sidebar-accent/60 text-sidebar-foreground",
           )}
         >
           {assessment.sealVariant === "diagnostic" && <Activity className="h-3 w-3" />}
@@ -305,7 +317,9 @@ function AssessmentCard({ assessment }: { assessment: Assessment }) {
       </div>
 
       <div className="flex-1 p-7 flex flex-col">
-        <div className="text-[10px] uppercase tracking-[0.2em] text-gold">Assessment Proprietário</div>
+        <div className="text-[10px] uppercase tracking-[0.2em] text-gold">
+          Assessment Proprietário
+        </div>
         <h3 className="font-display text-xl md:text-2xl text-sidebar-foreground mt-2 leading-tight">
           {assessment.officialName}
         </h3>
@@ -317,7 +331,9 @@ function AssessmentCard({ assessment }: { assessment: Assessment }) {
 
         <div className="mt-5 rounded-xl border border-gold/15 bg-gold/5 p-4">
           <div className="text-[10px] uppercase tracking-[0.2em] text-gold mb-2">Transformação</div>
-          <p className="text-sm text-sidebar-foreground/85 leading-relaxed">{assessment.transformation}</p>
+          <p className="text-sm text-sidebar-foreground/85 leading-relaxed">
+            {assessment.transformation}
+          </p>
         </div>
 
         <div className="mt-5">
@@ -377,7 +393,10 @@ function AssessmentCard({ assessment }: { assessment: Assessment }) {
           </DialogHeader>
           <div className="mt-4 space-y-3">
             {assessment.bullets.map((b) => (
-              <div key={b} className="flex items-start gap-3 rounded-lg border border-sidebar-border bg-sidebar-accent/40 p-3">
+              <div
+                key={b}
+                className="flex items-start gap-3 rounded-lg border border-sidebar-border bg-sidebar-accent/40 p-3"
+              >
                 <CheckCircle2 className="h-4 w-4 text-gold shrink-0 mt-0.5" />
                 <span className="text-sm text-sidebar-foreground/80">{b}</span>
               </div>
@@ -460,7 +479,10 @@ function AssessmentInterestButton({
 
         <div className="mt-4 space-y-4">
           <div className="space-y-1.5">
-            <Label htmlFor="name" className="text-xs uppercase tracking-wider text-sidebar-foreground/70">
+            <Label
+              htmlFor="name"
+              className="text-xs uppercase tracking-wider text-sidebar-foreground/70"
+            >
               Nome completo
             </Label>
             <Input
@@ -473,7 +495,10 @@ function AssessmentInterestButton({
           </div>
 
           <div className="space-y-1.5">
-            <Label htmlFor="email" className="text-xs uppercase tracking-wider text-sidebar-foreground/70">
+            <Label
+              htmlFor="email"
+              className="text-xs uppercase tracking-wider text-sidebar-foreground/70"
+            >
               E-mail corporativo
             </Label>
             <Input
@@ -487,7 +512,10 @@ function AssessmentInterestButton({
           </div>
 
           <div className="space-y-1.5">
-            <Label htmlFor="company" className="text-xs uppercase tracking-wider text-sidebar-foreground/70">
+            <Label
+              htmlFor="company"
+              className="text-xs uppercase tracking-wider text-sidebar-foreground/70"
+            >
               Empresa / cargo atual
             </Label>
             <Input
@@ -500,7 +528,10 @@ function AssessmentInterestButton({
           </div>
 
           <div className="space-y-1.5">
-            <Label htmlFor="goal" className="text-xs uppercase tracking-wider text-sidebar-foreground/70">
+            <Label
+              htmlFor="goal"
+              className="text-xs uppercase tracking-wider text-sidebar-foreground/70"
+            >
               Objetivo com o assessment
             </Label>
             <Textarea
@@ -536,8 +567,8 @@ function AssessmentInterestButton({
           </div>
 
           <p className="text-[11px] text-sidebar-foreground/40 leading-relaxed">
-            Ao enviar, seus dados serão direcionados para a equipe do Instituto Schonhardt. A aplicação dos assessments é
-            high-ticket, com vagas limitadas e debrief executivo 1:1.
+            Ao enviar, seus dados serão direcionados para a equipe do Instituto Schonhardt. A
+            aplicação dos assessments é high-ticket, com vagas limitadas e debrief executivo 1:1.
           </p>
         </div>
       </DialogContent>
