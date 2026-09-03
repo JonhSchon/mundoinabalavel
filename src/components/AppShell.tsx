@@ -9,6 +9,7 @@ const nav: NavItem[] = [
   { to: "/app/boas-vindas", label: "Boas-vindas", icon: Sparkles },
   { to: "/app", label: "Visão geral", icon: LayoutDashboard, exact: true },
   { to: "/app/materiais", label: "Materiais", icon: FolderOpen },
+  { to: "/app/assessments", label: "Assessments", icon: BarChart3 },
   { to: "/app/tarefas", label: "Tarefas", icon: ClipboardList },
   { to: "/app/pedidos", label: "Pedidos", icon: MessageSquarePlus },
   { to: "/app/comunidade", label: "Comunidade", icon: Users },
