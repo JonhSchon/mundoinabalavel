@@ -123,20 +123,22 @@ const extras: ExtraProduct[] = [
   {
     id: "mentoria-1a1",
     icon: Users,
-    type: "Mentoria 1:1",
-    title: "Programa Executivo · 6 meses",
-    subtitle: "Acompanhamento direto com Schonhardt",
+    type: "Mentoria de Carreira · Pilar 02",
+    title: "Fluxo Estruturado · 3 meses",
+    subtitle: "Encontros semanais em grupo ou individuais, com direcionamento cirúrgico",
     description:
-      "Plano de recolocação sob medida, simulação de Grupo de Discussão, revisão de Business Case e portfólio para multinacional.",
+      "Três meses de acompanhamento contínuo com encontros semanais (formato em grupo ou individual), participação ativa exigida e direcionamento cirúrgico para a transformação executiva e a recolocação estratégica.",
     tag: "Vagas limitadas",
     paths: ["transicao", "kam", "capacitacao"],
     bullets: [
-      "Sessões quinzenais 1:1 (90 min)",
-      "Revisão semanal de CV / LinkedIn / pitch",
-      "Simulação de entrevista com GR/GD",
-      "Acesso vitalício à Irmandade",
+      "3 meses · encontros semanais (grupo ou 1:1)",
+      "Mês 01 · Diagnóstico: onde a carreira trava e o alvo real de mercado",
+      "Mês 02 · Branding: CV ATS-proof, LinkedIn e narrativa executiva",
+      "Mês 03 · Treinamento: entrevistas, GD, Business Case e negociação",
+      "Participação ativa e tarefas de execução entre os encontros",
     ],
   },
+
   {
     id: "inabalavel-palestra",
     icon: Mic,
@@ -213,8 +215,144 @@ const awarenessMaterials: {
     tag: "Provas",
   },
 ];
+/* ------------------- Pilar 03 · filosofia dos cursos online ------------------ */
+
+const coursePhilosophy: {
+  id: string;
+  icon: typeof FileText;
+  kicker: string;
+  title: string;
+  description: string;
+  bullets: string[];
+}[] = [
+  {
+    id: "formato",
+    icon: Play,
+    kicker: "Formato",
+    title: "Aulas gravadas com cases reais desvendados",
+    description:
+      "Videoaulas gravadas, materiais teóricos e cases reais da indústria farmacêutica destrinchados em detalhe — com foco em planejamento de trabalho, planos de ação e superação dos principais desafios da função.",
+    bullets: [
+      "Aulas gravadas · estude no seu ritmo, sem perder profundidade",
+      "Materiais teóricos e templates de planejamento",
+      "Cases reais da indústria abertos passo a passo",
+      "Planos de ação aplicáveis na semana seguinte",
+    ],
+  },
+  {
+    id: "suporte",
+    icon: MessageCircle,
+    kicker: "Suporte",
+    title: "Comunidade interativa de alto nível",
+    description:
+      "O aluno nunca estuda sozinho: dúvidas são tiradas diretamente com membros do Instituto e com pares que vivem os mesmos desafios de campo, acesso e gestão de contas.",
+    bullets: [
+      "Dúvidas respondidas por membros do Instituto",
+      "Troca entre pares da indústria farmacêutica",
+      "Discussão de casos reais de território e contas",
+      "Networking qualificado e vagas comentadas",
+    ],
+  },
+  {
+    id: "certificacao",
+    icon: ShieldCheck,
+    kicker: "Certificação",
+    title: "Certificado de Conclusão vs. Assessment Executivo",
+    description:
+      "O Certificado de Conclusão é emitido ao finalizar a jornada de estudos. O Assessment Executivo é opcional, tem valor extra e faz a validação rigorosa da competência.",
+    bullets: [
+      "Certificado de Conclusão · ao finalizar a jornada de estudos",
+      "Assessment Executivo · opcional, com valor extra",
+      "Validação por apresentação de case prático e provas",
+      "Nota mínima superior a 8,00 · até 2 tentativas por matrícula",
+      "Guia de orientação exclusivo para preparação",
+    ],
+  },
+];
+
+type Formation = {
+  id: string;
+  courseId?: string;
+  name: string;
+  positioning: string;
+  audience: string;
+  description: string;
+  transformation: string;
+  pillars: string[];
+};
+
+const formations: Formation[] = [
+  {
+    id: "impacta-10x",
+    courseId: "impacta-10x",
+    name: "IMPACTA 10X",
+    positioning: "Aceleração de resultados",
+    audience: "Profissionais de linhas comerciais",
+    description:
+      "Aceleração de resultados para profissionais de linhas comerciais, expandindo a visão estratégica e o poder de mercado — do operacional para a leitura de negócio.",
+    transformation:
+      "Sai do ciclo de cumprir meta por esforço e passa a governar território, dados e influência com visão de negócio.",
+    pillars: [
+      "Expansão da visão estratégica de mercado",
+      "Poder de mercado, influência e reputação",
+      "Planejamento comercial e plano de ação",
+      "Leitura de dados e priorização de esforço",
+    ],
+  },
+  {
+    id: "retorno-pharma",
+    courseId: "retorno-memoravel",
+    name: "O Retorno Pharma",
+    positioning: "Preparatório intensivo",
+    audience: "Quem retorna ao mercado ou muda de empresa",
+    description:
+      "Preparatório intensivo e estruturado para quem busca retornar ao mercado de trabalho ou mudar de empresa de forma estratégica, com narrativa, vitrine digital e processo seletivo dominados.",
+    transformation:
+      "Deixa de disputar vagas no escuro e passa a conduzir o processo seletivo com identidade, evidências e método.",
+    pillars: [
+      "Identidade executiva e narrativa do gap",
+      "Currículo ATS-proof e LinkedIn magnético",
+      "Garimpo de oportunidades e networking elegante",
+      "Entrevistas, Business Case e negociação de proposta",
+    ],
+  },
+  {
+    id: "consultor-linhas-especiais",
+    courseId: "chave-industria",
+    name: "Consultor de Linhas Especiais",
+    positioning: "Imersão de campo",
+    audience: "Consultores de alta complexidade",
+    description:
+      "Imersão no universo do consultor de linhas especiais, cobrindo diagnóstico, planejamento de território, desafios reais de campo e cases da indústria destrinchados.",
+    transformation:
+      "Domina o dialeto técnico, o fluxo do paciente e a rotina de alta complexidade com postura de consultor 360°.",
+    pillars: [
+      "Diagnóstico de território e de portfólio",
+      "Planejamento de território e roteiro de visitas",
+      "Desafios reais de campo e como resolvê-los",
+      "Cases reais da indústria abertos em detalhes",
+    ],
+  },
+  {
+    id: "gerente-acesso",
+    name: "Gerente de Acesso",
+    positioning: "Formação avançada",
+    audience: "Acesso público e privado",
+    description:
+      "Formação avançada focada nas estratégias de acesso público e privado, negociações complexas e gestão de contas de alto faturamento.",
+    transformation:
+      "Passa a estruturar acesso, sustentabilidade de portfólio e negociação com pagadores como um gestor sênior.",
+    pillars: [
+      "Acesso público: APAC, CEAF, incorporação e NAT-Jus",
+      "Acesso privado: operadoras, protocolos e pagadores",
+      "Negociações complexas e contas estratégicas",
+      "Sustentabilidade de portfólio e business case de acesso",
+    ],
+  },
+];
 
 const typeIcon: Record<Course["type"], typeof GraduationCap> = {
+
   Curso: GraduationCap,
   Palestra: Mic,
   Mentoria: Users,
@@ -393,7 +531,76 @@ function EcossistemaPage() {
           </div>
         </section>
 
+        {/* PILAR 03 · FILOSOFIA DOS CURSOS ONLINE */}
+        <section className="mt-16">
+          <div className="text-xs uppercase tracking-[0.25em] text-royal">Pilar 03 · Cursos Online</div>
+          <h2 className="font-display text-2xl md:text-3xl text-sidebar-foreground mt-2 max-w-3xl leading-snug">
+            Não é curso de prateleira: é a operação real da indústria,{" "}
+            <span className="text-gold">desvendada em detalhes</span>.
+          </h2>
+          <p className="mt-3 text-sm text-sidebar-foreground/55 max-w-2xl leading-relaxed">
+            Como estudamos, como você é suportado e como a sua competência é validada.
+          </p>
+
+          <div className="mt-7 grid md:grid-cols-3 gap-4">
+            {coursePhilosophy.map((p) => {
+              const Icon = p.icon;
+              return (
+                <div
+                  key={p.id}
+                  className="rounded-2xl border border-sidebar-border bg-sidebar-accent/25 p-6 backdrop-blur-xl transition-colors hover:border-gold/40"
+                >
+                  <div className="flex items-center justify-between">
+                    <div className="h-10 w-10 rounded-xl border border-gold/30 bg-gold/10 grid place-items-center">
+                      <Icon className="h-4 w-4 text-gold" strokeWidth={1.7} />
+                    </div>
+                    <span className="text-[10px] uppercase tracking-[0.25em] text-sidebar-foreground/40">
+                      {p.kicker}
+                    </span>
+                  </div>
+                  <h3 className="font-display text-lg text-sidebar-foreground mt-5 leading-snug">
+                    {p.title}
+                  </h3>
+                  <p className="text-sm text-sidebar-foreground/60 mt-2 leading-relaxed">
+                    {p.description}
+                  </p>
+                  <ul className="mt-4 space-y-2">
+                    {p.bullets.map((b) => (
+                      <li key={b} className="flex items-start gap-2.5 text-[13px] text-sidebar-foreground/60">
+                        <span className="mt-1.5 h-1 w-1 shrink-0 rounded-full bg-gold" />
+                        <span className="leading-snug">{b}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              );
+            })}
+          </div>
+        </section>
+
+        {/* LINHAS DE FORMAÇÃO */}
+        <section className="mt-14">
+          <div className="flex items-baseline justify-between flex-wrap gap-2">
+            <div>
+              <div className="text-xs uppercase tracking-[0.25em] text-royal">Cursos gravados</div>
+              <h2 className="font-display text-2xl text-sidebar-foreground mt-1">
+                Linhas de formação em destaque
+              </h2>
+            </div>
+            <span className="text-xs uppercase tracking-[0.2em] text-sidebar-foreground/45">
+              Abra para ver a profundidade
+            </span>
+          </div>
+
+          <div className="mt-6 grid sm:grid-cols-2 gap-4">
+            {formations.map((f) => (
+              <FormationCard key={f.id} formation={f} />
+            ))}
+          </div>
+        </section>
+
         {/* MATERIAIS DE AMPLIAÇÃO DE CONSCIÊNCIA */}
+
         <section className="mt-16">
           <div className="flex items-baseline justify-between flex-wrap gap-2">
             <div>
@@ -448,7 +655,73 @@ function EcossistemaPage() {
   );
 }
 
+function FormationCard({ formation }: { formation: Formation }) {
+  return (
+    <div className="rounded-2xl border border-sidebar-border bg-sidebar-accent/25 p-6 backdrop-blur-xl transition-colors hover:border-gold/40">
+      <div className="flex items-center justify-between gap-3">
+        <span className="text-[10px] uppercase tracking-[0.25em] text-gold border border-gold/30 rounded-full px-2.5 py-0.5">
+          {formation.positioning}
+        </span>
+        <span className="text-[10px] uppercase tracking-[0.2em] text-sidebar-foreground/40 text-right">
+          {formation.audience}
+        </span>
+      </div>
+      <h3 className="font-display text-xl text-sidebar-foreground mt-4 leading-snug">{formation.name}</h3>
+      <p className="text-sm text-sidebar-foreground/60 mt-2 leading-relaxed">{formation.description}</p>
+
+      <Accordion type="single" collapsible className="mt-4">
+        <AccordionItem value="detalhe" className="border-sidebar-border">
+          <AccordionTrigger className="text-xs uppercase tracking-[0.2em] text-sidebar-foreground/70 hover:text-gold hover:no-underline py-3">
+            Ver a profundidade da formação
+          </AccordionTrigger>
+          <AccordionContent>
+            <div className="pt-1 space-y-4">
+              <div className="rounded-xl border border-gold/25 bg-gold/5 p-4">
+                <div className="text-[10px] uppercase tracking-[0.2em] text-gold">A transformação</div>
+                <p className="text-[13px] text-sidebar-foreground/75 mt-1.5 leading-relaxed">
+                  {formation.transformation}
+                </p>
+              </div>
+              <div>
+                <div className="text-[10px] uppercase tracking-[0.2em] text-sidebar-foreground/45 mb-2">
+                  O que você domina
+                </div>
+                <ul className="space-y-2">
+                  {formation.pillars.map((b) => (
+                    <li key={b} className="flex items-start gap-2.5 text-[13px] text-sidebar-foreground/65">
+                      <span className="mt-1.5 h-1 w-1 shrink-0 rounded-full bg-gold" />
+                      <span className="leading-snug">{b}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+              <p className="text-[11px] text-sidebar-foreground/45 leading-relaxed">
+                Certificado de Conclusão ao final da jornada de estudos. Assessment Executivo opcional, com
+                valor extra, exige case prático e nota superior a 8,00 (até 2 tentativas).
+              </p>
+            </div>
+          </AccordionContent>
+        </AccordionItem>
+      </Accordion>
+
+      <div className="mt-4 flex flex-wrap items-center gap-3">
+        <InterestButton productTitle={formation.name} context="curso" />
+        {formation.courseId && (
+          <Link
+            to="/app/aulas/$courseId"
+            params={{ courseId: formation.courseId }}
+            className="inline-flex items-center gap-2 rounded-sm border border-sidebar-border px-5 py-2.5 text-sm text-sidebar-foreground/80 hover:border-gold/40 hover:text-gold transition-colors"
+          >
+            Conhecer programa <ArrowUpRight className="h-4 w-4" />
+          </Link>
+        )}
+      </div>
+    </div>
+  );
+}
+
 function Metric({ value, label }: { value: string; label: string }) {
+
   return (
     <div className="rounded-xl border border-sidebar-border bg-sidebar/40 px-5 py-4">
       <div className="font-display text-3xl text-gold leading-none">{value}</div>
