@@ -531,7 +531,76 @@ function EcossistemaPage() {
           </div>
         </section>
 
+        {/* PILAR 03 · FILOSOFIA DOS CURSOS ONLINE */}
+        <section className="mt-16">
+          <div className="text-xs uppercase tracking-[0.25em] text-royal">Pilar 03 · Cursos Online</div>
+          <h2 className="font-display text-2xl md:text-3xl text-sidebar-foreground mt-2 max-w-3xl leading-snug">
+            Não é curso de prateleira: é a operação real da indústria,{" "}
+            <span className="text-gold">desvendada em detalhes</span>.
+          </h2>
+          <p className="mt-3 text-sm text-sidebar-foreground/55 max-w-2xl leading-relaxed">
+            Como estudamos, como você é suportado e como a sua competência é validada.
+          </p>
+
+          <div className="mt-7 grid md:grid-cols-3 gap-4">
+            {coursePhilosophy.map((p) => {
+              const Icon = p.icon;
+              return (
+                <div
+                  key={p.id}
+                  className="rounded-2xl border border-sidebar-border bg-sidebar-accent/25 p-6 backdrop-blur-xl transition-colors hover:border-gold/40"
+                >
+                  <div className="flex items-center justify-between">
+                    <div className="h-10 w-10 rounded-xl border border-gold/30 bg-gold/10 grid place-items-center">
+                      <Icon className="h-4 w-4 text-gold" strokeWidth={1.7} />
+                    </div>
+                    <span className="text-[10px] uppercase tracking-[0.25em] text-sidebar-foreground/40">
+                      {p.kicker}
+                    </span>
+                  </div>
+                  <h3 className="font-display text-lg text-sidebar-foreground mt-5 leading-snug">
+                    {p.title}
+                  </h3>
+                  <p className="text-sm text-sidebar-foreground/60 mt-2 leading-relaxed">
+                    {p.description}
+                  </p>
+                  <ul className="mt-4 space-y-2">
+                    {p.bullets.map((b) => (
+                      <li key={b} className="flex items-start gap-2.5 text-[13px] text-sidebar-foreground/60">
+                        <span className="mt-1.5 h-1 w-1 shrink-0 rounded-full bg-gold" />
+                        <span className="leading-snug">{b}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              );
+            })}
+          </div>
+        </section>
+
+        {/* LINHAS DE FORMAÇÃO */}
+        <section className="mt-14">
+          <div className="flex items-baseline justify-between flex-wrap gap-2">
+            <div>
+              <div className="text-xs uppercase tracking-[0.25em] text-royal">Cursos gravados</div>
+              <h2 className="font-display text-2xl text-sidebar-foreground mt-1">
+                Linhas de formação em destaque
+              </h2>
+            </div>
+            <span className="text-xs uppercase tracking-[0.2em] text-sidebar-foreground/45">
+              Abra para ver a profundidade
+            </span>
+          </div>
+
+          <div className="mt-6 grid sm:grid-cols-2 gap-4">
+            {formations.map((f) => (
+              <FormationCard key={f.id} formation={f} />
+            ))}
+          </div>
+        </section>
+
         {/* MATERIAIS DE AMPLIAÇÃO DE CONSCIÊNCIA */}
+
         <section className="mt-16">
           <div className="flex items-baseline justify-between flex-wrap gap-2">
             <div>
