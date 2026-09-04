@@ -123,20 +123,22 @@ const extras: ExtraProduct[] = [
   {
     id: "mentoria-1a1",
     icon: Users,
-    type: "Mentoria 1:1",
-    title: "Programa Executivo · 6 meses",
-    subtitle: "Acompanhamento direto com Schonhardt",
+    type: "Mentoria de Carreira · Pilar 02",
+    title: "Fluxo Estruturado · 3 meses",
+    subtitle: "Encontros semanais em grupo ou individuais, com direcionamento cirúrgico",
     description:
-      "Plano de recolocação sob medida, simulação de Grupo de Discussão, revisão de Business Case e portfólio para multinacional.",
+      "Três meses de acompanhamento contínuo com encontros semanais (formato em grupo ou individual), participação ativa exigida e direcionamento cirúrgico para a transformação executiva e a recolocação estratégica.",
     tag: "Vagas limitadas",
     paths: ["transicao", "kam", "capacitacao"],
     bullets: [
-      "Sessões quinzenais 1:1 (90 min)",
-      "Revisão semanal de CV / LinkedIn / pitch",
-      "Simulação de entrevista com GR/GD",
-      "Acesso vitalício à Irmandade",
+      "3 meses · encontros semanais (grupo ou 1:1)",
+      "Mês 01 · Diagnóstico: onde a carreira trava e o alvo real de mercado",
+      "Mês 02 · Branding: CV ATS-proof, LinkedIn e narrativa executiva",
+      "Mês 03 · Treinamento: entrevistas, GD, Business Case e negociação",
+      "Participação ativa e tarefas de execução entre os encontros",
     ],
   },
+
   {
     id: "inabalavel-palestra",
     icon: Mic,
