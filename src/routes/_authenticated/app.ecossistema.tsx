@@ -655,7 +655,73 @@ function EcossistemaPage() {
   );
 }
 
+function FormationCard({ formation }: { formation: Formation }) {
+  return (
+    <div className="rounded-2xl border border-sidebar-border bg-sidebar-accent/25 p-6 backdrop-blur-xl transition-colors hover:border-gold/40">
+      <div className="flex items-center justify-between gap-3">
+        <span className="text-[10px] uppercase tracking-[0.25em] text-gold border border-gold/30 rounded-full px-2.5 py-0.5">
+          {formation.positioning}
+        </span>
+        <span className="text-[10px] uppercase tracking-[0.2em] text-sidebar-foreground/40 text-right">
+          {formation.audience}
+        </span>
+      </div>
+      <h3 className="font-display text-xl text-sidebar-foreground mt-4 leading-snug">{formation.name}</h3>
+      <p className="text-sm text-sidebar-foreground/60 mt-2 leading-relaxed">{formation.description}</p>
+
+      <Accordion type="single" collapsible className="mt-4">
+        <AccordionItem value="detalhe" className="border-sidebar-border">
+          <AccordionTrigger className="text-xs uppercase tracking-[0.2em] text-sidebar-foreground/70 hover:text-gold hover:no-underline py-3">
+            Ver a profundidade da formação
+          </AccordionTrigger>
+          <AccordionContent>
+            <div className="pt-1 space-y-4">
+              <div className="rounded-xl border border-gold/25 bg-gold/5 p-4">
+                <div className="text-[10px] uppercase tracking-[0.2em] text-gold">A transformação</div>
+                <p className="text-[13px] text-sidebar-foreground/75 mt-1.5 leading-relaxed">
+                  {formation.transformation}
+                </p>
+              </div>
+              <div>
+                <div className="text-[10px] uppercase tracking-[0.2em] text-sidebar-foreground/45 mb-2">
+                  O que você domina
+                </div>
+                <ul className="space-y-2">
+                  {formation.pillars.map((b) => (
+                    <li key={b} className="flex items-start gap-2.5 text-[13px] text-sidebar-foreground/65">
+                      <span className="mt-1.5 h-1 w-1 shrink-0 rounded-full bg-gold" />
+                      <span className="leading-snug">{b}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+              <p className="text-[11px] text-sidebar-foreground/45 leading-relaxed">
+                Certificado de Conclusão ao final da jornada de estudos. Assessment Executivo opcional, com
+                valor extra, exige case prático e nota superior a 8,00 (até 2 tentativas).
+              </p>
+            </div>
+          </AccordionContent>
+        </AccordionItem>
+      </Accordion>
+
+      <div className="mt-4 flex flex-wrap items-center gap-3">
+        <InterestButton productTitle={formation.name} context="curso" />
+        {formation.courseId && (
+          <Link
+            to="/app/aulas/$courseId"
+            params={{ courseId: formation.courseId }}
+            className="inline-flex items-center gap-2 rounded-sm border border-sidebar-border px-5 py-2.5 text-sm text-sidebar-foreground/80 hover:border-gold/40 hover:text-gold transition-colors"
+          >
+            Conhecer programa <ArrowUpRight className="h-4 w-4" />
+          </Link>
+        )}
+      </div>
+    </div>
+  );
+}
+
 function Metric({ value, label }: { value: string; label: string }) {
+
   return (
     <div className="rounded-xl border border-sidebar-border bg-sidebar/40 px-5 py-4">
       <div className="font-display text-3xl text-gold leading-none">{value}</div>
