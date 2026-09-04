@@ -215,8 +215,144 @@ const awarenessMaterials: {
     tag: "Provas",
   },
 ];
+/* ------------------- Pilar 03 · filosofia dos cursos online ------------------ */
+
+const coursePhilosophy: {
+  id: string;
+  icon: typeof FileText;
+  kicker: string;
+  title: string;
+  description: string;
+  bullets: string[];
+}[] = [
+  {
+    id: "formato",
+    icon: Play,
+    kicker: "Formato",
+    title: "Aulas gravadas com cases reais desvendados",
+    description:
+      "Videoaulas gravadas, materiais teóricos e cases reais da indústria farmacêutica destrinchados em detalhe — com foco em planejamento de trabalho, planos de ação e superação dos principais desafios da função.",
+    bullets: [
+      "Aulas gravadas · estude no seu ritmo, sem perder profundidade",
+      "Materiais teóricos e templates de planejamento",
+      "Cases reais da indústria abertos passo a passo",
+      "Planos de ação aplicáveis na semana seguinte",
+    ],
+  },
+  {
+    id: "suporte",
+    icon: MessageCircle,
+    kicker: "Suporte",
+    title: "Comunidade interativa de alto nível",
+    description:
+      "O aluno nunca estuda sozinho: dúvidas são tiradas diretamente com membros do Instituto e com pares que vivem os mesmos desafios de campo, acesso e gestão de contas.",
+    bullets: [
+      "Dúvidas respondidas por membros do Instituto",
+      "Troca entre pares da indústria farmacêutica",
+      "Discussão de casos reais de território e contas",
+      "Networking qualificado e vagas comentadas",
+    ],
+  },
+  {
+    id: "certificacao",
+    icon: ShieldCheck,
+    kicker: "Certificação",
+    title: "Certificado de Conclusão vs. Assessment Executivo",
+    description:
+      "O Certificado de Conclusão é emitido ao finalizar a jornada de estudos. O Assessment Executivo é opcional, tem valor extra e faz a validação rigorosa da competência.",
+    bullets: [
+      "Certificado de Conclusão · ao finalizar a jornada de estudos",
+      "Assessment Executivo · opcional, com valor extra",
+      "Validação por apresentação de case prático e provas",
+      "Nota mínima superior a 8,00 · até 2 tentativas por matrícula",
+      "Guia de orientação exclusivo para preparação",
+    ],
+  },
+];
+
+type Formation = {
+  id: string;
+  courseId?: string;
+  name: string;
+  positioning: string;
+  audience: string;
+  description: string;
+  transformation: string;
+  pillars: string[];
+};
+
+const formations: Formation[] = [
+  {
+    id: "impacta-10x",
+    courseId: "impacta-10x",
+    name: "IMPACTA 10X",
+    positioning: "Aceleração de resultados",
+    audience: "Profissionais de linhas comerciais",
+    description:
+      "Aceleração de resultados para profissionais de linhas comerciais, expandindo a visão estratégica e o poder de mercado — do operacional para a leitura de negócio.",
+    transformation:
+      "Sai do ciclo de cumprir meta por esforço e passa a governar território, dados e influência com visão de negócio.",
+    pillars: [
+      "Expansão da visão estratégica de mercado",
+      "Poder de mercado, influência e reputação",
+      "Planejamento comercial e plano de ação",
+      "Leitura de dados e priorização de esforço",
+    ],
+  },
+  {
+    id: "retorno-pharma",
+    courseId: "retorno-memoravel",
+    name: "O Retorno Pharma",
+    positioning: "Preparatório intensivo",
+    audience: "Quem retorna ao mercado ou muda de empresa",
+    description:
+      "Preparatório intensivo e estruturado para quem busca retornar ao mercado de trabalho ou mudar de empresa de forma estratégica, com narrativa, vitrine digital e processo seletivo dominados.",
+    transformation:
+      "Deixa de disputar vagas no escuro e passa a conduzir o processo seletivo com identidade, evidências e método.",
+    pillars: [
+      "Identidade executiva e narrativa do gap",
+      "Currículo ATS-proof e LinkedIn magnético",
+      "Garimpo de oportunidades e networking elegante",
+      "Entrevistas, Business Case e negociação de proposta",
+    ],
+  },
+  {
+    id: "consultor-linhas-especiais",
+    courseId: "chave-industria",
+    name: "Consultor de Linhas Especiais",
+    positioning: "Imersão de campo",
+    audience: "Consultores de alta complexidade",
+    description:
+      "Imersão no universo do consultor de linhas especiais, cobrindo diagnóstico, planejamento de território, desafios reais de campo e cases da indústria destrinchados.",
+    transformation:
+      "Domina o dialeto técnico, o fluxo do paciente e a rotina de alta complexidade com postura de consultor 360°.",
+    pillars: [
+      "Diagnóstico de território e de portfólio",
+      "Planejamento de território e roteiro de visitas",
+      "Desafios reais de campo e como resolvê-los",
+      "Cases reais da indústria abertos em detalhes",
+    ],
+  },
+  {
+    id: "gerente-acesso",
+    name: "Gerente de Acesso",
+    positioning: "Formação avançada",
+    audience: "Acesso público e privado",
+    description:
+      "Formação avançada focada nas estratégias de acesso público e privado, negociações complexas e gestão de contas de alto faturamento.",
+    transformation:
+      "Passa a estruturar acesso, sustentabilidade de portfólio e negociação com pagadores como um gestor sênior.",
+    pillars: [
+      "Acesso público: APAC, CEAF, incorporação e NAT-Jus",
+      "Acesso privado: operadoras, protocolos e pagadores",
+      "Negociações complexas e contas estratégicas",
+      "Sustentabilidade de portfólio e business case de acesso",
+    ],
+  },
+];
 
 const typeIcon: Record<Course["type"], typeof GraduationCap> = {
+
   Curso: GraduationCap,
   Palestra: Mic,
   Mentoria: Users,
