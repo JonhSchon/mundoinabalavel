@@ -17,6 +17,7 @@ export function SiteHeader() {
           <a href="#pilares" className="hover:text-gold transition-colors">Soluções</a>
           <a href="#sobre" className="hover:text-gold transition-colors">O Instituto</a>
           <a href="#resultados" className="hover:text-gold transition-colors">Resultados</a>
+          <Link to="/hub" className="text-gold hover:text-gold/80 transition-colors">Materiais Gratuitos</Link>
           <a href="#contato" className="hover:text-gold transition-colors">Contato</a>
         </nav>
 
