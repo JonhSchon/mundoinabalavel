@@ -25,6 +25,8 @@ const continuar: Course[] = [byId("jogo-real"), byId("retorno-memoravel"), byId(
 const palestras: Course[] = [byId("inabalavel")];
 
 function Vitrine() {
+  const { hasAccess, pendingFor, isLoading } = useMyAccess();
+  const locked = (c: Course) => !isLoading && !hasAccess(c.id);
   return (
     <div className="bg-sidebar text-sidebar-foreground min-h-full pb-20">
       <section className="relative">
