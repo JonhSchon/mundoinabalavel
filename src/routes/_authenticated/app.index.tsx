@@ -55,13 +55,27 @@ function Vitrine() {
             </h1>
             {featured.subtitle && <p className="mt-4 text-background/80 max-w-xl">{featured.subtitle}</p>}
             <div className="mt-7 flex flex-wrap items-center gap-3">
-              <Link
-                to="/app/aulas/$courseId"
-                params={{ courseId: featured.id }}
-                className="inline-flex items-center gap-2 bg-gold-gradient text-gold-foreground px-7 py-3 rounded-sm text-sm font-medium hover:opacity-95 transition"
-              >
-                <Play className="h-4 w-4 fill-current" /> Começar
-              </Link>
+              {locked(featured) ? (
+                <RequestAccessDialog
+                  productId={featured.id}
+                  productName={featured.title}
+                  pending={pendingFor(featured.id)}
+                  trigger={
+                    <button className="inline-flex items-center gap-2 bg-gold-gradient text-gold-foreground px-7 py-3 rounded-sm text-sm font-medium hover:opacity-95 transition">
+                      <Lock className="h-4 w-4" />
+                      {pendingFor(featured.id) ? "Pedido em análise" : "Pedir liberação"}
+                    </button>
+                  }
+                />
+              ) : (
+                <Link
+                  to="/app/aulas/$courseId"
+                  params={{ courseId: featured.id }}
+                  className="inline-flex items-center gap-2 bg-gold-gradient text-gold-foreground px-7 py-3 rounded-sm text-sm font-medium hover:opacity-95 transition"
+                >
+                  <Play className="h-4 w-4 fill-current" /> Começar
+                </Link>
+              )}
               <Link
                 to="/app/aulas/$courseId"
                 params={{ courseId: featured.id }}
