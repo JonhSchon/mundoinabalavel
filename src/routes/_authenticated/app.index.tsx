@@ -130,9 +130,19 @@ function Shelf({
   );
 }
 
-function CourseCard({ course, progress }: { course: Course; progress?: boolean }) {
-  return (
-    <Link to="/app/aulas/$courseId" params={{ courseId: course.id }} className="group block">
+function CourseCard({
+  course,
+  progress,
+  locked,
+  pending,
+}: {
+  course: Course;
+  progress?: boolean;
+  locked?: boolean;
+  pending?: boolean;
+}) {
+  const art = (
+    <>
       <div
         className="relative aspect-[3/4] rounded-md overflow-hidden border border-sidebar-border group-hover:border-gold transition-colors"
         style={{
