@@ -117,7 +117,13 @@ function Shelf({
       </div>
       <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4">
         {items.map((c) => (
-          <CourseCard key={c.id} course={c} progress={progress} />
+          <CourseCard
+            key={c.id}
+            course={c}
+            progress={progress}
+            locked={!isLoading && !hasAccess(c.id)}
+            pending={pendingFor(c.id)}
+          />
         ))}
       </div>
     </section>
