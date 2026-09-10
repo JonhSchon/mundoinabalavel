@@ -1,6 +1,8 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { Play, ChevronRight } from "lucide-react";
+import { Play, ChevronRight, Lock } from "lucide-react";
 import { courses, type Course } from "@/lib/courses";
+import { useMyAccess } from "@/hooks/useAccess";
+import { RequestAccessDialog } from "@/components/RequestAccessDialog";
 
 export const Route = createFileRoute("/_authenticated/app/")({
   component: Vitrine,
@@ -23,6 +25,8 @@ const continuar: Course[] = [byId("jogo-real"), byId("retorno-memoravel"), byId(
 const palestras: Course[] = [byId("inabalavel")];
 
 function Vitrine() {
+  const { hasAccess, pendingFor, isLoading } = useMyAccess();
+  const locked = (c: Course) => !isLoading && !hasAccess(c.id);
   return (
     <div className="bg-sidebar text-sidebar-foreground min-h-full pb-20">
       <section className="relative">
@@ -51,13 +55,27 @@ function Vitrine() {
             </h1>
             {featured.subtitle && <p className="mt-4 text-background/80 max-w-xl">{featured.subtitle}</p>}
             <div className="mt-7 flex flex-wrap items-center gap-3">
-              <Link
-                to="/app/aulas/$courseId"
-                params={{ courseId: featured.id }}
-                className="inline-flex items-center gap-2 bg-gold-gradient text-gold-foreground px-7 py-3 rounded-sm text-sm font-medium hover:opacity-95 transition"
-              >
-                <Play className="h-4 w-4 fill-current" /> Começar
-              </Link>
+              {locked(featured) ? (
+                <RequestAccessDialog
+                  productId={featured.id}
+                  productName={featured.title}
+                  pending={pendingFor(featured.id)}
+                  trigger={
+                    <button className="inline-flex items-center gap-2 bg-gold-gradient text-gold-foreground px-7 py-3 rounded-sm text-sm font-medium hover:opacity-95 transition">
+                      <Lock className="h-4 w-4" />
+                      {pendingFor(featured.id) ? "Pedido em análise" : "Pedir liberação"}
+                    </button>
+                  }
+                />
+              ) : (
+                <Link
+                  to="/app/aulas/$courseId"
+                  params={{ courseId: featured.id }}
+                  className="inline-flex items-center gap-2 bg-gold-gradient text-gold-foreground px-7 py-3 rounded-sm text-sm font-medium hover:opacity-95 transition"
+                >
+                  <Play className="h-4 w-4 fill-current" /> Começar
+                </Link>
+              )}
               <Link
                 to="/app/aulas/$courseId"
                 params={{ courseId: featured.id }}
@@ -79,7 +97,16 @@ function Vitrine() {
   );
 }
 
-function Shelf({ title, items, progress }: { title: string; items: Course[]; progress?: boolean }) {
+function Shelf({
+  title,
+  items,
+  progress,
+}: {
+  title: string;
+  items: Course[];
+  progress?: boolean;
+}) {
+  const { hasAccess, pendingFor, isLoading } = useMyAccess();
   return (
     <section>
       <div className="flex items-baseline justify-between mb-5">
@@ -90,16 +117,32 @@ function Shelf({ title, items, progress }: { title: string; items: Course[]; pro
       </div>
       <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4">
         {items.map((c) => (
-          <CourseCard key={c.id} course={c} progress={progress} />
+          <CourseCard
+            key={c.id}
+            course={c}
+            progress={progress}
+            locked={!isLoading && !hasAccess(c.id)}
+            pending={pendingFor(c.id)}
+          />
         ))}
       </div>
     </section>
   );
 }
 
-function CourseCard({ course, progress }: { course: Course; progress?: boolean }) {
-  return (
-    <Link to="/app/aulas/$courseId" params={{ courseId: course.id }} className="group block">
+function CourseCard({
+  course,
+  progress,
+  locked,
+  pending,
+}: {
+  course: Course;
+  progress?: boolean;
+  locked?: boolean;
+  pending?: boolean;
+}) {
+  const art = (
+    <>
       <div
         className="relative aspect-[3/4] rounded-md overflow-hidden border border-sidebar-border group-hover:border-gold transition-colors"
         style={{
@@ -129,12 +172,26 @@ function CourseCard({ course, progress }: { course: Course; progress?: boolean }
             {course.tag}
           </div>
         )}
-        <div className="absolute inset-0 grid place-items-center opacity-0 group-hover:opacity-100 transition bg-primary/30">
-          <div className="h-12 w-12 rounded-full bg-gold-gradient grid place-items-center">
-            <Play className="h-5 w-5 text-gold-foreground fill-current" />
+        {locked ? (
+          <>
+            <div className="absolute inset-0 bg-primary/70 backdrop-blur-[2px]" />
+            <div className="absolute inset-0 flex flex-col items-center justify-center gap-2 px-3 text-center">
+              <span className="h-11 w-11 rounded-full border border-gold/50 bg-primary/60 grid place-items-center">
+                <Lock className="h-5 w-5 text-gold" />
+              </span>
+              <span className="text-[10px] uppercase tracking-[0.2em] text-gold">
+                {pending ? "Pedido em análise" : "Acesso bloqueado"}
+              </span>
+            </div>
+          </>
+        ) : (
+          <div className="absolute inset-0 grid place-items-center opacity-0 group-hover:opacity-100 transition bg-primary/30">
+            <div className="h-12 w-12 rounded-full bg-gold-gradient grid place-items-center">
+              <Play className="h-5 w-5 text-gold-foreground fill-current" />
+            </div>
           </div>
-        </div>
-        {progress && (
+        )}
+        {progress && !locked && (
           <div className="absolute bottom-0 left-0 right-0 h-1 bg-background/20">
             <div className="h-full bg-gold" style={{ width: `${20 + ((course.title.length * 7) % 60)}%` }} />
           </div>
@@ -145,7 +202,33 @@ function CourseCard({ course, progress }: { course: Course; progress?: boolean }
         {course.subtitle && (
           <div className="text-xs text-sidebar-foreground/55 mt-1 line-clamp-1">{course.subtitle}</div>
         )}
+        {locked && (
+          <div className="mt-1 text-[11px] text-gold/80">
+            {pending ? "Aguardando aprovação" : "Clique para pedir liberação"}
+          </div>
+        )}
       </div>
+    </>
+  );
+
+  if (locked) {
+    return (
+      <RequestAccessDialog
+        productId={course.id}
+        productName={course.title}
+        pending={pending}
+        trigger={
+          <button type="button" className="group block w-full text-left">
+            {art}
+          </button>
+        }
+      />
+    );
+  }
+
+  return (
+    <Link to="/app/aulas/$courseId" params={{ courseId: course.id }} className="group block">
+      {art}
     </Link>
   );
 }

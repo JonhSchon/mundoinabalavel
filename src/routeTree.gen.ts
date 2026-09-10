@@ -23,6 +23,7 @@ import { Route as AuthenticatedAppComunidadeRouteImport } from './routes/_authen
 import { Route as AuthenticatedAppBoasVindasRouteImport } from './routes/_authenticated/app.boas-vindas'
 import { Route as AuthenticatedAppAulasRouteImport } from './routes/_authenticated/app.aulas'
 import { Route as AuthenticatedAppAssessmentsRouteImport } from './routes/_authenticated/app.assessments'
+import { Route as AuthenticatedAppAdminRouteImport } from './routes/_authenticated/app.admin'
 import { Route as AuthenticatedAppAulasCourseIdRouteImport } from './routes/_authenticated/app.aulas.$courseId'
 
 const HubRoute = HubRouteImport.update({
@@ -99,6 +100,11 @@ const AuthenticatedAppAssessmentsRoute =
     path: '/assessments',
     getParentRoute: () => AuthenticatedAppRoute,
   } as any)
+const AuthenticatedAppAdminRoute = AuthenticatedAppAdminRouteImport.update({
+  id: '/admin',
+  path: '/admin',
+  getParentRoute: () => AuthenticatedAppRoute,
+} as any)
 const AuthenticatedAppAulasCourseIdRoute =
   AuthenticatedAppAulasCourseIdRouteImport.update({
     id: '/$courseId',
@@ -111,6 +117,7 @@ export interface FileRoutesByFullPath {
   '/auth': typeof AuthRoute
   '/hub': typeof HubRoute
   '/app': typeof AuthenticatedAppRouteWithChildren
+  '/app/admin': typeof AuthenticatedAppAdminRoute
   '/app/assessments': typeof AuthenticatedAppAssessmentsRoute
   '/app/aulas': typeof AuthenticatedAppAulasRouteWithChildren
   '/app/boas-vindas': typeof AuthenticatedAppBoasVindasRoute
@@ -126,6 +133,7 @@ export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/auth': typeof AuthRoute
   '/hub': typeof HubRoute
+  '/app/admin': typeof AuthenticatedAppAdminRoute
   '/app/assessments': typeof AuthenticatedAppAssessmentsRoute
   '/app/aulas': typeof AuthenticatedAppAulasRouteWithChildren
   '/app/boas-vindas': typeof AuthenticatedAppBoasVindasRoute
@@ -144,6 +152,7 @@ export interface FileRoutesById {
   '/auth': typeof AuthRoute
   '/hub': typeof HubRoute
   '/_authenticated/app': typeof AuthenticatedAppRouteWithChildren
+  '/_authenticated/app/admin': typeof AuthenticatedAppAdminRoute
   '/_authenticated/app/assessments': typeof AuthenticatedAppAssessmentsRoute
   '/_authenticated/app/aulas': typeof AuthenticatedAppAulasRouteWithChildren
   '/_authenticated/app/boas-vindas': typeof AuthenticatedAppBoasVindasRoute
@@ -162,6 +171,7 @@ export interface FileRouteTypes {
     | '/auth'
     | '/hub'
     | '/app'
+    | '/app/admin'
     | '/app/assessments'
     | '/app/aulas'
     | '/app/boas-vindas'
@@ -177,6 +187,7 @@ export interface FileRouteTypes {
     | '/'
     | '/auth'
     | '/hub'
+    | '/app/admin'
     | '/app/assessments'
     | '/app/aulas'
     | '/app/boas-vindas'
@@ -194,6 +205,7 @@ export interface FileRouteTypes {
     | '/auth'
     | '/hub'
     | '/_authenticated/app'
+    | '/_authenticated/app/admin'
     | '/_authenticated/app/assessments'
     | '/_authenticated/app/aulas'
     | '/_authenticated/app/boas-vindas'
@@ -313,6 +325,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AuthenticatedAppAssessmentsRouteImport
       parentRoute: typeof AuthenticatedAppRoute
     }
+    '/_authenticated/app/admin': {
+      id: '/_authenticated/app/admin'
+      path: '/admin'
+      fullPath: '/app/admin'
+      preLoaderRoute: typeof AuthenticatedAppAdminRouteImport
+      parentRoute: typeof AuthenticatedAppRoute
+    }
     '/_authenticated/app/aulas/$courseId': {
       id: '/_authenticated/app/aulas/$courseId'
       path: '/$courseId'
@@ -337,6 +356,7 @@ const AuthenticatedAppAulasRouteWithChildren =
   )
 
 interface AuthenticatedAppRouteChildren {
+  AuthenticatedAppAdminRoute: typeof AuthenticatedAppAdminRoute
   AuthenticatedAppAssessmentsRoute: typeof AuthenticatedAppAssessmentsRoute
   AuthenticatedAppAulasRoute: typeof AuthenticatedAppAulasRouteWithChildren
   AuthenticatedAppBoasVindasRoute: typeof AuthenticatedAppBoasVindasRoute
@@ -349,6 +369,7 @@ interface AuthenticatedAppRouteChildren {
 }
 
 const AuthenticatedAppRouteChildren: AuthenticatedAppRouteChildren = {
+  AuthenticatedAppAdminRoute: AuthenticatedAppAdminRoute,
   AuthenticatedAppAssessmentsRoute: AuthenticatedAppAssessmentsRoute,
   AuthenticatedAppAulasRoute: AuthenticatedAppAulasRouteWithChildren,
   AuthenticatedAppBoasVindasRoute: AuthenticatedAppBoasVindasRoute,
