@@ -97,7 +97,16 @@ function Vitrine() {
   );
 }
 
-function Shelf({ title, items, progress }: { title: string; items: Course[]; progress?: boolean }) {
+function Shelf({
+  title,
+  items,
+  progress,
+}: {
+  title: string;
+  items: Course[];
+  progress?: boolean;
+}) {
+  const { hasAccess, pendingFor, isLoading } = useMyAccess();
   return (
     <section>
       <div className="flex items-baseline justify-between mb-5">
