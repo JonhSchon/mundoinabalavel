@@ -1,6 +1,8 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { Play, ChevronRight } from "lucide-react";
+import { Play, ChevronRight, Lock } from "lucide-react";
 import { courses, type Course } from "@/lib/courses";
+import { useMyAccess } from "@/hooks/useAccess";
+import { RequestAccessDialog } from "@/components/RequestAccessDialog";
 
 export const Route = createFileRoute("/_authenticated/app/")({
   component: Vitrine,
