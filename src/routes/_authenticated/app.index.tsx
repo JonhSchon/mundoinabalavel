@@ -172,12 +172,26 @@ function CourseCard({
             {course.tag}
           </div>
         )}
-        <div className="absolute inset-0 grid place-items-center opacity-0 group-hover:opacity-100 transition bg-primary/30">
-          <div className="h-12 w-12 rounded-full bg-gold-gradient grid place-items-center">
-            <Play className="h-5 w-5 text-gold-foreground fill-current" />
+        {locked ? (
+          <>
+            <div className="absolute inset-0 bg-primary/70 backdrop-blur-[2px]" />
+            <div className="absolute inset-0 flex flex-col items-center justify-center gap-2 px-3 text-center">
+              <span className="h-11 w-11 rounded-full border border-gold/50 bg-primary/60 grid place-items-center">
+                <Lock className="h-5 w-5 text-gold" />
+              </span>
+              <span className="text-[10px] uppercase tracking-[0.2em] text-gold">
+                {pending ? "Pedido em análise" : "Acesso bloqueado"}
+              </span>
+            </div>
+          </>
+        ) : (
+          <div className="absolute inset-0 grid place-items-center opacity-0 group-hover:opacity-100 transition bg-primary/30">
+            <div className="h-12 w-12 rounded-full bg-gold-gradient grid place-items-center">
+              <Play className="h-5 w-5 text-gold-foreground fill-current" />
+            </div>
           </div>
-        </div>
-        {progress && (
+        )}
+        {progress && !locked && (
           <div className="absolute bottom-0 left-0 right-0 h-1 bg-background/20">
             <div className="h-full bg-gold" style={{ width: `${20 + ((course.title.length * 7) % 60)}%` }} />
           </div>
@@ -188,7 +202,33 @@ function CourseCard({
         {course.subtitle && (
           <div className="text-xs text-sidebar-foreground/55 mt-1 line-clamp-1">{course.subtitle}</div>
         )}
+        {locked && (
+          <div className="mt-1 text-[11px] text-gold/80">
+            {pending ? "Aguardando aprovação" : "Clique para pedir liberação"}
+          </div>
+        )}
       </div>
+    </>
+  );
+
+  if (locked) {
+    return (
+      <RequestAccessDialog
+        productId={course.id}
+        productName={course.title}
+        pending={pending}
+        trigger={
+          <button type="button" className="group block w-full text-left">
+            {art}
+          </button>
+        }
+      />
+    );
+  }
+
+  return (
+    <Link to="/app/aulas/$courseId" params={{ courseId: course.id }} className="group block">
+      {art}
     </Link>
   );
 }
