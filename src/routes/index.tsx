@@ -73,8 +73,9 @@ const pillars = [
       "Diagnóstico, branding executivo e treinamento de execução",
       "Simulações de entrevista, GD e Business Case",
     ],
-    cta: "Conhecer a mentoria",
-    to: "/app/ecossistema" as const,
+    cta: "Aplicar para a mentoria (formulário)",
+    href: APPLICATION_FORM_URL,
+    external: true,
   },
   {
     id: "cursos",
@@ -88,7 +89,7 @@ const pillars = [
       "Consultor de Linhas Especiais e Gerente de Acesso",
       "Comunidade interativa + Certificado de Conclusão (Assessment opcional)",
     ],
-    cta: "Explorar cursos",
+    cta: "Entrar no app e ver os cursos",
     to: "/app/ecossistema" as const,
   },
 
@@ -287,7 +288,7 @@ function LandingPage() {
           </p>
 
           <div className="mt-14 grid md:grid-cols-2 gap-6">
-            {pillars.map(({ id, icon: Icon, kicker, title, desc, bullets, cta, href, to }) => (
+            {pillars.map(({ id, icon: Icon, kicker, title, desc, bullets, cta, href, to, external }) => (
               <article
                 key={id}
                 id={id}
@@ -322,6 +323,7 @@ function LandingPage() {
                 ) : (
                   <a
                     href={href}
+                    {...(external ? { target: "_blank", rel: "noreferrer" } : {})}
                     className="mt-7 inline-flex items-center gap-2 text-sm text-royal transition-colors group-hover:text-gold"
                   >
                     {cta} <ArrowUpRight className="h-4 w-4" />
@@ -513,7 +515,14 @@ function LandingPage() {
           <div className="text-sm space-y-2 text-primary-foreground/80">
             <div className="text-gold uppercase text-xs tracking-wider mb-3">Soluções</div>
             <a href="#acesso" className="block hover:text-gold transition-colors">Gestão de Contas e Acesso</a>
-            <a href="#mentoria" className="block hover:text-gold transition-colors">Mentoria de Carreira</a>
+            <a
+              href={APPLICATION_FORM_URL}
+              target="_blank"
+              rel="noreferrer"
+              className="block hover:text-gold transition-colors"
+            >
+              Mentoria de Carreira · aplicar
+            </a>
             <a href="#cursos" className="block hover:text-gold transition-colors">Cursos Online</a>
             <a href="#palestras" className="block hover:text-gold transition-colors">Palestras Corporativas</a>
           </div>
