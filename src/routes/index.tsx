@@ -1,6 +1,7 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { SiteHeader } from "@/components/SiteHeader";
 import heroImg from "@/assets/hero.jpg";
+import { APPLICATION_FORM_URL } from "@/lib/links";
 import joaoAsset from "@/assets/joao-schonhardt.png.asset.json";
 import {
   ArrowUpRight,
