@@ -1,6 +1,7 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { SiteHeader } from "@/components/SiteHeader";
 import heroImg from "@/assets/hero.jpg";
+import { APPLICATION_FORM_URL } from "@/lib/links";
 import joaoAsset from "@/assets/joao-schonhardt.png.asset.json";
 import {
   ArrowUpRight,
@@ -73,8 +74,9 @@ const pillars = [
       "Diagnóstico, branding executivo e treinamento de execução",
       "Simulações de entrevista, GD e Business Case",
     ],
-    cta: "Conhecer a mentoria",
-    to: "/app/ecossistema" as const,
+    cta: "Aplicar para a mentoria (formulário)",
+    href: APPLICATION_FORM_URL,
+    external: true,
   },
   {
     id: "cursos",
@@ -88,7 +90,7 @@ const pillars = [
       "Consultor de Linhas Especiais e Gerente de Acesso",
       "Comunidade interativa + Certificado de Conclusão (Assessment opcional)",
     ],
-    cta: "Explorar cursos",
+    cta: "Entrar no app e ver os cursos",
     to: "/app/ecossistema" as const,
   },
 
@@ -287,7 +289,7 @@ function LandingPage() {
           </p>
 
           <div className="mt-14 grid md:grid-cols-2 gap-6">
-            {pillars.map(({ id, icon: Icon, kicker, title, desc, bullets, cta, href, to }) => (
+            {pillars.map(({ id, icon: Icon, kicker, title, desc, bullets, cta, href, to, external }) => (
               <article
                 key={id}
                 id={id}
@@ -322,6 +324,7 @@ function LandingPage() {
                 ) : (
                   <a
                     href={href}
+                    {...(external ? { target: "_blank", rel: "noreferrer" } : {})}
                     className="mt-7 inline-flex items-center gap-2 text-sm text-royal transition-colors group-hover:text-gold"
                   >
                     {cta} <ArrowUpRight className="h-4 w-4" />
@@ -461,15 +464,24 @@ function LandingPage() {
             <span className="italic text-gold">Mundo Inabalável</span>.
           </h2>
           <p className="mt-8 text-base md:text-lg text-background/85 max-w-2xl mx-auto leading-relaxed">
-            Cursos e mentoria ficam na plataforma do mentorado. Projetos corporativos, palestras e congressos
-            passam por briefing e proposta sob medida.
+            Mentoria e assessments começam pelo formulário de aplicação — é a nossa triagem. Depois você
+            faz o cadastro no app, onde ficam os materiais e a contratação. Palestras e projetos
+            corporativos passam por briefing e proposta sob medida.
           </p>
           <div className="mt-12 flex flex-col sm:flex-row items-center justify-center gap-4">
-            <Link
-              to="/app/ecossistema"
+            <a
+              href={APPLICATION_FORM_URL}
+              target="_blank"
+              rel="noreferrer"
               className="inline-flex items-center gap-3 rounded-sm bg-gold-gradient px-8 py-4 text-sm font-medium text-primary shadow-gold hover:opacity-95 transition-all duration-300"
             >
-              Ver cursos, mentoria e palestras <ArrowUpRight className="h-4 w-4" />
+              Aplicar para a mentoria <ArrowUpRight className="h-4 w-4" />
+            </a>
+            <Link
+              to="/app/ecossistema"
+              className="inline-flex items-center gap-3 rounded-sm border border-background/25 bg-background/5 px-8 py-4 text-sm text-background hover:border-gold hover:text-gold transition-all duration-300"
+            >
+              Cadastrar no app e ver cursos <ArrowUpRight className="h-4 w-4" />
             </Link>
             <a
               href="mailto:contato@institutoschonhardt.com.br?subject=Contrato%20Corporativo%20%C2%B7%20Instituto%20Schonhardt"
@@ -513,7 +525,14 @@ function LandingPage() {
           <div className="text-sm space-y-2 text-primary-foreground/80">
             <div className="text-gold uppercase text-xs tracking-wider mb-3">Soluções</div>
             <a href="#acesso" className="block hover:text-gold transition-colors">Gestão de Contas e Acesso</a>
-            <a href="#mentoria" className="block hover:text-gold transition-colors">Mentoria de Carreira</a>
+            <a
+              href={APPLICATION_FORM_URL}
+              target="_blank"
+              rel="noreferrer"
+              className="block hover:text-gold transition-colors"
+            >
+              Mentoria de Carreira · aplicar
+            </a>
             <a href="#cursos" className="block hover:text-gold transition-colors">Cursos Online</a>
             <a href="#palestras" className="block hover:text-gold transition-colors">Palestras Corporativas</a>
           </div>

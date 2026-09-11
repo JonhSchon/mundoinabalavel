@@ -418,160 +418,17 @@ function AssessmentCard({ assessment }: { assessment: Assessment }) {
 /* ----------------------------- interest button ----------------------------- */
 
 function AssessmentInterestButton({
-  productTitle,
   cta,
   variant = "primary",
 }: {
-  productTitle: string;
+  productTitle?: string;
   cta: string;
   variant?: "primary" | "gold";
 }) {
-  const [name, setName] = useState("");
-  const [email, setEmail] = useState("");
-  const [company, setCompany] = useState("");
-  const [goal, setGoal] = useState("");
-  const [open, setOpen] = useState(false);
-
-  const subject = encodeURIComponent(`Solicitação de aplicação · ${productTitle}`);
-  const body = encodeURIComponent(
-    `Olá João,\n\nGostaria de solicitar a aplicação do assessment: ${productTitle}.\n\n` +
-      `Nome: ${name}\n` +
-      `E-mail: ${email}\n` +
-      (company ? `Empresa / cargo: ${company}\n` : "") +
-      (goal ? `Objetivo / momento de carreira: ${goal}\n` : "") +
-      `\nAguardo o retorno da equipe ISN para agendarmos a aplicação e o debrief executivo.\n\nObrigado.`,
-  );
-  const mailto = `mailto:contato@institutoschonhardt.com.br?subject=${subject}&body=${body}`;
-
-  const handleSubmit = () => {
-    window.open(mailto, "_blank");
-    setOpen(false);
-  };
-
-  const isValid = name.trim().length > 2 && email.includes("@");
-
   return (
-    <Dialog open={open} onOpenChange={setOpen}>
-      <DialogTrigger asChild>
-        <button
-          className={cn(
-            "w-full inline-flex items-center justify-center gap-2 rounded-sm px-5 py-2.5 text-sm font-medium transition-colors",
-            variant === "primary"
-              ? "border border-gold/40 text-gold hover:bg-gold hover:text-gold-foreground"
-              : "bg-gold text-gold-foreground hover:bg-gold/90",
-          )}
-        >
-          {variant === "primary" && <TrendingUp className="h-4 w-4" />}
-          {variant === "gold" && <ArrowUpRight className="h-4 w-4" />}
-          {cta}
-        </button>
-      </DialogTrigger>
-      <DialogContent className="bg-sidebar border-sidebar-border text-sidebar-foreground sm:max-w-md">
-        <DialogHeader>
-          <DialogTitle className="font-display text-xl text-sidebar-foreground">
-            Solicitar aplicação
-          </DialogTitle>
-          <DialogDescription className="text-sidebar-foreground/55">
-            Preencha seus dados para a equipe do Instituto Schonhardt entrar em contato sobre{" "}
-            <span className="text-gold">{productTitle}</span>.
-          </DialogDescription>
-        </DialogHeader>
-
-        <div className="mt-4 space-y-4">
-          <div className="space-y-1.5">
-            <Label
-              htmlFor="name"
-              className="text-xs uppercase tracking-wider text-sidebar-foreground/70"
-            >
-              Nome completo
-            </Label>
-            <Input
-              id="name"
-              value={name}
-              onChange={(e) => setName(e.target.value)}
-              placeholder="Seu nome"
-              className="bg-sidebar-accent/50 border-sidebar-border text-sidebar-foreground placeholder:text-sidebar-foreground/35 focus-visible:ring-gold/40"
-            />
-          </div>
-
-          <div className="space-y-1.5">
-            <Label
-              htmlFor="email"
-              className="text-xs uppercase tracking-wider text-sidebar-foreground/70"
-            >
-              E-mail corporativo
-            </Label>
-            <Input
-              id="email"
-              type="email"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              placeholder="voce@empresa.com"
-              className="bg-sidebar-accent/50 border-sidebar-border text-sidebar-foreground placeholder:text-sidebar-foreground/35 focus-visible:ring-gold/40"
-            />
-          </div>
-
-          <div className="space-y-1.5">
-            <Label
-              htmlFor="company"
-              className="text-xs uppercase tracking-wider text-sidebar-foreground/70"
-            >
-              Empresa / cargo atual
-            </Label>
-            <Input
-              id="company"
-              value={company}
-              onChange={(e) => setCompany(e.target.value)}
-              placeholder="Ex: KAM Sênior · Indústria Farmacêutica"
-              className="bg-sidebar-accent/50 border-sidebar-border text-sidebar-foreground placeholder:text-sidebar-foreground/35 focus-visible:ring-gold/40"
-            />
-          </div>
-
-          <div className="space-y-1.5">
-            <Label
-              htmlFor="goal"
-              className="text-xs uppercase tracking-wider text-sidebar-foreground/70"
-            >
-              Objetivo com o assessment
-            </Label>
-            <Textarea
-              id="goal"
-              value={goal}
-              onChange={(e) => setGoal(e.target.value)}
-              placeholder="Conte brevemente onde você está e o que espera descobrir ou validar..."
-              rows={3}
-              className="bg-sidebar-accent/50 border-sidebar-border text-sidebar-foreground placeholder:text-sidebar-foreground/35 focus-visible:ring-gold/40 resize-none"
-            />
-          </div>
-
-          <div className="pt-2 flex flex-col gap-2">
-            <button
-              onClick={handleSubmit}
-              disabled={!isValid}
-              className="inline-flex items-center justify-center gap-2 rounded-sm bg-gold px-5 py-2.5 text-sm font-medium text-gold-foreground hover:bg-gold/90 disabled:opacity-40 disabled:cursor-not-allowed transition-colors"
-            >
-              <Mail className="h-4 w-4" />
-              Enviar solicitação por e-mail
-            </button>
-            <a
-              href={`https://wa.me/?text=${encodeURIComponent(
-                `Olá João, gostaria de solicitar a aplicação do ${productTitle}. Meu nome é ${name}.`,
-              )}`}
-              target="_blank"
-              rel="noreferrer"
-              className="inline-flex items-center justify-center gap-2 rounded-sm border border-sidebar-border px-5 py-2.5 text-sm text-sidebar-foreground/80 hover:border-gold/40 hover:text-gold transition-colors"
-            >
-              <MessageCircle className="h-4 w-4" />
-              Preferiu enviar pelo WhatsApp?
-            </a>
-          </div>
-
-          <p className="text-[11px] text-sidebar-foreground/40 leading-relaxed">
-            Ao enviar, seus dados serão direcionados para a equipe do Instituto Schonhardt. A
-            aplicação dos assessments é high-ticket, com vagas limitadas e debrief executivo 1:1.
-          </p>
-        </div>
-      </DialogContent>
-    </Dialog>
+    <div className="w-full space-y-2">
+      <ApplyFormButton label={cta} variant={variant === "gold" ? "gold" : "outline"} />
+      <ApplyFormNote />
+    </div>
   );
 }
