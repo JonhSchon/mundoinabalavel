@@ -464,15 +464,24 @@ function LandingPage() {
             <span className="italic text-gold">Mundo Inabalável</span>.
           </h2>
           <p className="mt-8 text-base md:text-lg text-background/85 max-w-2xl mx-auto leading-relaxed">
-            Cursos e mentoria ficam na plataforma do mentorado. Projetos corporativos, palestras e congressos
-            passam por briefing e proposta sob medida.
+            Mentoria e assessments começam pelo formulário de aplicação — é a nossa triagem. Depois você
+            faz o cadastro no app, onde ficam os materiais e a contratação. Palestras e projetos
+            corporativos passam por briefing e proposta sob medida.
           </p>
           <div className="mt-12 flex flex-col sm:flex-row items-center justify-center gap-4">
-            <Link
-              to="/app/ecossistema"
+            <a
+              href={APPLICATION_FORM_URL}
+              target="_blank"
+              rel="noreferrer"
               className="inline-flex items-center gap-3 rounded-sm bg-gold-gradient px-8 py-4 text-sm font-medium text-primary shadow-gold hover:opacity-95 transition-all duration-300"
             >
-              Ver cursos, mentoria e palestras <ArrowUpRight className="h-4 w-4" />
+              Aplicar para a mentoria <ArrowUpRight className="h-4 w-4" />
+            </a>
+            <Link
+              to="/app/ecossistema"
+              className="inline-flex items-center gap-3 rounded-sm border border-background/25 bg-background/5 px-8 py-4 text-sm text-background hover:border-gold hover:text-gold transition-all duration-300"
+            >
+              Cadastrar no app e ver cursos <ArrowUpRight className="h-4 w-4" />
             </Link>
             <a
               href="mailto:contato@institutoschonhardt.com.br?subject=Contrato%20Corporativo%20%C2%B7%20Instituto%20Schonhardt"
