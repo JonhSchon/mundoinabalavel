@@ -18,14 +18,14 @@ export const getMyAccess = createServerFn({ method: "GET" })
       { onConflict: "id" },
     );
 
-    const [{ data: ents }, { data: reqs }, { data: isAdmin }] = await Promise.all([
+    const [{ data: ents }, { data: reqs }, { data: adminRow }] = await Promise.all([
       supabase.from("entitlements").select("product_id").eq("user_id", userId),
       supabase.from("access_requests").select("id, product_id, status, created_at").eq("user_id", userId),
-      supabase.rpc("has_role", { _user_id: userId, _role: "admin" }),
+      supabase.from("user_roles").select("role").eq("user_id", userId).eq("role", "admin").maybeSingle(),
     ]);
 
     return {
-      isAdmin: Boolean(isAdmin),
+      isAdmin: Boolean(adminRow),
       productIds: (ents ?? []).map((e) => e.product_id),
       requests: (reqs ?? []).map((r) => ({
         id: r.id,
@@ -67,10 +67,13 @@ export const requestAccess = createServerFn({ method: "POST" })
   });
 
 async function assertAdmin(context: { supabase: any; userId: string }) {
-  const { data, error } = await context.supabase.rpc("has_role", {
-    _user_id: context.userId,
-    _role: "admin",
-  });
+  // Verificação server-side: a linha só é visível pelas regras de acesso do banco.
+  const { data, error } = await context.supabase
+    .from("user_roles")
+    .select("role")
+    .eq("user_id", context.userId)
+    .eq("role", "admin")
+    .maybeSingle();
   if (error || !data) throw new Error("Acesso restrito ao administrador");
 }
 
