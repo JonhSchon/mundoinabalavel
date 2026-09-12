@@ -67,10 +67,13 @@ export const requestAccess = createServerFn({ method: "POST" })
   });
 
 async function assertAdmin(context: { supabase: any; userId: string }) {
-  const { data, error } = await context.supabase.rpc("has_role", {
-    _user_id: context.userId,
-    _role: "admin",
-  });
+  // Verificação server-side: a linha só é visível pelas regras de acesso do banco.
+  const { data, error } = await context.supabase
+    .from("user_roles")
+    .select("role")
+    .eq("user_id", context.userId)
+    .eq("role", "admin")
+    .maybeSingle();
   if (error || !data) throw new Error("Acesso restrito ao administrador");
 }
 
